@@ -22,10 +22,9 @@ class HomeController extends Controller
         $cashBooks = CashBook::where('is_active', true)->count();
         $cashBookList = CashBook::where('is_active', true)->get();
         $totalTransactions = Transaction::count();
-        $upcomingKhatib = \App\Models\KhatibSchedule::with('khatib')
-            ->where('date', '>=', now()->toDateString())
+        $upcomingKhatib = \App\Models\KhatibSchedule::where('date', '>=', now()->toDateString())
             ->orderBy('date', 'asc')
-            ->first() ?? \App\Models\KhatibSchedule::with('khatib')->orderBy('date', 'desc')->first();
+            ->first() ?? \App\Models\KhatibSchedule::orderBy('date', 'desc')->first();
         $upcomingPengajian = \App\Models\PengajianSchedule::where('date', '>=', now()->toDateString())
             ->orderBy('date', 'asc')
             ->first() ?? \App\Models\PengajianSchedule::orderBy('date', 'desc')->first();

@@ -503,13 +503,13 @@
                         </div>
                         <div class="flex-grow-1">
                             <span class="badge bg-success-subtle text-success small rounded-pill mb-1">Khatib Jumat Mendatang</span>
-                            <h6 class="fw-bold mb-1">{{ $upcomingKhatib->khatib->name ?? 'Ustadz Belum Dijadwalkan' }}</h6>
+                            <h6 class="fw-bold mb-1">{{ $upcomingKhatib->khatib_name ?? 'Ustadz Belum Dijadwalkan' }}</h6>
                             <p class="text-muted small mb-1">
                                 <i class="bi bi-calendar3 me-1"></i> {{ isset($upcomingKhatib) ? \App\Helpers\FormatHelper::formatDate($upcomingKhatib->date) : 'Jumat mendatang' }}
                             </p>
-                            @if(isset($upcomingKhatib) && $upcomingKhatib->khutbah_title)
+                            @if(isset($upcomingKhatib) && ($upcomingKhatib->theme || $upcomingKhatib->khutbah_title))
                             <div class="small text-dark fw-semibold">
-                                <i class="bi bi-book me-1"></i> Tema: &ldquo;{{ $upcomingKhatib->khutbah_title }}&rdquo;
+                                <i class="bi bi-book me-1"></i> Tema: &ldquo;{{ $upcomingKhatib->theme ?? $upcomingKhatib->khutbah_title }}&rdquo;
                             </div>
                             @endif
                         </div>
