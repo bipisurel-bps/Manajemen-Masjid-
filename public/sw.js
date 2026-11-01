@@ -1,4 +1,4 @@
-// Masjid Al-Ikhlas — Service Worker
+// Al-Masjid — Service Worker
 // Offline Cache & Full PWA Support for Mosque Management System
 const CACHE_NAME = 'masjid-ikhlas-v2';
 

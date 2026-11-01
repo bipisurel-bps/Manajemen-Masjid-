@@ -5,7 +5,7 @@
 <div class="container py-5">
     <div class="mb-4">
         <h2 class="section-title"><i class="bi bi-telephone me-2"></i>Hubungi Kami</h2>
-        <p class="section-subtitle">Informasi kontak {{ \App\Models\Setting::get('masjid_name', 'Masjid Al-Ikhlas') }}</p>
+        <p class="section-subtitle">Informasi kontak {{ \App\Models\Setting::get('masjid_name', 'Al-Masjid') }}</p>
     </div>
 
     <div class="row g-4">

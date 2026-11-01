@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>@yield('title', 'Admin') - {{ \App\Models\Setting::get('masjid_name', 'Masjid Al-Ikhlas') }}</title>
+    <title>@yield('title', 'Admin') - {{ \App\Models\Setting::get('masjid_name', 'Al-Masjid') }}</title>
 
     <!-- PWA -->
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#0D9488">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Al-Ikhlas">
+    <meta name="apple-mobile-web-app-title" content="Al-Masjid">
     <link rel="apple-touch-icon" href="/icon-192.png">
     <link rel="apple-touch-icon" sizes="512x512" href="/icon-512.png">
     <meta name="mobile-web-app-capable" content="yes">
@@ -461,7 +461,7 @@
         <div class="sidebar-brand-icon">
             <i class="bi bi-moon-stars-fill"></i>
         </div>
-        {{ \App\Models\Setting::get('masjid_name', 'Masjid Al-Ikhlas') }}
+        {{ \App\Models\Setting::get('masjid_name', 'Al-Masjid') }}
     </a>
 
     <nav class="sidebar-nav">

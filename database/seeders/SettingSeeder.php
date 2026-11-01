@@ -11,9 +11,9 @@ class SettingSeeder extends Seeder
     {
         $settings = [
             // General
-            ['key' => 'masjid_name', 'value' => 'Masjid Al-Ikhlas', 'type' => 'text', 'label' => 'Nama Masjid', 'group' => 'general'],
+            ['key' => 'masjid_name', 'value' => 'Al-Masjid', 'type' => 'text', 'label' => 'Nama Masjid', 'group' => 'general'],
             ['key' => 'masjid_tagline', 'value' => 'Membangun Umat, Meraih Berkah', 'type' => 'text', 'label' => 'Tagline', 'group' => 'general'],
-            ['key' => 'masjid_description', 'value' => 'Masjid Al-Ikhlas adalah pusat ibadah dan kegiatan keislaman yang mengedepankan transparansi, akuntabilitas, dan amanah dalam pengelolaan keuangan masjid.', 'type' => 'textarea', 'label' => 'Deskripsi', 'group' => 'general'],
+            ['key' => 'masjid_description', 'value' => 'Al-Masjid adalah pusat ibadah dan kegiatan keislaman yang mengedepankan transparansi, akuntabilitas, dan amanah dalam pengelolaan keuangan masjid.', 'type' => 'textarea', 'label' => 'Deskripsi', 'group' => 'general'],
             // Contact
             ['key' => 'masjid_address', 'value' => 'Jl. Kebaikan No. 123, RT 01 RW 02, Kelurahan Damai, Kecamatan Tentram, Jakarta Selatan 12345', 'type' => 'textarea', 'label' => 'Alamat', 'group' => 'contact'],
             ['key' => 'masjid_phone', 'value' => '021-12345678', 'type' => 'text', 'label' => 'Telepon', 'group' => 'contact'],
@@ -23,10 +23,10 @@ class SettingSeeder extends Seeder
             // Bank
             ['key' => 'bank_name', 'value' => 'Bank Syariah Indonesia (BSI)', 'type' => 'text', 'label' => 'Nama Bank', 'group' => 'general'],
             ['key' => 'bank_account', 'value' => '7123456789', 'type' => 'text', 'label' => 'No. Rekening', 'group' => 'general'],
-            ['key' => 'bank_holder', 'value' => 'Masjid Al-Ikhlas', 'type' => 'text', 'label' => 'Atas Nama', 'group' => 'general'],
+            ['key' => 'bank_holder', 'value' => 'Al-Masjid', 'type' => 'text', 'label' => 'Atas Nama', 'group' => 'general'],
             // Appearance
             ['key' => 'primary_color', 'value' => '#198754', 'type' => 'text', 'label' => 'Warna Utama', 'group' => 'appearance'],
-            ['key' => 'hero_title', 'value' => 'Selamat Datang di Masjid Al-Ikhlas', 'type' => 'text', 'label' => 'Judul Hero', 'group' => 'appearance'],
+            ['key' => 'hero_title', 'value' => 'Selamat Datang di Al-Masjid', 'type' => 'text', 'label' => 'Judul Hero', 'group' => 'appearance'],
             ['key' => 'hero_subtitle', 'value' => 'Laporan Keuangan Transparan • Jadwal Ibadah Terupdate • Manajemen Masjid Modern', 'type' => 'text', 'label' => 'Subtitle Hero', 'group' => 'appearance'],
         ];
 

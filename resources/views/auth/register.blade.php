@@ -10,7 +10,7 @@
                 <div class="brand-icon mx-auto mb-3" style="width:64px;height:64px;font-size:1.75rem;">
                     <i class="bi bi-moon-stars-fill"></i>
                 </div>
-                <h4 class="fw-800 mb-1">{{ \App\Models\Setting::get('masjid_name', 'Masjid Al-Ikhlas') }}</h4>
+                <h4 class="fw-800 mb-1">{{ \App\Models\Setting::get('masjid_name', 'Al-Masjid') }}</h4>
                 <p class="text-muted small">Daftar akun admin baru</p>
             </div>
 

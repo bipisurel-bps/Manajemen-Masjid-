@@ -10,11 +10,11 @@
     <meta name="theme-color" content="#0D9488">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Al-Ikhlas">
+    <meta name="apple-mobile-web-app-title" content="Al-Masjid">
     <link rel="apple-touch-icon" href="/icon-192.png">
     <link rel="apple-touch-icon" sizes="512x512" href="/icon-512.png">
     <meta name="mobile-web-app-capable" content="yes">
-    <title>@yield('title', 'Masjid') - {{ \App\Models\Setting::get('masjid_name', 'Masjid Al-Ikhlas') }}</title>
+    <title>@yield('title', 'Masjid') - {{ \App\Models\Setting::get('masjid_name', 'Al-Masjid') }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
         :root {
@@ -414,11 +414,17 @@
 <nav class="navbar-main">
     <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-            <a href="{{ route('home') }}" class="navbar-brand-custom">
-                <div class="brand-icon">
+            <a href="{{ route('home') }}" class="navbar-brand-custom d-flex align-items-center gap-2 text-decoration-none">
+                <div class="brand-icon shadow-sm">
                     <i class="bi bi-moon-stars-fill"></i>
                 </div>
-                <span>{{ \App\Models\Setting::get('masjid_name', 'Masjid Al-Ikhlas') }}</span>
+                <div class="d-flex flex-column" style="line-height: 1.1;">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="fw-800 text-dark" style="letter-spacing: -0.02em; font-size: 1.2rem;">AL-MASJID</span>
+                        <span class="badge rounded-pill" style="background: rgba(16, 185, 129, 0.12); color: #059669; font-size: 0.65rem; font-weight: 700; border: 1px solid rgba(16, 185, 129, 0.25);">OS 4.0</span>
+                    </div>
+                    <span class="text-muted" style="font-size: 0.7rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase;">Mosque Operating System</span>
+                </div>
             </a>
             <div class="d-flex align-items-center gap-1">
                 <a href="{{ route('home') }}" class="nav-link-custom {{ request()->routeIs('home') ? 'active' : '' }}">
@@ -484,7 +490,7 @@
             <div class="col-md-4">
                 <div class="footer-heading">Tentang</div>
                 <p class="text-muted small">
-                    {{ \App\Models\Setting::get('masjid_name', 'Masjid Al-Ikhlas') }} berkomitmen mengelola keuangan masjid secara transparan, akuntabel, dan amanah untuk kemaslahatan umat.
+                    {{ \App\Models\Setting::get('masjid_name', 'Al-Masjid') }} berkomitmen mengelola keuangan masjid secara transparan, akuntabel, dan amanah untuk kemaslahatan umat.
                 </p>
                 <div class="d-flex gap-3 mt-2">
                     @if(\App\Models\Setting::get('social_facebook'))
@@ -523,7 +529,7 @@
         <hr class="my-4" style="border-color: var(--border);">
         <div class="row align-items-center">
             <div class="col-md-6 text-center text-md-start text-muted small mb-2 mb-md-0">
-                &copy; {{ date('Y') }} {{ \App\Models\Setting::get('masjid_name', 'Masjid Al-Ikhlas') }}. Hak Cipta Dilindungi.
+                &copy; {{ date('Y') }} {{ \App\Models\Setting::get('masjid_name', 'Al-Masjid') }}. Hak Cipta Dilindungi.
             </div>
             <div class="col-md-6 text-center text-md-end small">
                 <span class="text-muted">Aplikasi ini di-develop oleh</span>

@@ -20,7 +20,7 @@ class MasjidManagementTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        Setting::updateOrCreate(['key' => 'masjid_name'], ['value' => 'Masjid Al-Ikhlas Test', 'label' => 'Nama Masjid', 'group' => 'general']);
+        Setting::updateOrCreate(['key' => 'masjid_name'], ['value' => 'Al-Masjid Test', 'label' => 'Nama Masjid', 'group' => 'general']);
         Setting::updateOrCreate(['key' => 'masjid_latitude'], ['value' => '-6.2088', 'label' => 'Latitude', 'group' => 'display']);
         Setting::updateOrCreate(['key' => 'masjid_longitude'], ['value' => '106.8456', 'label' => 'Longitude', 'group' => 'display']);
         Setting::updateOrCreate(['key' => 'qris_image'], ['value' => '/images/qris-sample.svg', 'label' => 'QRIS Infaq', 'group' => 'general']);
@@ -103,7 +103,7 @@ class MasjidManagementTest extends TestCase
     {
         $response = $this->get(route('display.index'));
         $response->assertStatus(200);
-        $response->assertSee('Masjid Al-Ikhlas Test');
+        $response->assertSee('Al-Masjid Test');
         $response->assertSee('Subuh');
         $response->assertSee('Dzuhur');
         $response->assertSee('Ashar');

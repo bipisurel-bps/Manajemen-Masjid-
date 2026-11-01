@@ -139,7 +139,7 @@ class ReportController extends Controller
         $khatibSchedule = KhatibSchedule::whereDate('date', $friday->toDateString())->first();
 
         // 5. Informasi Masjid
-        $masjidName = Setting::get('masjid_name', 'Masjid Al-Ikhlas');
+        $masjidName = Setting::get('masjid_name', 'Al-Masjid');
         $masjidAddress = Setting::get('masjid_address', 'Jl. Kebaikan No. 123');
 
         return view('reports.rekap-jumat', compact(

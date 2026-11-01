@@ -23,7 +23,7 @@ class Khatib extends Model
         }
 
         $dateStr = $scheduleDate ? \Carbon\Carbon::parse($scheduleDate)->translatedFormat('l, d F Y') : 'Jumat mendatang';
-        $masjidName = Setting::get('masjid_name', 'Masjid Al-Ikhlas');
+        $masjidName = Setting::get('masjid_name', 'Al-Masjid');
         $masjidAddress = Setting::get('masjid_address', 'Masjid');
         $themeStr = $theme ?: 'Menyesuaikan';
 

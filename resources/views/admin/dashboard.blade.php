@@ -5,7 +5,7 @@
 <div class="d-flex justify-content-between align-items-center mb-4">
     <div>
         <h3 class="fw-800 mb-1" style="font-size:1.5rem;">Dashboard</h3>
-        <p class="text-muted small mb-0">Ringkasan keuangan {{ \App\Models\Setting::get('masjid_name', 'Masjid Al-Ikhlas') }}</p>
+        <p class="text-muted small mb-0">Ringkasan keuangan {{ \App\Models\Setting::get('masjid_name', 'Al-Masjid') }}</p>
     </div>
     <div class="d-flex gap-2">
         <a href="{{ route('admin.transactions.create') }}" class="btn-masjid">

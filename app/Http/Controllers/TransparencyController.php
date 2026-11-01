@@ -11,13 +11,13 @@ class TransparencyController extends Controller
 {
     public function index(Request $request)
     {
-        $masjidName = Setting::get('masjid_name', 'Masjid Al-Ikhlas');
+        $masjidName = Setting::get('masjid_name', 'Al-Masjid');
         $masjidAddress = Setting::get('masjid_address', 'Jl. Kebaikan No. 123');
         $masjidPhone = Setting::get('masjid_phone', '021-12345678');
         $masjidWhatsapp = Setting::get('masjid_whatsapp', '081234567890');
         $bankName = Setting::get('bank_name', 'Bank Syariah Indonesia (BSI)');
         $bankAccount = Setting::get('bank_account', '7123456789');
-        $bankHolder = Setting::get('bank_holder', 'Masjid Al-Ikhlas');
+        $bankHolder = Setting::get('bank_holder', 'Al-Masjid');
         $qrisImage = Setting::get('qris_image', '/images/qris-sample.svg');
 
         // Total akumulasi keuangan

@@ -1,6 +1,6 @@
 {
-  "name": "Masjid Al-Ikhlas",
-  "short_name": "Al-Ikhlas",
+  "name": "Al-Masjid",
+  "short_name": "Al-Masjid",
   "description": "Sistem Informasi Keuangan Masjid — Transparan, Akuntabel, Amanah",
   "start_url": "/",
   "display": "standalone",

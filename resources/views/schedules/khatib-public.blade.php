@@ -5,7 +5,7 @@
 <div class="container py-5">
     <div class="mb-4">
         <h2 class="section-title"><i class="bi bi-calendar-week me-2"></i>Jadwal Khatib Jumat</h2>
-        <p class="section-subtitle">Jadwal khatib shalat Jumat di {{ \App\Models\Setting::get('masjid_name', 'Masjid Al-Ikhlas') }}</p>
+        <p class="section-subtitle">Jadwal khatib shalat Jumat di {{ \App\Models\Setting::get('masjid_name', 'Al-Masjid') }}</p>
     </div>
 
     @php
