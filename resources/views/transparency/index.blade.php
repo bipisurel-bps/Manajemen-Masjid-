@@ -103,17 +103,25 @@
                 </div>
 
                 <!-- Nomor Rekening Bank -->
+                @if($bankAccount)
                 <div class="p-3 rounded-3 text-start mt-2" style="background: #F8FAFC; border: 1px solid #E2E8F0;">
                     <div class="text-muted small">Transfer Rekening Resmi:</div>
-                    <div class="fw-bold text-dark">{{ $bankName }}</div>
+                    <div class="fw-bold text-dark">{{ $bankName ?: 'Rekening Operasional Masjid' }}</div>
                     <div class="d-flex justify-content-between align-items-center mt-1">
                         <span class="fs-5 fw-900 text-primary font-monospace" id="accNumber">{{ $bankAccount }}</span>
                         <button class="btn btn-sm btn-outline-secondary py-1 px-2" onclick="navigator.clipboard.writeText('{{ $bankAccount }}'); alert('Nomor rekening berhasil disalin!');" title="Salin">
                             <i class="bi bi-clipboard"></i> Salin
                         </button>
                     </div>
+                    @if($bankHolder)
                     <div class="text-muted small mt-1">a.n. <strong>{{ $bankHolder }}</strong></div>
+                    @endif
                 </div>
+                @else
+                <div class="p-3 rounded-3 text-center mt-2 bg-light border text-muted small">
+                    <i class="bi bi-info-circle text-primary me-1"></i> Rekening donasi resmi dapat diatur secara mandiri oleh pengurus masjid di panel admin.
+                </div>
+                @endif
             </div>
         </div>
     </div>

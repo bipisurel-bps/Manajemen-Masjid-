@@ -1,144 +1,120 @@
 @extends('layouts.app')
-@section('title', 'Kontak')
+@section('title', 'Kontak & Bantuan Pengembang — Al-Masjid Open Source')
 
 @section('content')
-<div class="container py-5">
-    <div class="mb-4">
-        <h2 class="section-title"><i class="bi bi-telephone me-2"></i>Hubungi Kami</h2>
-        <p class="section-subtitle">Informasi kontak {{ \App\Models\Setting::get('masjid_name', 'Al-Masjid') }}</p>
-    </div>
-
-    <div class="row g-4">
-        <!-- Contact Info Cards -->
-        <div class="col-lg-5">
-            <div class="card-masjid mb-3">
-                <div class="card-body p-4">
-                    <div class="d-flex align-items-start gap-3">
-                        <div class="stat-icon income">
-                            <i class="bi bi-geo-alt-fill"></i>
-                        </div>
-                        <div>
-                            <h6 class="fw-700 mb-1">Alamat</h6>
-                            <p class="text-muted small mb-0">
-                                {{ \App\Models\Setting::get('masjid_address', 'Alamat belum diatur') }}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card-masjid mb-3">
-                <div class="card-body p-4">
-                    <div class="d-flex align-items-start gap-3">
-                        <div class="stat-icon neutral">
-                            <i class="bi bi-telephone-fill"></i>
-                        </div>
-                        <div>
-                            <h6 class="fw-700 mb-1">Telepon</h6>
-                            <p class="text-muted small mb-0">
-                                {{ \App\Models\Setting::get('masjid_phone', 'Nomor belum diatur') }}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card-masjid mb-3">
-                <div class="card-body p-4">
-                    <div class="d-flex align-items-start gap-3">
-                        <div class="stat-icon balance">
-                            <i class="bi bi-envelope-fill"></i>
-                        </div>
-                        <div>
-                            <h6 class="fw-700 mb-1">Email</h6>
-                            <p class="text-muted small mb-0">
-                                {{ \App\Models\Setting::get('masjid_email', 'Email belum diatur') }}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            @if(\App\Models\Setting::get('bank_name'))
-            <div class="card-masjid">
-                <div class="card-body p-4">
-                    <div class="d-flex align-items-start gap-3">
-                        <div class="stat-icon income"">
-                            <i class="bi bi-bank"></i>
-                        </div>
-                        <div>
-                            <h6 class="fw-700 mb-1">Info Rekening</h6>
-                            <p class="text-muted small mb-0">
-                                {{ \App\Models\Setting::get('bank_name') }}<br>
-                                {{ \App\Models\Setting::get('bank_account') }}<br>
-                                a.n. {{ \App\Models\Setting::get('bank_holder') }}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endif
+<div class="py-5" style="background: linear-gradient(180deg, #F0FDF4 0%, #F8FAFC 100%);">
+    <div class="container py-3">
+        <!-- Breadcrumb & Header -->
+        <div class="text-center max-w-700 mx-auto mb-5">
+            <span class="badge rounded-pill bg-success-subtle text-success border border-success-subtle px-3 py-1 mb-3 fw-bold text-uppercase" style="letter-spacing: 0.06em; font-size: 0.75rem;">
+                <i class="bi bi-code-slash me-1"></i> Open Source Project &bull; Lisensi MIT
+            </span>
+            <h1 class="display-6 fw-900 text-dark mb-3" style="letter-spacing: -0.03em;">
+                Kontak &amp; Bantuan Pengembang
+            </h1>
+            <p class="text-muted lead" style="font-size: 1.1rem; line-height: 1.6;">
+                <strong>Al-Masjid</strong> adalah platform sistem operasi manajemen masjid sumber terbuka (<em>open-source</em>) yang disediakan secara gratis untuk kemaslahatan masjid di seluruh Indonesia.
+            </p>
         </div>
 
-        <!-- Contact Form -->
-        <div class="col-lg-7">
-            <div class="card-masjid">
-                <div class="card-header d-flex align-items-center gap-2" style="color: var(--primary);">
-                    <i class="bi bi-send-fill fs-5"></i>
-                    <h5 class="mb-0 fw-700">Kirim Pesan</h5>
-                </div>
-                <div class="card-body p-4">
-                    <form method="POST" action="#">
-                        @csrf
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <label class="form-label">Nama</label>
-                                <input type="text" class="form-control" name="name" placeholder="Nama Anda" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Email</label>
-                                <input type="email" class="form-control" name="email" placeholder="email@contoh.com" required>
-                            </div>
-                            <div class="col-12">
-                                <label class="form-label">Subjek</label>
-                                <input type="text" class="form-control" name="subject" placeholder="Subjek pesan">
-                            </div>
-                            <div class="col-12">
-                                <label class="form-label">Pesan</label>
-                                <textarea class="form-control" name="message" rows="4" placeholder="Tulis pesan Anda..." required></textarea>
-                            </div>
-                            <div class="col-12">
-                                <button type="submit" class="btn-primary-masjid">
-                                    <i class="bi bi-send"></i> Kirim Pesan
-                                </button>
-                            </div>
+        <div class="row g-4 justify-content-center">
+            <!-- Card 1: Kontak Resmi Pengembang (Satu-satunya Kontak) -->
+            <div class="col-lg-6">
+                <div class="card border-0 rounded-4 shadow-sm h-100 p-4 p-md-5 bg-white border">
+                    <div class="d-inline-flex align-items-center justify-content-center rounded-3 bg-success bg-opacity-10 text-success mb-4" style="width: 56px; height: 56px; font-size: 1.75rem;">
+                        <i class="bi bi-envelope-at-fill"></i>
+                    </div>
+                    <span class="text-muted small fw-bold text-uppercase" style="letter-spacing: 0.05em;">Satu-Satunya Kontak Resmi</span>
+                    <h3 class="fw-800 text-dark mt-1 mb-3">Jadda Developer</h3>
+                    <p class="text-muted mb-4" style="line-height: 1.65;">
+                        Untuk pertanyaan teknis, konsultasi kebutuhan masjid, pendampingan instalasi mandiri, atau saran fitur, Anda dapat menghubungi pengembang langsung melalui email:
+                    </p>
+
+                    <div class="p-3 rounded-3 mb-4 d-flex align-items-center justify-content-between" style="background: #F0FDF4; border: 1px solid #BBF7D0;">
+                        <div class="d-flex align-items-center gap-2 overflow-hidden">
+                            <i class="bi bi-envelope-check-fill text-success fs-5"></i>
+                            <span class="fw-bold text-dark font-monospace text-truncate">jaddadeveloper@gmail.com</span>
                         </div>
-                    </form>
+                        <button class="btn btn-sm btn-outline-success rounded-pill px-3 py-1 fw-semibold flex-shrink-0" onclick="navigator.clipboard.writeText('jaddadeveloper@gmail.com'); alert('Email jaddadeveloper@gmail.com berhasil disalin!');">
+                            <i class="bi bi-clipboard me-1"></i> Salin
+                        </button>
+                    </div>
+
+                    <div class="mt-auto pt-3 border-top">
+                        <a href="mailto:jaddadeveloper@gmail.com?subject=Konsultasi%20Sistem%20Al-Masjid" class="btn btn-success btn-lg rounded-pill w-100 fw-bold shadow-sm">
+                            <i class="bi bi-send-fill me-2"></i> Kirim Email ke Jadda Developer
+                        </a>
+                        <small class="text-muted d-block text-center mt-2">
+                            Responsif &bull; Konsultasi gratis untuk takmir &amp; pengurus DKM
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Source Code Bebas di GitHub -->
+            <div class="col-lg-6">
+                <div class="card border-0 rounded-4 shadow-sm h-100 p-4 p-md-5 bg-white border">
+                    <div class="d-inline-flex align-items-center justify-content-center rounded-3 bg-dark bg-opacity-10 text-dark mb-4" style="width: 56px; height: 56px; font-size: 1.75rem;">
+                        <i class="bi bi-github"></i>
+                    </div>
+                    <span class="text-muted small fw-bold text-uppercase" style="letter-spacing: 0.05em;">Repositori Sumber Terbuka</span>
+                    <h3 class="fw-800 text-dark mt-1 mb-3">Unduh Source Code Bebas</h3>
+                    <p class="text-muted mb-4" style="line-height: 1.65;">
+                        Aplikasi ini <strong>100% gratis</strong> dengan lisensi terbuka <strong>MIT</strong>. Anda bebas mengunduh kode, memodifikasi, dan memasangnya di server sekretariat masjid sendiri tanpa biaya lisensi.
+                    </p>
+
+                    <div class="p-3 rounded-3 mb-4" style="background: #F8FAFC; border: 1px solid #E2E8F0;">
+                        <div class="small text-muted mb-1">Clone Repository via Git:</div>
+                        <code class="d-block text-dark fw-bold user-select-all" style="font-size: 0.85rem;">git clone https://github.com/bipisurel-bps/Manajemen-Masjid-.git</code>
+                    </div>
+
+                    <div class="mt-auto pt-3 border-top d-flex flex-column gap-2">
+                        <a href="https://github.com/bipisurel-bps/Manajemen-Masjid-" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-lg rounded-pill w-100 fw-bold shadow-sm">
+                            <i class="bi bi-github me-2"></i> Buka di GitHub (bipisurel-bps) <i class="bi bi-box-arrow-up-right ms-1 small"></i>
+                        </a>
+                        <a href="{{ route('demo.login', 'admin') }}" class="btn btn-outline-warning text-dark btn-lg rounded-pill w-100 fw-bold">
+                            <i class="bi bi-play-circle-fill me-2 text-warning"></i> Coba Demo Aplikasi Dulu
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="text-center mt-5 bg-soft-primary rounded-4 p-4">
-        <h5 class="fw-700 mb-2"><i class="bi bi-clock me-1"></i>Jam Operasional Masjid</h5>
-        <p class="text-muted mb-1">Setiap Hari: 04:00 - 22:00 WIB</p>
-        <p class="text-muted mb-0">Kantor: Senin - Jumat, 08:00 - 16:00 WIB</p>
-    </div>
-
-    <!-- Developer & Technical Support Card -->
-    <div class="mt-4 p-4 rounded-4 bg-white border shadow-sm text-center">
-        <h6 class="fw-bold mb-1" style="color: var(--primary);"><i class="bi bi-code-slash me-1"></i> Pengembang & Layanan Teknis Aplikasi</h6>
-        <p class="text-muted small mb-3">Aplikasi Sistem Informasi Manajemen Masjid ini di-develop oleh <strong>Jadda Developer</strong> untuk transparansi dan kemudahan tata kelola operasional masjid.</p>
-        <div class="d-flex flex-wrap justify-content-center gap-2">
-            <a href="mailto:jaddadeveloper@gmail.com" class="btn btn-outline-primary btn-sm rounded-pill px-3">
-                <i class="bi bi-envelope-at me-1"></i> jaddadeveloper@gmail.com
-            </a>
-            <a href="https://almasjid.web.id" class="btn btn-outline-success btn-sm rounded-pill px-3">
-                <i class="bi bi-globe me-1"></i> almasjid.web.id
-            </a>
-            <a href="https://github.com/bipisurel-bps/Manajemen-Masjid-" target="_blank" class="btn btn-outline-secondary btn-sm rounded-pill px-3">
-                <i class="bi bi-github me-1"></i> GitHub Repository
-            </a>
+        <!-- Section: Panduan Mandiri & Komitmen Bebas Biaya -->
+        <div class="row g-4 mt-4">
+            <div class="col-md-4">
+                <div class="p-4 rounded-4 bg-white border h-100 shadow-sm">
+                    <div class="d-flex align-items-center gap-2 mb-2 text-success fw-bold">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>100% Bebas Biaya Lisensi</span>
+                    </div>
+                    <p class="text-muted small mb-0" style="line-height: 1.6;">
+                        Tidak ada biaya langganan, tidak ada fitur tersembunyi (paywall). Dibuat untuk mempermudah tata kelola masjid di seluruh Indonesia.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-4 rounded-4 bg-white border h-100 shadow-sm">
+                    <div class="d-flex align-items-center gap-2 mb-2 text-primary fw-bold">
+                        <i class="bi bi-hdd-network-fill"></i>
+                        <span>Mandiri &amp; Privasi Data</span>
+                    </div>
+                    <p class="text-muted small mb-0" style="line-height: 1.6;">
+                        Seluruh data keuangan dan jamaah tersimpan di server Anda sendiri. Pengurus memegang kendali penuh atas database dan privasi masjid.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-4 rounded-4 bg-white border h-100 shadow-sm">
+                    <div class="d-flex align-items-center gap-2 mb-2 text-warning text-dark fw-bold">
+                        <i class="bi bi-tools"></i>
+                        <span>Bantuan Implementasi</span>
+                    </div>
+                    <p class="text-muted small mb-0" style="line-height: 1.6;">
+                        Butuh bantuan setup di komputer kantor masjid atau TV dinding? Silakan kirimkan email ke <a href="mailto:jaddadeveloper@gmail.com" class="fw-bold text-success text-decoration-none">jaddadeveloper@gmail.com</a>.
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </div>

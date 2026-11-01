@@ -421,7 +421,7 @@
                 <div class="d-flex flex-column" style="line-height: 1.1;">
                     <div class="d-flex align-items-center gap-2">
                         <span class="fw-800 text-dark" style="letter-spacing: -0.02em; font-size: 1.2rem;">AL-MASJID</span>
-                        <span class="badge rounded-pill" style="background: rgba(16, 185, 129, 0.12); color: #059669; font-size: 0.65rem; font-weight: 700; border: 1px solid rgba(16, 185, 129, 0.25);">OS 4.0</span>
+                        <span class="badge rounded-pill" style="background: rgba(16, 185, 129, 0.12); color: #059669; font-size: 0.65rem; font-weight: 700; border: 1px solid rgba(16, 185, 129, 0.25);">OPEN SOURCE</span>
                     </div>
                     <span class="text-muted" style="font-size: 0.7rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase;">Mosque Operating System</span>
                 </div>
@@ -444,6 +444,9 @@
                 </a>
                 <a href="{{ route('contact') }}" class="nav-link-custom {{ request()->routeIs('contact') ? 'active' : '' }}">
                     <i class="bi bi-envelope"></i> Kontak
+                </a>
+                <a href="https://github.com/bipisurel-bps/Manajemen-Masjid-" target="_blank" rel="noopener noreferrer" class="nav-link-custom text-dark d-none d-md-inline-flex align-items-center" title="Unduh Source Code Bebas di GitHub">
+                    <i class="bi bi-github"></i> GitHub
                 </a>
                 <a href="{{ route('demo.login', 'admin') }}" class="btn btn-warning btn-sm text-dark fw-bold rounded-pill px-3 ms-2 shadow-sm">
                     <i class="bi bi-play-circle-fill me-1"></i> Coba Demo
@@ -487,53 +490,50 @@
 <footer class="footer-main">
     <div class="container">
         <div class="row g-4">
-            <div class="col-md-4">
-                <div class="footer-heading">Tentang</div>
-                <p class="text-muted small">
-                    {{ \App\Models\Setting::get('masjid_name', 'Al-Masjid') }} berkomitmen mengelola keuangan masjid secara transparan, akuntabel, dan amanah untuk kemaslahatan umat.
+            <div class="col-md-5">
+                <div class="footer-heading">Tentang Al-Masjid</div>
+                <p class="text-muted small" style="line-height: 1.65;">
+                    Al-Masjid adalah sistem operasi manajemen masjid sumber terbuka (open-source) berlisensi MIT. Dirancang mandiri dan amanah untuk memudahkan Dewan Kemakmuran Masjid (DKM), bendahara, dan takmir di seluruh Indonesia dalam mengelola kas multi-wadah, display TV digital jadwal salat, dan transparansi jamaah.
                 </p>
-                <div class="d-flex gap-3 mt-2">
-                    @if(\App\Models\Setting::get('social_facebook'))
-                    <a href="{{ \App\Models\Setting::get('social_facebook') }}" class="footer-link" target="_blank"><i class="bi bi-facebook"></i></a>
-                    @endif
-                    @if(\App\Models\Setting::get('social_instagram'))
-                    <a href="{{ \App\Models\Setting::get('social_instagram') }}" class="footer-link" target="_blank"><i class="bi bi-instagram"></i></a>
-                    @endif
-                    @if(\App\Models\Setting::get('social_youtube'))
-                    <a href="{{ \App\Models\Setting::get('social_youtube') }}" class="footer-link" target="_blank"><i class="bi bi-youtube"></i></a>
-                    @endif
+                <div class="d-flex align-items-center gap-2 mt-2">
+                    <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1 small fw-bold">Open Source &bull; Lisensi MIT</span>
+                    <span class="badge bg-light text-muted border px-2 py-1 small">100% Gratis</span>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="footer-heading">Kontak</div>
-                @if(\App\Models\Setting::get('masjid_address'))
-                <div class="footer-link"><i class="bi bi-geo-alt"></i> {{ \App\Models\Setting::get('masjid_address') }}</div>
-                @endif
-                @if(\App\Models\Setting::get('masjid_phone'))
-                <div class="footer-link"><i class="bi bi-telephone"></i> {{ \App\Models\Setting::get('masjid_phone') }}</div>
-                @endif
-                @if(\App\Models\Setting::get('masjid_email'))
-                <div class="footer-link"><i class="bi bi-envelope"></i> {{ \App\Models\Setting::get('masjid_email') }}</div>
-                @endif
+                <div class="footer-heading">Kontak &amp; Kode Sumber</div>
+                <div class="footer-link mb-2">
+                    <i class="bi bi-envelope-at text-success"></i> 
+                    <a href="mailto:jaddadeveloper@gmail.com" class="text-dark fw-bold text-decoration-none">jaddadeveloper@gmail.com</a>
+                </div>
+                <div class="footer-link mb-2">
+                    <i class="bi bi-github text-dark"></i>
+                    <a href="https://github.com/bipisurel-bps/Manajemen-Masjid-" target="_blank" rel="noopener noreferrer" class="text-muted text-decoration-none">
+                        bipisurel-bps/Manajemen-Masjid-
+                    </a>
+                </div>
+                <div class="text-muted small mt-2" style="line-height: 1.5;">
+                    Silakan unduh atau clone kode sumber bebas di GitHub untuk dipasang di komputer sekretariat masjid atau server lokal.
+                </div>
             </div>
-            <div class="col-md-4">
-                <div class="footer-heading">Tautan</div>
+            <div class="col-md-3">
+                <div class="footer-heading">Navigasi Utama</div>
                 <a href="{{ route('home') }}" class="footer-link"><i class="bi bi-chevron-right"></i> Beranda</a>
-                <a href="{{ route('reports.public') }}" class="footer-link"><i class="bi bi-chevron-right"></i> Laporan Keuangan</a>
-                <a href="{{ route('schedules.khatib') }}" class="footer-link"><i class="bi bi-chevron-right"></i> Jadwal Kegiatan</a>
+                <a href="{{ route('demo.login', 'admin') }}" class="footer-link"><i class="bi bi-chevron-right"></i> Coba Demo Admin</a>
                 <a href="{{ route('display.index') }}" target="_blank" class="footer-link"><i class="bi bi-chevron-right"></i> Mode Layar TV Masjid</a>
-                <a href="{{ route('demo.login', 'admin') }}" class="footer-link"><i class="bi bi-chevron-right"></i> Coba Akun Demo</a>
-                <a href="{{ route('contact') }}" class="footer-link"><i class="bi bi-chevron-right"></i> Hubungi Kami</a>
+                <a href="{{ route('transparency.index') }}" class="footer-link"><i class="bi bi-chevron-right"></i> Portal Transparansi</a>
+                <a href="{{ route('reports.rekap_jumat') }}" target="_blank" class="footer-link"><i class="bi bi-chevron-right"></i> Rekap Kas Jumat A4</a>
+                <a href="{{ route('contact') }}" class="footer-link"><i class="bi bi-chevron-right"></i> Kontak Pengembang</a>
             </div>
         </div>
         <hr class="my-4" style="border-color: var(--border);">
         <div class="row align-items-center">
             <div class="col-md-6 text-center text-md-start text-muted small mb-2 mb-md-0">
-                &copy; {{ date('Y') }} {{ \App\Models\Setting::get('masjid_name', 'Al-Masjid') }}. Hak Cipta Dilindungi.
+                &copy; {{ date('Y') }} Al-Masjid &bull; Open Source berlisensi MIT. Disediakan gratis untuk kemaslahatan masjid.
             </div>
             <div class="col-md-6 text-center text-md-end small">
                 <span class="text-muted">Aplikasi ini di-develop oleh</span>
-                <a href="mailto:jaddadeveloper@gmail.com" class="fw-bold text-decoration-none" style="color: var(--primary);">jaddadeveloper</a>
+                <a href="mailto:jaddadeveloper@gmail.com" class="fw-bold text-decoration-none text-success">Jadda Developer</a>
                 <span class="text-muted">(<a href="mailto:jaddadeveloper@gmail.com" class="text-muted text-decoration-none">jaddadeveloper@gmail.com</a>)</span>
             </div>
         </div>
