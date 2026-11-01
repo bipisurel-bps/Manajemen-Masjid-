@@ -1,10 +1,11 @@
 # 🕌 Manajemen Masjid
 
-Sistem informasi manajemen masjid berbasis web — solusi _all-in-one_ untuk pengelolaan keuangan, jadwal kegiatan, dan data pengurus masjid.
+Sistem informasi manajemen masjid berbasis web — solusi _all-in-one_ untuk pengelolaan keuangan, jadwal kegiatan, dan data pengurus masjid yang dirancang handal, aman, dan dapat berfungsi offline secara penuh (PWA).
 
-![Laravel](https://img.shields.io/badge/Laravel-11.x-FF2D20?logo=laravel&logoColor=white)
-![PHP](https://img.shields.io/badge/PHP-8.2+-777BB4?logo=php&logoColor=white)
+![Laravel](https://img.shields.io/badge/Laravel-13.x-FF2D20?logo=laravel&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-8.3+-777BB4?logo=php&logoColor=white)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-7952B3?logo=bootstrap&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-8.x-646CFF?logo=vite&logoColor=white)
 ![Chart.js](https://img.shields.io/badge/Chart.js-4.x-FF6384?logo=chartdotjs&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
@@ -14,7 +15,7 @@ Sistem informasi manajemen masjid berbasis web — solusi _all-in-one_ untuk pen
 
 ### 📊 Dashboard Admin
 - Ringkasan pemasukan, pengeluaran, saldo, dan total transaksi
-- Grafik pemasukan & pengeluaran per bulan (Chart.js)
+- Grafik pemasukan & pengeluaran per bulan (Chart.js dibundle lokal)
 - Tabel transaksi terbaru
 
 ### 💰 Manajemen Transaksi
@@ -51,34 +52,35 @@ Sistem informasi manajemen masjid berbasis web — solusi _all-in-one_ untuk pen
 ### ⚙️ Pengaturan Masjid
 - Nama masjid, alamat, deskripsi
 - Kontak (telepon, email, media sosial)
-- Tema tampilan (warna primer, secondary, dll.)
+- Pengaturan identitas dan informasi operasional
 
 ### 🔐 Profil Admin
 - Edit nama, username, email
 - Ubah password (dengan verifikasi password lama)
 
 ### 🌐 Halaman Publik
-- **Home** — landing page menampilkan informasi masjid
-- **Laporan Keuangan** — transparansi keuangan masjid
-- **Jadwal Khatib** — jadwal khatib Jumat
-- **Jadwal Pengajian** — jadwal pengajian rutin
-- **Kontak** — informasi kontak masjid
-- Registrasi & Login
+- **Home** — landing page menampilkan ringkasan keuangan dan informasi masjid
+- **Laporan Keuangan** — transparansi keuangan masjid untuk jamaah
+- **Jadwal Khatib** — jadwal khatib Jumat mendatang
+- **Jadwal Pengajian** — jadwal majelis taklim & kajian rutin
+- **Kontak** — alamat dan kanal komunikasi masjid
+- Registrasi & Login petugas
 
-### 📱 PWA (Progressive Web App)
-- Dapat diinstal di smartphone
-- Ikon & splash screen
-- Service worker untuk offline support
+### 📱 PWA (Progressive Web App) & 100% Offline Ready
+- Dapat diinstal di smartphone (Android/iOS) dan desktop
+- Ikon & splash screen terintegrasi
+- **Zero CDN Dependency**: Bootstrap 5.3, Bootstrap Icons font, dan Chart.js dibundle lokal via Vite
+- Service Worker cerdas (Cache-First untuk bundle ter-hash, Network-First dengan cache fallback untuk navigasi, dan halaman fallback offline khusus)
 
 ---
 
-## 🚀 Instalasi
+## 🚀 Instalasi & Menjalankan
 
 ### Prasyarat
-- **PHP 8.2+** dengan ekstensi: BCMath, Ctype, Fileinfo, JSON, Mbstring, OpenSSL, PDO, Tokenizer, XML, SQLite (atau MySQL)
+- **PHP 8.3+** dengan ekstensi: BCMath, Ctype, Fileinfo, JSON, Mbstring, OpenSSL, PDO, Tokenizer, XML, SQLite (atau MySQL)
 - **Composer 2.x**
-- **Node.js 18+** (untuk asset building — opsional)
-- **SQLite** (default) atau **MySQL 5.7+ / MariaDB 10.3+**
+- **Node.js 18+ & NPM** (untuk build Vite asset pipeline)
+- **SQLite** (default, siap pakai tanpa konfigurasi server DB terpisah) atau **MySQL 8.0+ / MariaDB 10.4+**
 
 ### Langkah Instalasi
 
@@ -87,7 +89,7 @@ Sistem informasi manajemen masjid berbasis web — solusi _all-in-one_ untuk pen
 git clone https://github.com/bipisurel-bps/Manajemen-Masjid-.git
 cd Manajemen-Masjid-
 
-# 2. Install dependency PHP
+# 2. Install dependensi PHP
 composer install
 
 # 3. Salin file environment
@@ -96,32 +98,21 @@ cp .env.example .env
 # 4. Generate application key
 php artisan key:generate
 
-# 5. Konfigurasi database di .env
-# SQLite (default, langsung pakai):
-#   DB_CONNECTION=sqlite
-#   DB_DATABASE=/path/ke/database/database.sqlite
-#
-# MySQL:
-#   DB_CONNECTION=mysql
-#   DB_HOST=127.0.0.1
-#   DB_PORT=3306
-#   DB_DATABASE=masjid_db
-#   DB_USERNAME=root
-#   DB_PASSWORD=secret
-
-# 6. Buat file database SQLite (jika pakai SQLite)
+# 5. Database (Default: SQLite)
+# Buat file database SQLite jika belum ada:
 touch database/database.sqlite
 
-# 7. Jalankan migrasi
+# 6. Jalankan migrasi database
 php artisan migrate
 
-# 8. Seed data awal (opsional)
+# 7. Seed data awal (opsional)
 php artisan db:seed
 
-# 9. Build asset (opsional — untuk production)
-npm install && npm run build
+# 8. Install dependensi frontend & build asset (Wajib untuk bundle lokal & offline PWA)
+npm install
+npm run build
 
-# 10. Jalankan development server
+# 9. Jalankan development server
 php artisan serve
 ```
 
@@ -129,14 +120,14 @@ php artisan serve
 
 ```bash
 cp .env.example .env
-sed -i 's/DB_CONNECTION=.*/DB_CONNECTION=sqlite/' .env
 touch database/database.sqlite
 php artisan key:generate
 php artisan migrate
+npm install && npm run build
 php artisan serve
 ```
 
-Buka `http://localhost:8000` — registrasi akun pertama Anda melalui halaman `/register`.
+Buka `http://localhost:8000` di browser Anda — registrasi akun pertama Anda melalui menu login / registrasi.
 
 ---
 
@@ -144,7 +135,7 @@ Buka `http://localhost:8000` — registrasi akun pertama Anda melalui halaman `/
 
 | Tabel | Deskripsi |
 |-------|-----------|
-| `users` | Pengguna sistem (admin, superadmin) |
+| `users` | Pengguna sistem (Admin, Superadmin) |
 | `cash_books` | Buku kas — wadah keuangan terpisah |
 | `categories` | Kategori pemasukan/pengeluaran per buku kas |
 | `transactions` | Semua transaksi keuangan (pemasukan & pengeluaran) |
@@ -159,37 +150,23 @@ Buka `http://localhost:8000` — registrasi akun pertama Anda melalui halaman `/
 
 | Role | Hak Akses |
 |------|-----------|
-| **Super Admin** | Full access — kelola pengguna, semua konten, pengaturan sistem |
-| **Admin** | Kelola transaksi, buku kas, kategori, jadwal, profil sendiri |
+| **Super Admin** | Akses penuh — kelola akun pengguna, transaksi, semua buku kas, pengaturan sistem |
+| **Admin** | Kelola transaksi, buku kas, kategori, jadwal, dan profil akun sendiri |
 
 ---
 
-## 📸 Screenshot
+## 🛠️ Tech Stack Aktual
 
-### Dashboard Admin
-Dashboard menampilkan ringkasan keuangan, grafik pemasukan/pengeluaran bulanan (Chart.js), dan daftar transaksi terbaru.
-
-### Transaksi
-Form transaksi lengkap dengan pilihan buku kas, kategori, tanggal, jenis (pemasukan/pengeluaran), dan deskripsi.
-
-### Laporan Publik
-Halaman laporan keuangan publik untuk transparansi — dapat difilter per buku kas dan bulan/tahun.
-
-### Jadwal Kegiatan
-Halaman publik menampilkan jadwal khatib Jumat dan jadwal pengajian rutin.
-
----
-
-## 🛠️ Tech Stack
-
-| Teknologi | Penggunaan |
-|-----------|------------|
-| **[Laravel 11](https://laravel.com/)** | Backend framework |
-| **[Bootstrap 5.3](https://getbootstrap.com/)** | UI framework |
-| **[Chart.js 4](https://www.chartjs.org/)** | Grafik dashboard |
-| **[Bootstrap Icons](https://icons.getbootstrap.com/)** | Icon set |
-| **[Inter](https://rsms.me/inter/)** | Font utama |
-| **[SQLite](https://sqlite.org/) / MySQL** | Database |
+| Teknologi | Versi | Penggunaan |
+|-----------|-------|------------|
+| **[Laravel](https://laravel.com/)** | 13.x | Backend Framework (PHP ^8.3) |
+| **[Bootstrap](https://getbootstrap.com/)** | 5.3.x | UI Framework (Bundled via NPM & Vite) |
+| **[Bootstrap Icons](https://icons.getbootstrap.com/)** | 1.11.x | Icon Set (Font offline lokal via Vite) |
+| **[Chart.js](https://www.chartjs.org/)** | 4.4.x | Grafik Interaktif Dashboard (Offline Bundle) |
+| **[Vite](https://vitejs.dev/)** | 8.x | Frontend Asset Bundler & Compiler |
+| **[Inter Font](https://fontsource.org/fonts/inter)** | 5.x | Tipografi Lokal Bebas CDN |
+| **[SQLite](https://sqlite.org/)** | 3.x | Database Default (Praktis, Ringan, Portabel) |
+| **Service Worker / PWA** | v2 | Standalone Web App dengan Cache Offline & Fallback |
 
 ---
 

@@ -151,62 +151,80 @@
 @endsection
 
 @push('scripts')
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
 <script>
-    const monthLabels = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
-    const incomeData = @json(array_values($monthlyIncome ?? []));
-    const expenseData = @json(array_values($monthlyExpense ?? []));
-
-    new Chart(document.getElementById('incomeChart'), {
-        type: 'bar',
-        data: {
-            labels: monthLabels,
-            datasets: [{
-                label: 'Pemasukan',
-                data: incomeData,
-                backgroundColor: '#059669',
-                borderRadius: 6,
-                borderSkipped: false,
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: { legend: { display: false } },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    grid: { color: '#E2E8F0' },
-                    ticks: { callback: v => (v/1000000).toFixed(0) + 'M' }
-                },
-                x: { grid: { display: false } }
-            }
+    function renderCharts() {
+        if (typeof Chart === 'undefined') {
+            document.addEventListener('app:ready', renderCharts, { once: true });
+            return;
         }
-    });
 
-    new Chart(document.getElementById('expenseChart'), {
-        type: 'bar',
-        data: {
-            labels: monthLabels,
-            datasets: [{
-                label: 'Pengeluaran',
-                data: expenseData,
-                backgroundColor: '#DC2626',
-                borderRadius: 6,
-                borderSkipped: false,
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: { legend: { display: false } },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    grid: { color: '#E2E8F0' },
-                    ticks: { callback: v => (v/1000000).toFixed(0) + 'M' }
+        const monthLabels = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
+        const incomeData = @json(array_values($monthlyIncome ?? []));
+        const expenseData = @json(array_values($monthlyExpense ?? []));
+
+        const incomeEl = document.getElementById('incomeChart');
+        if (incomeEl) {
+            new Chart(incomeEl, {
+                type: 'bar',
+                data: {
+                    labels: monthLabels,
+                    datasets: [{
+                        label: 'Pemasukan',
+                        data: incomeData,
+                        backgroundColor: '#059669',
+                        borderRadius: 6,
+                        borderSkipped: false,
+                    }]
                 },
-                x: { grid: { display: false } }
-            }
+                options: {
+                    responsive: true,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: '#E2E8F0' },
+                            ticks: { callback: v => (v/1000000).toFixed(0) + 'M' }
+                        },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
         }
-    });
+
+        const expenseEl = document.getElementById('expenseChart');
+        if (expenseEl) {
+            new Chart(expenseEl, {
+                type: 'bar',
+                data: {
+                    labels: monthLabels,
+                    datasets: [{
+                        label: 'Pengeluaran',
+                        data: expenseData,
+                        backgroundColor: '#DC2626',
+                        borderRadius: 6,
+                        borderSkipped: false,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: '#E2E8F0' },
+                            ticks: { callback: v => (v/1000000).toFixed(0) + 'M' }
+                        },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', renderCharts);
+    } else {
+        renderCharts();
+    }
 </script>
 @endpush
