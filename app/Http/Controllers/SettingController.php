@@ -14,6 +14,7 @@ class SettingController extends Controller
             'general' => 'Umum',
             'contact' => 'Kontak',
             'appearance' => 'Tampilan',
+            'display' => 'Display Layar TV & Jadwal Shalat',
         ];
         return view('admin.settings.index', compact('settings', 'groups'));
     }

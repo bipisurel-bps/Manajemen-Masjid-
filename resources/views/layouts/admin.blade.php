@@ -480,6 +480,17 @@
         <a href="{{ route('admin.categories.index') }}" class="sidebar-link {{ request()->routeIs('admin.categories.*') ? 'active' : '' }}">
             <i class="bi bi-tags"></i> Kategori
         </a>
+        <a href="{{ route('reports.rekap_jumat') }}" target="_blank" class="sidebar-link">
+            <i class="bi bi-printer"></i> Rekap Kas Jumat
+        </a>
+
+        <div class="sidebar-heading">Publik & Display</div>
+        <a href="{{ route('display.index') }}" target="_blank" class="sidebar-link">
+            <i class="bi bi-tv"></i> Display TV Masjid
+        </a>
+        <a href="{{ route('transparency.index') }}" target="_blank" class="sidebar-link">
+            <i class="bi bi-shield-check"></i> Transparansi Jamaah
+        </a>
 
         <div class="sidebar-heading">Lainnya</div>
         <a href="{{ route('admin.schedules.khatib.index') }}" class="sidebar-link {{ request()->routeIs('admin.schedules.khatib.*') ? 'active' : '' }}">

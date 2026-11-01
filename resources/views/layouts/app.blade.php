@@ -407,11 +407,17 @@
                 <a href="{{ route('home') }}" class="nav-link-custom {{ request()->routeIs('home') ? 'active' : '' }}">
                     <i class="bi bi-house-door"></i> Beranda
                 </a>
+                <a href="{{ route('transparency.index') }}" class="nav-link-custom {{ request()->routeIs('transparency.*') ? 'active' : '' }}">
+                    <i class="bi bi-shield-check"></i> Transparansi
+                </a>
                 <a href="{{ route('reports.public') }}" class="nav-link-custom {{ request()->routeIs('reports.*') ? 'active' : '' }}">
                     <i class="bi bi-file-earmark-bar-graph"></i> Laporan
                 </a>
                 <a href="{{ route('schedules.khatib') }}" class="nav-link-custom {{ request()->routeIs('schedules.*') ? 'active' : '' }}">
                     <i class="bi bi-calendar-week"></i> Jadwal
+                </a>
+                <a href="{{ route('display.index') }}" target="_blank" class="nav-link-custom">
+                    <i class="bi bi-tv"></i> Layar TV
                 </a>
                 <a href="{{ route('contact') }}" class="nav-link-custom {{ request()->routeIs('contact') ? 'active' : '' }}">
                     <i class="bi bi-envelope"></i> Kontak

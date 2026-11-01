@@ -23,9 +23,16 @@ class Setting extends Model
     /**
      * Set a setting value and bust the cache.
      */
-    public static function set(string $key, ?string $value): void
+    public static function set(string $key, ?string $value, ?string $label = null, ?string $group = 'general'): void
     {
-        static::updateOrCreate(['key' => $key], ['value' => $value]);
+        static::updateOrCreate(
+            ['key' => $key],
+            [
+                'value' => $value,
+                'label' => $label ?? ucwords(str_replace('_', ' ', $key)),
+                'group' => $group ?? 'general',
+            ]
+        );
         Cache::forget("setting.{$key}");
     }
 

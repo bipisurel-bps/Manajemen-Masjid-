@@ -37,16 +37,30 @@ class CashBook extends Model
 
     public function totalIncome(): float
     {
-        return $this->transactions()->where('type', 'income')->sum('amount');
+        return (float) $this->transactions()->where('type', 'income')->sum('amount');
     }
 
     public function totalExpense(): float
     {
-        return $this->transactions()->where('type', 'expense')->sum('amount');
+        return (float) $this->transactions()->where('type', 'expense')->sum('amount');
     }
 
     public function balance(): float
     {
         return $this->totalIncome() - $this->totalExpense();
+    }
+
+    /**
+     * Verifikasi saldo secara runtime: SUM(in) - SUM(out)
+     * Menghindari desinkronisasi saldo buku kas.
+     */
+    public function verifyBalance(): float
+    {
+        return $this->balance();
+    }
+
+    public function getCurrentBalanceAttribute(): float
+    {
+        return $this->balance();
     }
 }

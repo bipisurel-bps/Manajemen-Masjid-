@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Transaction;
 use App\Models\CashBook;
 use App\Models\Category;
+use App\Models\KhatibSchedule;
+use App\Models\Setting;
 use App\Helpers\FormatHelper;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ReportController extends Controller
@@ -88,5 +91,72 @@ class ReportController extends Controller
         $cashBooks = CashBook::where('is_active', true)->orderBy('name')->get();
 
         return view('reports.category', compact('categories', 'type', 'cashBooks', 'cashBookId'));
+    }
+
+    /**
+     * Rekapitulasi Kas Mingguan Siap Cetak (A4 Print-Ready) untuk Shalat Jumat.
+     */
+    public function rekapJumat(Request $request)
+    {
+        if ($request->filled('date')) {
+            $friday = Carbon::parse($request->date)->startOfDay();
+        } else {
+            $now = Carbon::now();
+            $friday = $now->isFriday() ? $now->startOfDay() : $now->next(Carbon::FRIDAY)->startOfDay();
+        }
+
+        // Rentang 7 hari: Sabtu pekan lalu s/d Jumat target
+        $startDate = (clone $friday)->subDays(6)->startOfDay();
+        $endDate = (clone $friday)->endOfDay();
+
+        // 1. Saldo Awal (sebelum tanggal mulai pekan ini)
+        $prevIncome = (float) Transaction::where('transaction_date', '<', $startDate->toDateString())
+            ->where('type', 'income')
+            ->sum('amount');
+        $prevExpense = (float) Transaction::where('transaction_date', '<', $startDate->toDateString())
+            ->where('type', 'expense')
+            ->sum('amount');
+        $saldoAwal = $prevIncome - $prevExpense;
+
+        // 2. Transaksi pekan ini
+        $transactions = Transaction::with(['cashBook', 'category'])
+            ->whereBetween('transaction_date', [$startDate->toDateString(), $endDate->toDateString()])
+            ->orderBy('transaction_date', 'asc')
+            ->orderBy('id', 'asc')
+            ->get();
+
+        $incomes = $transactions->where('type', 'income');
+        $expenses = $transactions->where('type', 'expense');
+
+        $totalIncome = (float) $incomes->sum('amount');
+        $totalExpense = (float) $expenses->sum('amount');
+        $saldoAkhir = $saldoAwal + $totalIncome - $totalExpense;
+
+        // 3. Saldo Kumulatif per Buku Kas
+        $cashBooks = CashBook::where('is_active', true)->orderBy('name')->get();
+
+        // 4. Jadwal Khatib Jumat ini (jika ada)
+        $khatibSchedule = KhatibSchedule::whereDate('date', $friday->toDateString())->first();
+
+        // 5. Informasi Masjid
+        $masjidName = Setting::get('masjid_name', 'Masjid Al-Ikhlas');
+        $masjidAddress = Setting::get('masjid_address', 'Jl. Kebaikan No. 123');
+
+        return view('reports.rekap-jumat', compact(
+            'friday',
+            'startDate',
+            'endDate',
+            'saldoAwal',
+            'transactions',
+            'incomes',
+            'expenses',
+            'totalIncome',
+            'totalExpense',
+            'saldoAkhir',
+            'cashBooks',
+            'khatibSchedule',
+            'masjidName',
+            'masjidAddress'
+        ));
     }
 }

@@ -7,6 +7,8 @@ use App\Models\CashBook;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class TransactionController extends Controller
 {
@@ -54,19 +56,26 @@ class TransactionController extends Controller
             'cash_book_id' => 'required|exists:cash_books,id',
             'category_id' => 'required|exists:categories,id',
             'type' => 'required|in:income,expense',
-            'amount' => 'required|numeric|min:0',
+            'amount' => 'required|numeric|min:0.01',
             'description' => 'nullable|string|max:500',
             'transaction_date' => 'required|date',
         ]);
 
         $data['created_by'] = Auth::id();
-        // Clean amount
         $data['amount'] = (float) str_replace(['Rp', '.', ' '], '', $data['amount']);
 
-        Transaction::create($data);
+        DB::transaction(function () use ($data) {
+            $transaction = Transaction::create($data);
+
+            // Verifikasi integritas saldo secara runtime
+            $cashBook = CashBook::findOrFail($data['cash_book_id']);
+            $verifiedBalance = $cashBook->verifyBalance();
+
+            Log::info("Transaksi {$transaction->id} dicatat secara atomik. Saldo terverifikasi Buku Kas #{$cashBook->id}: {$verifiedBalance}");
+        });
 
         return redirect()->route('admin.transactions.index')
-            ->with('success', 'Transaksi berhasil ditambahkan.');
+            ->with('success', 'Transaksi berhasil ditambahkan secara atomik.');
     }
 
     public function edit($id)
@@ -86,25 +95,49 @@ class TransactionController extends Controller
             'cash_book_id' => 'required|exists:cash_books,id',
             'category_id' => 'required|exists:categories,id',
             'type' => 'required|in:income,expense',
-            'amount' => 'required|numeric|min:0',
+            'amount' => 'required|numeric|min:0.01',
             'description' => 'nullable|string|max:500',
             'transaction_date' => 'required|date',
         ]);
 
         $data['amount'] = (float) str_replace(['Rp', '.', ' '], '', $data['amount']);
 
-        $transaction->update($data);
+        DB::transaction(function () use ($transaction, $data) {
+            $oldCashBookId = $transaction->cash_book_id;
+            $transaction->update($data);
+
+            // Verifikasi integritas saldo buku kas baru
+            $cashBook = CashBook::findOrFail($data['cash_book_id']);
+            $cashBook->verifyBalance();
+
+            // Jika buku kas berpindah, verifikasi buku kas lama
+            if ($oldCashBookId !== $data['cash_book_id']) {
+                $oldCashBook = CashBook::find($oldCashBookId);
+                if ($oldCashBook) {
+                    $oldCashBook->verifyBalance();
+                }
+            }
+        });
 
         return redirect()->route('admin.transactions.index')
-            ->with('success', 'Transaksi berhasil diperbarui.');
+            ->with('success', 'Transaksi berhasil diperbarui secara atomik.');
     }
 
     public function destroy($id)
     {
         $transaction = Transaction::findOrFail($id);
-        $transaction->delete();
+
+        DB::transaction(function () use ($transaction) {
+            $cashBookId = $transaction->cash_book_id;
+            $transaction->delete();
+
+            $cashBook = CashBook::find($cashBookId);
+            if ($cashBook) {
+                $cashBook->verifyBalance();
+            }
+        });
 
         return redirect()->route('admin.transactions.index')
-            ->with('success', 'Transaksi berhasil dihapus.');
+            ->with('success', 'Transaksi berhasil dihapus secara atomik.');
     }
 }

@@ -12,23 +12,29 @@ use App\Http\Controllers\KhatibScheduleController;
 use App\Http\Controllers\PengajianScheduleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DisplayController;
+use App\Http\Controllers\TransparencyController;
 
 // ─── Public Routes ───
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/transparansi', [TransparencyController::class, 'index'])->name('transparency.index');
+Route::get('/display', [DisplayController::class, 'index'])->name('display.index');
 Route::get('/laporan', [ReportController::class, 'public'])->name('reports.public');
+Route::get('/laporan/rekap-jumat', [ReportController::class, 'rekapJumat'])->name('reports.rekap_jumat');
+Route::get('/rekap-jumat', [ReportController::class, 'rekapJumat'])->name('rekap_jumat');
 Route::get('/laporan/bulanan', [ReportController::class, 'monthlyReport'])->name('reports.monthly');
 Route::get('/laporan/kategori', [ReportController::class, 'categoryReport'])->name('reports.category');
 Route::get('/jadwal-khatib', [KhatibScheduleController::class, 'public'])->name('schedules.khatib');
 Route::get('/jadwal-pengajian', [PengajianScheduleController::class, 'public'])->name('schedules.pengajian');
 Route::get('/kontak', [HomeController::class, 'contact'])->name('contact');
 
-// ─── Auth Routes ───
+// ─── Auth Routes (dengan rate limiting ketat & regenerasi sesi) ───
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:5,1');
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
-Route::post('/register', [AuthController::class, 'register']);
+Route::post('/register', [AuthController::class, 'register'])->middleware('throttle:5,1');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // ─── Admin Routes (protected by admin middleware) ───
