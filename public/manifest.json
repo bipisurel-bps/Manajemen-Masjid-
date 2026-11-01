@@ -1,12 +1,12 @@
 {
-  "name": "Al-Masjid",
-  "short_name": "Al-Masjid",
-  "description": "Sistem Informasi Keuangan Masjid — Transparan, Akuntabel, Amanah",
+  "name": "SAF — Sistem Administrasi & Finansial Masjid",
+  "short_name": "SAF Masjid",
+  "description": "SAF — Lurus, Rapat, Teratur. Sistem Operasi Manajemen Masjid Open Source",
   "start_url": "/",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#ffffff",
-  "theme_color": "#0D9488",
+  "background_color": "#022C22",
+  "theme_color": "#064E3B",
   "categories": ["finance", "productivity"],
   "icons": [
     {

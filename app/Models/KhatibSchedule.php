@@ -40,7 +40,7 @@ class KhatibSchedule extends Model
         }
 
         $dateStr = Carbon::parse($this->date)->translatedFormat('l, d F Y');
-        $masjidName = Setting::get('masjid_name', 'Al-Masjid');
+        $masjidName = Setting::get('masjid_name', 'SAF');
         $masjidAddress = Setting::get('masjid_address', 'Masjid');
         $themeStr = $this->theme ?: 'Menyesuaikan';
 

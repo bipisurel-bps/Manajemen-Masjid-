@@ -1,6 +1,6 @@
-// Al-Masjid — Service Worker
+// SAF — Service Worker (safmasjid.web.id)
 // Offline Cache & Full PWA Support for Mosque Management System
-const CACHE_NAME = 'masjid-ikhlas-v2';
+const CACHE_NAME = 'saf-masjid-v1';
 
 const STATIC_ASSETS = [
     '/',

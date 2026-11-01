@@ -14,9 +14,9 @@ class DisplayController extends Controller
     public function index()
     {
         // 1. Settings Masjid & Koordinat untuk Hisab Sholat
-        $masjidName = Setting::get('masjid_name', 'Al-Masjid');
-        $masjidAddress = Setting::get('masjid_address', 'Jl. Kebaikan No. 123');
-        $masjidTagline = Setting::get('masjid_tagline', 'Membangun Umat, Meraih Berkah');
+        $masjidName = Setting::get('masjid_name', 'SAF');
+        $masjidAddress = Setting::get('masjid_address', '');
+        $masjidTagline = Setting::get('masjid_tagline', 'Lurus, Rapat, Teratur');
         $latitude = (float) Setting::get('masjid_latitude', '-6.2088');
         $longitude = (float) Setting::get('masjid_longitude', '106.8456');
         $iqomahMinutes = (int) Setting::get('iqomah_countdown_minutes', '10');

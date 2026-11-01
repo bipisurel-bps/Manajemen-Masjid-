@@ -10,11 +10,11 @@
     <meta name="theme-color" content="#0D9488">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Al-Masjid">
+    <meta name="apple-mobile-web-app-title" content="SAF Masjid">
     <link rel="apple-touch-icon" href="/icon-192.png">
     <link rel="apple-touch-icon" sizes="512x512" href="/icon-512.png">
     <meta name="mobile-web-app-capable" content="yes">
-    <title>@yield('title', 'Masjid') - {{ \App\Models\Setting::get('masjid_name', 'Al-Masjid') }}</title>
+    <title>@yield('title', 'SAF — Sistem Operasi Manajemen Masjid')</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
         :root {
@@ -415,15 +415,15 @@
     <div class="container">
         <div class="d-flex justify-content-between align-items-center">
             <a href="{{ route('home') }}" class="navbar-brand-custom d-flex align-items-center gap-2 text-decoration-none">
-                <div class="brand-icon shadow-sm">
-                    <i class="bi bi-moon-stars-fill"></i>
+                <div class="brand-icon shadow-sm" style="background: linear-gradient(135deg, #065F46 0%, #047857 100%);">
+                    <span class="fw-900" style="font-size: 1.1rem; letter-spacing: -0.05em;">SAF</span>
                 </div>
                 <div class="d-flex flex-column" style="line-height: 1.1;">
                     <div class="d-flex align-items-center gap-2">
-                        <span class="fw-800 text-dark" style="letter-spacing: -0.02em; font-size: 1.2rem;">AL-MASJID</span>
+                        <span class="fw-900 text-dark" style="letter-spacing: -0.03em; font-size: 1.25rem;">SAF</span>
                         <span class="badge rounded-pill" style="background: rgba(16, 185, 129, 0.12); color: #059669; font-size: 0.65rem; font-weight: 700; border: 1px solid rgba(16, 185, 129, 0.25);">OPEN SOURCE</span>
                     </div>
-                    <span class="text-muted" style="font-size: 0.7rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase;">Mosque Operating System</span>
+                    <span class="text-muted" style="font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;">Sistem Operasi Manajemen Masjid</span>
                 </div>
             </a>
             <div class="d-flex align-items-center gap-1">
@@ -491,9 +491,9 @@
     <div class="container">
         <div class="row g-4">
             <div class="col-md-5">
-                <div class="footer-heading">Tentang Al-Masjid</div>
+                <div class="footer-heading">Tentang SAF (safmasjid.web.id)</div>
                 <p class="text-muted small" style="line-height: 1.65;">
-                    Al-Masjid adalah sistem operasi manajemen masjid sumber terbuka (open-source) berlisensi MIT. Dirancang mandiri dan amanah untuk memudahkan Dewan Kemakmuran Masjid (DKM), bendahara, dan takmir di seluruh Indonesia dalam mengelola kas multi-wadah, display TV digital jadwal salat, dan transparansi jamaah.
+                    <strong>SAF</strong> (Sistem Administrasi &amp; Finansial Masjid) adalah sistem operasi manajemen masjid sumber terbuka (open-source) berlisensi MIT. Mengadopsi filosofi shaf shalat: <em>Lurus</em> dalam transparansi, <em>Rapat</em> tanpa celah kebocoran dana, dan <em>Teratur</em> dalam disiplin waktu ibadah. Memudahkan DKM, bendahara, dan takmir di seluruh Indonesia.
                 </p>
                 <div class="d-flex align-items-center gap-2 mt-2">
                     <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1 small fw-bold">Open Source &bull; Lisensi MIT</span>
@@ -510,6 +510,12 @@
                     <i class="bi bi-github text-dark"></i>
                     <a href="https://github.com/bipisurel-bps/Manajemen-Masjid-" target="_blank" rel="noopener noreferrer" class="text-muted text-decoration-none">
                         bipisurel-bps/Manajemen-Masjid-
+                    </a>
+                </div>
+                <div class="footer-link mb-2">
+                    <i class="bi bi-globe text-primary"></i>
+                    <a href="https://safmasjid.web.id" class="text-muted text-decoration-none">
+                        safmasjid.web.id
                     </a>
                 </div>
                 <div class="text-muted small mt-2" style="line-height: 1.5;">
@@ -529,7 +535,7 @@
         <hr class="my-4" style="border-color: var(--border);">
         <div class="row align-items-center">
             <div class="col-md-6 text-center text-md-start text-muted small mb-2 mb-md-0">
-                &copy; {{ date('Y') }} Al-Masjid &bull; Open Source berlisensi MIT. Disediakan gratis untuk kemaslahatan masjid.
+                &copy; {{ date('Y') }} SAF &bull; Open Source berlisensi MIT. Disediakan gratis untuk kemaslahatan masjid di safmasjid.web.id.
             </div>
             <div class="col-md-6 text-center text-md-end small">
                 <span class="text-muted">Aplikasi ini di-develop oleh</span>

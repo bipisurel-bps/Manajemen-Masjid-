@@ -1,15 +1,15 @@
 @extends('layouts.app')
-@section('title', 'Al-Masjid — Sistem Operasi Manajemen Masjid Open Source')
+@section('title', 'SAF — Sistem Operasi Manajemen Masjid Open Source (safmasjid.web.id)')
 
 @section('content')
 @php
-    $masjidName = \App\Models\Setting::get('masjid_name', 'Al-Masjid');
+    $masjidName = \App\Models\Setting::get('masjid_name', 'SAF');
 @endphp
 
-<!-- Custom Premium Styles for Al-Masjid Product Landing Page -->
+<!-- Custom Premium Styles for SAF Product Landing Page -->
 <style>
-    /* ── Luxury Hero Palette ── */
-    .hero-almasjid {
+    /* ── Luxury Deep-Emerald & Gold Palette ── */
+    .hero-saf {
         background: radial-gradient(circle at 50% -10%, #064E3B 0%, #022C22 50%, #011C16 100%);
         color: #F8FAFC;
         position: relative;
@@ -255,6 +255,82 @@
         border: 1px solid rgba(16, 185, 129, 0.4);
     }
 
+    /* ── Filosofi SAF Section Cards ── */
+    .filosofi-section {
+        background: radial-gradient(circle at 50% 0%, #03251E 0%, #011712 100%);
+        color: #F8FAFC;
+        padding: 6rem 0 5.5rem;
+        position: relative;
+    }
+    .hadits-quote-box {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(16, 185, 129, 0.25);
+        border-radius: 20px;
+        padding: 2.5rem 2rem;
+        max-width: 820px;
+        margin: 0 auto 4rem;
+        text-align: center;
+        position: relative;
+    }
+    .arabic-text {
+        font-family: 'Amiri', 'Traditional Arabic', serif;
+        font-size: 1.85rem;
+        line-height: 1.8;
+        color: #A7F3D0;
+        margin-bottom: 1rem;
+    }
+    .hadits-translation {
+        font-size: 1.05rem;
+        line-height: 1.65;
+        color: rgba(241, 245, 249, 0.85);
+        font-style: italic;
+    }
+    .hadits-narrator {
+        font-size: 0.82rem;
+        color: #FBBF24;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        margin-top: 0.75rem;
+    }
+
+    .pillar-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 2.25rem 2rem;
+        height: 100%;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        position: relative;
+        overflow: hidden;
+    }
+    .pillar-card:hover {
+        transform: translateY(-6px);
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(16, 185, 129, 0.4);
+        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6);
+    }
+    .pillar-num {
+        font-size: 3rem;
+        font-weight: 900;
+        line-height: 1;
+        opacity: 0.12;
+        position: absolute;
+        top: 1.5rem;
+        right: 1.75rem;
+        color: #fff;
+    }
+    .pillar-icon {
+        width: 54px;
+        height: 54px;
+        border-radius: 14px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
     /* ── Bento Grid ── */
     .bento-card {
         background: #FFFFFF;
@@ -341,7 +417,7 @@
 </style>
 
 <!-- 1. HERO SECTION -->
-<section class="hero-almasjid">
+<section class="hero-saf">
     <div class="hero-glow-1"></div>
     <div class="hero-glow-2"></div>
     <div class="hero-grid-pattern"></div>
@@ -352,18 +428,18 @@
                 <!-- Eyebrow Badge -->
                 <div class="hero-eyebrow shadow-sm">
                     <span class="hero-badge-dot"></span>
-                    <span>SISTEM OPERASI MASJID OPEN SOURCE &bull; LISENSI MIT</span>
+                    <span>FILOSOFI SAF: LURUS &bull; RAPAT &bull; TERATUR &bull; safmasjid.web.id</span>
                 </div>
 
                 <!-- Main Title -->
                 <h1 class="hero-headline">
-                    Sistem operasi yang bisa diandalkan<br>
-                    <span class="hero-gradient-text">DKM &amp; takmir masjid.</span>
+                    Sistem operasi yang merapikan<br>
+                    <span class="hero-gradient-text">tata kelola masjid Anda.</span>
                 </h1>
 
                 <!-- Subtitle / Value Proposition -->
                 <p class="hero-description">
-                    Dari pembukuan kas multi-wadah (operasional, pembangunan, yatim), mode display TV jadwal salat hisab otomatis, portal transparansi publik jamaah, hingga rekap kas Jumat format A4 siap cetak. Al-Masjid membantu takmir mengelola masjid secara akuntabel tanpa rumus Excel rumit.
+                    Mengadopsi filosofi luhur shaf shalat: <strong>Lurus</strong> dalam transparansi kas umat, <strong>Rapat</strong> tanpa celah kebocoran dana, dan <strong>Teratur</strong> dalam disiplin waktu ibadah. Dari pembukuan kas multi-wadah atomik, layar TV hisab Kemenag otomatis, portal transparansi jamaah, hingga rekap kas Jumat format A4 siap cetak.
                 </p>
 
                 <!-- Primary CTAs -->
@@ -388,7 +464,7 @@
                 <div class="audience-ribbon">
                     <span class="star" aria-hidden="true">&#10035;</span>
                     <p>
-                        <strong>Dirancang untuk:</strong> Masjid Jami', Masjid Raya, Musholla Perumahan &amp; Perkantoran, serta Yayasan Pengelola Rumah Ibadah di seluruh Indonesia.
+                        <strong>Dirancang untuk:</strong> Dewan Kemakmuran Masjid (DKM), Takmir, Bendahara Masjid Jami', Masjid Raya, Musholla Perumahan, dan Yayasan Islam di seluruh Indonesia.
                     </p>
                 </div>
             </div>
@@ -472,7 +548,7 @@
                         <!-- Running Text Preview -->
                         <div class="p-2 rounded-2 bg-black bg-opacity-40 border border-secondary border-opacity-25 small text-truncate text-white-50">
                             <i class="bi bi-megaphone-fill text-warning me-1"></i>
-                            <span>Kajian Ahad Shubuh: "Tafsir Al-Qur'an Tematik" bersama Ustadz Pembina.</span>
+                            <span>SAF: Luruskan dan rapatkan shaf shalat, luruskan dan rapatkan pembukuan amanah umat.</span>
                         </div>
                     </div>
 
@@ -531,15 +607,112 @@
 <div class="principles-strip">
     <div class="container">
         <div class="principles-container">
-            <span><i class="bi bi-compass"></i> STANDAR HISAB KEMENAG RI</span>
-            <span><i class="bi bi-layers"></i> PEMISAHAN POS KAS MULTI-WADAH</span>
-            <span><i class="bi bi-printer"></i> REKAP SIAP CETAK FORMAT A4</span>
+            <span><i class="bi bi-arrow-right-circle"></i> LURUS (TRANSPARANSI JAMAAH)</span>
+            <span><i class="bi bi-shield-check"></i> RAPAT (AKUNTABILITAS ATOMIK)</span>
+            <span><i class="bi bi-clock-history"></i> TERATUR (DISIPLIN WAKTU &amp; TV)</span>
             <span><i class="bi bi-code-slash"></i> OPEN SOURCE &bull; LISENSI MIT</span>
         </div>
     </div>
 </div>
 
-<!-- 3. BENTO GRID SECTION: KEMAMPUAN UTAMA -->
+<!-- 3. SECTION KHUSUS: FILOSOFI SAF -->
+<section class="filosofi-section">
+    <div class="container">
+        <div class="text-center mb-4">
+            <span class="badge rounded-pill bg-success-subtle text-success border border-success-subtle px-3 py-1 mb-2 fw-bold text-uppercase" style="letter-spacing: 0.08em; font-size: 0.75rem;">
+                Filosofi Spiritual &amp; Tata Kelola
+            </span>
+            <h2 class="display-6 fw-900 text-white" style="letter-spacing: -0.03em;">Mengapa Bernama SAF?</h2>
+            <p class="text-white-50 mx-auto lead" style="max-width: 680px; font-size: 1.1rem;">
+                Dari kesempurnaan barisan shalat berjamaah menuju tata kelola rumah ibadah yang amanah, bersih, dan profesional.
+            </p>
+        </div>
+
+        <!-- Hadits Kutipan Barisan Shaf -->
+        <div class="hadits-quote-box">
+            <div class="arabic-text">
+                سَوُّوا صُفُوفَكُمْ، فَإِنَّ تَسْوِيَةَ الصَّفِّ مِنْ تَمَامِ الصَّلَاةِ
+            </div>
+            <div class="hadits-translation">
+                &ldquo;Luruskan dan rapatkan shaf-shaf kalian, karena sesungguhnya lurus dan rapatnya shaf adalah bagian dari kesempurnaan shalat.&rdquo;
+            </div>
+            <div class="hadits-narrator">
+                — H.R. Bukhari No. 723 &amp; Muslim No. 433
+            </div>
+        </div>
+
+        <!-- Tiga Pilar Filosofi SAF Grid -->
+        <div class="row g-4">
+            <!-- Pilar 1: LURUS -->
+            <div class="col-lg-4">
+                <div class="pillar-card">
+                    <span class="pillar-num">01</span>
+                    <div class="pillar-icon" style="background: rgba(16, 185, 129, 0.15); color: #34D399;">
+                        <i class="bi bi-arrow-right-circle-fill"></i>
+                    </div>
+                    <span class="badge bg-success-subtle text-success small rounded-pill px-3 py-1 fw-bold text-uppercase mb-2">
+                        الإِسْتِوَاءُ &bull; Al-Istiwa'
+                    </span>
+                    <h3 class="fw-800 text-white mb-2">1. LURUS</h3>
+                    <h6 class="text-success small fw-bold mb-3">Transparansi Mutlak &amp; Kejujuran Terbuka</h6>
+                    <p class="text-white-50 small mb-4" style="line-height: 1.7;">
+                        Shaf yang lurus melambangkan niat yang tulus dan hati yang bersih di hadapan Allah. Pengurus masjid wajib mengelola dana titipan umat secara jujur, lurus, dan transparan tanpa ada yang disembunyikan.
+                    </p>
+                    <div class="p-3 rounded-3 bg-black bg-opacity-30 border border-secondary border-opacity-25 small text-white-50">
+                        <strong class="text-white d-block mb-1"><i class="bi bi-check2 text-success me-1"></i> Penerapan Sistem:</strong>
+                        Portal transparansi publik real-time (dapat dicek jamaah tanpa login), grafik mutasi bulanan, dan rekap cetak A4 yang ditandatangani DKM setiap Jumat.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pilar 2: RAPAT -->
+            <div class="col-lg-4">
+                <div class="pillar-card">
+                    <span class="pillar-num">02</span>
+                    <div class="pillar-icon" style="background: rgba(59, 130, 246, 0.15); color: #60A5FA;">
+                        <i class="bi bi-shield-lock-fill"></i>
+                    </div>
+                    <span class="badge bg-primary-subtle text-primary small rounded-pill px-3 py-1 fw-bold text-uppercase mb-2">
+                        التَّرَاصُّ &bull; At-Taraash
+                    </span>
+                    <h3 class="fw-800 text-white mb-2">2. RAPAT</h3>
+                    <h6 class="text-primary small fw-bold mb-3">Akuntabilitas Atomik &amp; Tanpa Celah Kebocoran</h6>
+                    <p class="text-white-50 small mb-4" style="line-height: 1.7;">
+                        Shaf yang rapat menutup celah agar setan tidak dapat masuk mengganggu. Dalam pembukuan masjid, tidak boleh ada celah kebocoran dana atau selisih satu rupiah pun antara fisik kas dan catatan buku.
+                    </p>
+                    <div class="p-3 rounded-3 bg-black bg-opacity-30 border border-secondary border-opacity-25 small text-white-50">
+                        <strong class="text-white d-block mb-1"><i class="bi bi-check2 text-primary me-1"></i> Penerapan Sistem:</strong>
+                        Mutasi kas dibungkus transaksi database atomik (DB Mutex). Dilengkapi pemisahan buku kas multi-wadah (Operasional, Pembangunan, Yatim, ZISWAF) agar dana tidak bercampur.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pilar 3: TERATUR -->
+            <div class="col-lg-4">
+                <div class="pillar-card">
+                    <span class="pillar-num">03</span>
+                    <div class="pillar-icon" style="background: rgba(245, 158, 11, 0.15); color: #FBBF24;">
+                        <i class="bi bi-clock-history"></i>
+                    </div>
+                    <span class="badge bg-warning-subtle text-warning small rounded-pill px-3 py-1 fw-bold text-uppercase mb-2">
+                        النِّظَامُ &bull; An-Nizham
+                    </span>
+                    <h3 class="fw-800 text-white mb-2">3. TERATUR</h3>
+                    <h6 class="text-warning small fw-bold mb-3">Disiplin Waktu Ibadah &amp; Keselarasan Operasional</h6>
+                    <p class="text-white-50 small mb-4" style="line-height: 1.7;">
+                        Shaf yang teratur mencerminkan keserempakan makmum mengikuti imam secara disiplin. Operasional masjid harus memiliki ritme yang terjadwal rapi dan tertata waktu demi kenyamanan jamaah.
+                    </p>
+                    <div class="p-3 rounded-3 bg-black bg-opacity-30 border border-secondary border-opacity-25 small text-white-50">
+                        <strong class="text-white d-block mb-1"><i class="bi bi-check2 text-warning me-1"></i> Penerapan Sistem:</strong>
+                        Display TV dinding otomatis dengan hisab astronomis resmi Kemenag RI, timer hitung mundur iqamah, serta pengingat WhatsApp H-2 otomatis bagi muballigh &amp; khatib Jumat.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 4. BENTO GRID SECTION: KEMAMPUAN UTAMA -->
 <section class="py-5" style="background: #FFFFFF;">
     <div class="container py-4">
         <div class="text-center mb-5">
@@ -696,7 +869,7 @@
     </div>
 </section>
 
-<!-- 4. DUA PILIHAN PEMANFAATAN: MANDIRI ATAU PENDAMPINGAN (MODEL SAS) -->
+<!-- 5. DUA PILIHAN PEMANFAATAN: MANDIRI ATAU PENDAMPINGAN (MODEL SAS) -->
 <section class="py-5" style="background: #F8FAFC; border-top: 1px solid #E2E8F0; border-bottom: 1px solid #E2E8F0;">
     <div class="container py-4">
         <div class="text-center mb-5">
@@ -753,11 +926,11 @@
                             <li><i class="bi bi-check2 text-success me-2 fw-bold"></i> Konsultasi perencanaan hardware TV box &amp; koneksi layar masjid</li>
                             <li><i class="bi bi-check2 text-success me-2 fw-bold"></i> Bantuan migrasi data kas lama dari spreadsheet Excel</li>
                             <li><i class="bi bi-check2 text-success me-2 fw-bold"></i> Panduan langsung dari <strong>Jadda Developer</strong></li>
-                            <li><i class="bi bi-check2 text-success me-2 fw-bold"></i> Kontak resmi tunggal tanpa perantara fiktif</li>
+                            <li><i class="bi bi-check2 text-success me-2 fw-bold"></i> Kontak resmi tunggal: <code>jaddadeveloper@gmail.com</code></li>
                         </ul>
                     </div>
                     <div>
-                        <a href="mailto:jaddadeveloper@gmail.com?subject=Konsultasi%20Implementasi%20Al-Masjid" class="btn btn-success btn-lg w-100 rounded-pill fw-bold shadow-sm">
+                        <a href="mailto:jaddadeveloper@gmail.com?subject=Konsultasi%20Implementasi%20SAF%20Masjid" class="btn btn-success btn-lg w-100 rounded-pill fw-bold shadow-sm">
                             <i class="bi bi-envelope-at-fill me-2"></i> Hubungi jaddadeveloper@gmail.com <span aria-hidden="true">&nearr;</span>
                         </a>
                     </div>
@@ -767,7 +940,7 @@
     </div>
 </section>
 
-<!-- 5. TANYA JAWAB UMUM (FAQ) -->
+<!-- 6. TANYA JAWAB UMUM (FAQ) -->
 <section class="py-5 bg-white">
     <div class="container py-4">
         <div class="text-center mb-5">
@@ -781,9 +954,9 @@
         <div class="row g-4 justify-content-center">
             <div class="col-md-6">
                 <div class="p-4 rounded-4 border bg-white h-100 shadow-sm">
-                    <h6 class="fw-bold text-dark mb-2"><i class="bi bi-question-circle-fill text-success me-2"></i>Apakah aplikasi ini benar-benar gratis dan open source?</h6>
+                    <h6 class="fw-bold text-dark mb-2"><i class="bi bi-question-circle-fill text-success me-2"></i>Apakah aplikasi SAF benar-benar gratis dan open source?</h6>
                     <p class="text-muted small mb-0" style="line-height: 1.65;">
-                        Ya, <strong>Al-Masjid</strong> adalah perangkat lunak sumber terbuka (<em>open-source</em>) dengan <strong>Lisensi MIT</strong>. Takmir mana pun dapat mengunduh kode sumber, memasangnya di server sekretariat atau cloud, dan menggunakannya tanpa biaya royalti.
+                        Ya, <strong>SAF</strong> adalah perangkat lunak sumber terbuka (<em>open-source</em>) dengan <strong>Lisensi MIT</strong>. Takmir mana pun dapat mengunduh kode sumber, memasangnya di server sekretariat atau cloud, dan menggunakannya tanpa biaya royalti.
                     </p>
                 </div>
             </div>
@@ -791,7 +964,7 @@
                 <div class="p-4 rounded-4 border bg-white h-100 shadow-sm">
                     <h6 class="fw-bold text-dark mb-2"><i class="bi bi-question-circle-fill text-success me-2"></i>Bagaimana cara mengambil dan mengunduh source code aplikasi?</h6>
                     <p class="text-muted small mb-0" style="line-height: 1.65;">
-                        Seluruh kode sumber disimpan secara publik di GitHub. Anda dapat membuka repositori <a href="https://github.com/bipisurel-bps/Manajemen-Masjid-" target="_blank" rel="noopener noreferrer" class="fw-bold text-success text-decoration-none">github.com/bipisurel-bps/Manajemen-Masjid-</a> untuk melakukan clone atau mengunduh arsip ZIP.
+                        Seluruh kode sumber disimpan secara terbuka di GitHub. Anda dapat membuka repositori <a href="https://github.com/bipisurel-bps/Manajemen-Masjid-" target="_blank" rel="noopener noreferrer" class="fw-bold text-success text-decoration-none">github.com/bipisurel-bps/Manajemen-Masjid-</a> untuk melakukan clone atau mengunduh arsip ZIP.
                     </p>
                 </div>
             </div>
@@ -799,7 +972,7 @@
                 <div class="p-4 rounded-4 border bg-white h-100 shadow-sm">
                     <h6 class="fw-bold text-dark mb-2"><i class="bi bi-question-circle-fill text-success me-2"></i>Apakah aplikasi ini tetap berjalan jika koneksi internet masjid padam?</h6>
                     <p class="text-muted small mb-0" style="line-height: 1.65;">
-                        Bisa 100%. Al-Masjid dirancang secara lokal-pertama (Zero CDN). Waktu salat dihitung dengan rumus hisab astronomis internal Kemenag tanpa memerlukan API eksternal, dan antarmuka TV tetap menyala offline melalui Service Worker PWA.
+                        Bisa 100%. SAF dirancang secara lokal-pertama (Zero CDN). Waktu salat dihitung dengan rumus hisab astronomis internal Kemenag tanpa memerlukan API eksternal, dan antarmuka TV tetap menyala offline melalui Service Worker PWA.
                     </p>
                 </div>
             </div>
@@ -831,15 +1004,15 @@
     </div>
 </section>
 
-<!-- 6. FINAL CALL TO ACTION BANNER -->
+<!-- 7. FINAL CALL TO ACTION BANNER -->
 <section class="py-5 position-relative overflow-hidden" style="background: radial-gradient(circle at 50% 50%, #064E3B 0%, #022C22 100%); color: white;">
     <div class="container text-center position-relative py-3">
         <span class="badge rounded-pill bg-success-subtle text-success border border-success-subtle px-3 py-1 mb-3 fw-bold text-uppercase" style="letter-spacing: 0.05em;">
-            Tata Kelola Masjid Berkah &bull; Akuntabel
+            Lurus &bull; Rapat &bull; Teratur
         </span>
-        <h2 class="display-6 fw-900 mb-3" style="letter-spacing: -0.03em;">Mulai Mengenal Al-Masjid Hari Ini</h2>
+        <h2 class="display-6 fw-900 mb-3" style="letter-spacing: -0.03em;">Mulai Modernisasi Tata Kelola Masjid Bersama SAF</h2>
         <p class="lead opacity-90 mx-auto mb-4" style="max-width: 650px; font-size: 1.15rem;">
-            Wujudkan transparansi keuangan yang amanah dan tata kelola masjid modern yang profesional dengan sistem yang siap pakai, handal, dan mandiri.
+            Wujudkan transparansi keuangan yang amanah dan kedisiplinan operasional masjid modern yang profesional dengan sistem yang siap pakai, handal, dan mandiri.
         </p>
         <div class="d-flex justify-content-center gap-3 flex-wrap">
             <button type="button" class="btn-hero-primary" data-bs-toggle="modal" data-bs-target="#demoModal">
@@ -848,14 +1021,14 @@
             <a href="https://github.com/bipisurel-bps/Manajemen-Masjid-" target="_blank" rel="noopener noreferrer" class="btn-hero-github">
                 <i class="bi bi-github fs-5"></i> Unduh di GitHub <span aria-hidden="true">&nearr;</span>
             </a>
-            <a href="mailto:jaddadeveloper@gmail.com?subject=Konsultasi%20Al-Masjid" class="btn-hero-github">
+            <a href="mailto:jaddadeveloper@gmail.com?subject=Konsultasi%20SAF%20Masjid" class="btn-hero-github">
                 <i class="bi bi-envelope-at fs-5"></i> jaddadeveloper@gmail.com
             </a>
         </div>
     </div>
 </section>
 
-<!-- 7. MODAL DEMO 1-KLIK (SANDBOX INTERAKTIF SEPERTI MODEL SAS) -->
+<!-- 8. MODAL DEMO 1-KLIK (SANDBOX INTERAKTIF SEPERTI MODEL SAS) -->
 <div class="modal fade" id="demoModal" tabindex="-1" aria-labelledby="demoModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content rounded-4 border-0 shadow-lg">
@@ -864,13 +1037,13 @@
                     <span class="badge bg-success-subtle text-success small rounded-pill px-3 py-1 fw-bold text-uppercase mb-1">
                         Sandbox Instan &bull; Tanpa Registrasi
                     </span>
-                    <h5 class="modal-title fw-800 text-dark mb-0" id="demoModalLabel">Pilih Ruang Kerja Demo</h5>
+                    <h5 class="modal-title fw-800 text-dark mb-0" id="demoModalLabel">Pilih Ruang Kerja Demo SAF</h5>
                 </div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
             </div>
             <div class="modal-body p-4">
                 <p class="text-muted small mb-4" style="line-height: 1.6;">
-                    Anda dapat langsung mencoba seluruh antarmuka aplikasi dengan data ilustrasi terisolasi. Pilih salah satu peran di bawah ini:
+                    Anda dapat langsung mencoba seluruh antarmuka aplikasi SAF dengan data ilustrasi terisolasi. Pilih salah satu peran di bawah ini:
                 </p>
 
                 <div class="d-flex flex-column gap-3 mb-4">

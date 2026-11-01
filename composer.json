@@ -2,14 +2,14 @@
     "$schema": "https://getcomposer.org/schema.json",
     "name": "jaddadeveloper/manajemen-masjid",
     "type": "project",
-    "description": "Sistem Informasi Manajemen Masjid — Al-Masjid (almasjid.web.id)",
-    "keywords": ["laravel", "masjid", "manajemen-masjid", "pwa", "offline-first"],
+    "description": "SAF — Sistem Administrasi & Finansial Masjid (safmasjid.web.id)",
+    "keywords": ["laravel", "masjid", "manajemen-masjid", "saf", "pwa", "offline-first"],
     "license": "MIT",
     "authors": [
         {
             "name": "Jadda Developer",
             "email": "jaddadeveloper@gmail.com",
-            "homepage": "https://almasjid.web.id"
+            "homepage": "https://safmasjid.web.id"
         }
     ],
     "require": {

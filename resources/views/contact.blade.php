@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Kontak & Bantuan Pengembang — Al-Masjid Open Source')
+@section('title', 'Kontak & Bantuan Pengembang — SAF Open Source (safmasjid.web.id)')
 
 @section('content')
 <div class="py-5" style="background: linear-gradient(180deg, #F0FDF4 0%, #F8FAFC 100%);">
@@ -7,13 +7,13 @@
         <!-- Breadcrumb & Header -->
         <div class="text-center max-w-700 mx-auto mb-5">
             <span class="badge rounded-pill bg-success-subtle text-success border border-success-subtle px-3 py-1 mb-3 fw-bold text-uppercase" style="letter-spacing: 0.06em; font-size: 0.75rem;">
-                <i class="bi bi-code-slash me-1"></i> Open Source Project &bull; Lisensi MIT
+                <i class="bi bi-code-slash me-1"></i> Open Source Project &bull; Lisensi MIT &bull; safmasjid.web.id
             </span>
             <h1 class="display-6 fw-900 text-dark mb-3" style="letter-spacing: -0.03em;">
-                Kontak &amp; Bantuan Pengembang
+                Kontak &amp; Dukungan Pengembang SAF
             </h1>
             <p class="text-muted lead" style="font-size: 1.1rem; line-height: 1.6;">
-                <strong>Al-Masjid</strong> adalah platform sistem operasi manajemen masjid sumber terbuka (<em>open-source</em>) yang disediakan secara gratis untuk kemaslahatan masjid di seluruh Indonesia.
+                <strong>SAF</strong> (Sistem Administrasi &amp; Finansial Masjid) adalah platform sistem operasi manajemen masjid sumber terbuka (<em>open-source</em>) yang disediakan secara gratis untuk kemaslahatan masjid di seluruh Indonesia.
             </p>
         </div>
 
@@ -41,7 +41,7 @@
                     </div>
 
                     <div class="mt-auto pt-3 border-top">
-                        <a href="mailto:jaddadeveloper@gmail.com?subject=Konsultasi%20Sistem%20Al-Masjid" class="btn btn-success btn-lg rounded-pill w-100 fw-bold shadow-sm">
+                        <a href="mailto:jaddadeveloper@gmail.com?subject=Konsultasi%20Sistem%20SAF%20Masjid" class="btn btn-success btn-lg rounded-pill w-100 fw-bold shadow-sm">
                             <i class="bi bi-send-fill me-2"></i> Kirim Email ke Jadda Developer
                         </a>
                         <small class="text-muted d-block text-center mt-2">
@@ -60,7 +60,7 @@
                     <span class="text-muted small fw-bold text-uppercase" style="letter-spacing: 0.05em;">Repositori Sumber Terbuka</span>
                     <h3 class="fw-800 text-dark mt-1 mb-3">Unduh Source Code Bebas</h3>
                     <p class="text-muted mb-4" style="line-height: 1.65;">
-                        Aplikasi ini <strong>100% gratis</strong> dengan lisensi terbuka <strong>MIT</strong>. Anda bebas mengunduh kode, memodifikasi, dan memasangnya di server sekretariat masjid sendiri tanpa biaya lisensi.
+                        Aplikasi ini <strong>100% gratis</strong> dengan lisensi terbuka <strong>MIT</strong>. Anda bebas mengunduh kode, memodifikasi, dan memasangnya di server sekretariat masjid sendiri tanpa biaya royalti.
                     </p>
 
                     <div class="p-3 rounded-3 mb-4" style="background: #F8FAFC; border: 1px solid #E2E8F0;">
@@ -80,38 +80,38 @@
             </div>
         </div>
 
-        <!-- Section: Panduan Mandiri & Komitmen Bebas Biaya -->
+        <!-- Section: Tiga Pilar Filosofi SAF -->
         <div class="row g-4 mt-4">
             <div class="col-md-4">
                 <div class="p-4 rounded-4 bg-white border h-100 shadow-sm">
                     <div class="d-flex align-items-center gap-2 mb-2 text-success fw-bold">
-                        <i class="bi bi-check-circle-fill"></i>
-                        <span>100% Bebas Biaya Lisensi</span>
+                        <i class="bi bi-arrow-right-circle-fill"></i>
+                        <span>1. LURUS (Transparansi)</span>
                     </div>
                     <p class="text-muted small mb-0" style="line-height: 1.6;">
-                        Tidak ada biaya langganan, tidak ada fitur tersembunyi (paywall). Dibuat untuk mempermudah tata kelola masjid di seluruh Indonesia.
+                        Shaf yang lurus melambangkan kejujuran mutlak. Laporan keuangan terbuka secara real-time untuk jamaah melalui portal publik dan rekap kas siap cetak A4.
                     </p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="p-4 rounded-4 bg-white border h-100 shadow-sm">
                     <div class="d-flex align-items-center gap-2 mb-2 text-primary fw-bold">
-                        <i class="bi bi-hdd-network-fill"></i>
-                        <span>Mandiri &amp; Privasi Data</span>
+                        <i class="bi bi-shield-check"></i>
+                        <span>2. RAPAT (Akuntabilitas)</span>
                     </div>
                     <p class="text-muted small mb-0" style="line-height: 1.6;">
-                        Seluruh data keuangan dan jamaah tersimpan di server Anda sendiri. Pengurus memegang kendali penuh atas database dan privasi masjid.
+                        Shaf yang rapat menutup celah kebocoran. Seluruh transaksi kas dibungkus mutasi atomik database mutex dan pemisahan buku kas multi-wadah terisolasi.
                     </p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="p-4 rounded-4 bg-white border h-100 shadow-sm">
                     <div class="d-flex align-items-center gap-2 mb-2 text-warning text-dark fw-bold">
-                        <i class="bi bi-tools"></i>
-                        <span>Bantuan Implementasi</span>
+                        <i class="bi bi-clock-history"></i>
+                        <span>3. TERATUR (Disiplin Waktu)</span>
                     </div>
                     <p class="text-muted small mb-0" style="line-height: 1.6;">
-                        Butuh bantuan setup di komputer kantor masjid atau TV dinding? Silakan kirimkan email ke <a href="mailto:jaddadeveloper@gmail.com" class="fw-bold text-success text-decoration-none">jaddadeveloper@gmail.com</a>.
+                        Ketertiban makmum bersama imam. Waktu shalat akurat hisab astronomis Kemenag, hitung mundur iqamah display TV, dan pengingat WhatsApp H-2 otomatis muballigh.
                     </p>
                 </div>
             </div>
