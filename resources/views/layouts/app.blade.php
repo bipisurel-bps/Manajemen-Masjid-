@@ -493,7 +493,7 @@
             <div class="col-md-5">
                 <div class="footer-heading">Tentang SAF (safmasjid.web.id)</div>
                 <p class="text-muted small" style="line-height: 1.65;">
-                    <strong>SAF</strong> (Sistem Administrasi &amp; Finansial Masjid) adalah sistem operasi manajemen masjid sumber terbuka (open-source) berlisensi MIT. Mengadopsi filosofi shaf shalat: <em>Lurus</em> dalam transparansi, <em>Rapat</em> tanpa celah kebocoran dana, dan <em>Teratur</em> dalam disiplin waktu ibadah. Memudahkan DKM, bendahara, dan takmir di seluruh Indonesia.
+                    <strong>SAF</strong> (Sistem Administrasi &amp; Finansial Masjid) adalah sistem operasi manajemen masjid sumber terbuka (open-source) berlisensi MIT. Mengadopsi filosofi saf salat berjamaah yang menggambarkan keteraturan, kebersamaan, dan kesetaraan: <em>Tertib</em> dalam administrasi &amp; kegiatan, <em>Amanah</em> dalam pengelolaan dana dan aset, <em>Bersama</em> menghubungkan pengurus dan jamaah, serta <em>Berkelanjutan</em> menjaga keutuhan riwayat data lintas kepengurusan.
                 </p>
                 <div class="d-flex align-items-center gap-2 mt-2">
                     <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1 small fw-bold">Open Source &bull; Lisensi MIT</span>

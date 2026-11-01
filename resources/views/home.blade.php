@@ -428,7 +428,7 @@
                 <!-- Eyebrow Badge -->
                 <div class="hero-eyebrow shadow-sm">
                     <span class="hero-badge-dot"></span>
-                    <span>FILOSOFI SAF: LURUS &bull; RAPAT &bull; TERATUR &bull; safmasjid.web.id</span>
+                    <span>FILOSOFI SAF: TERTIB &bull; AMANAH &bull; BERSAMA &bull; BERKELANJUTAN &bull; safmasjid.web.id</span>
                 </div>
 
                 <!-- Main Title -->
@@ -439,7 +439,7 @@
 
                 <!-- Subtitle / Value Proposition -->
                 <p class="hero-description">
-                    Mengadopsi filosofi luhur shaf shalat: <strong>Lurus</strong> dalam transparansi kas umat, <strong>Rapat</strong> tanpa celah kebocoran dana, dan <strong>Teratur</strong> dalam disiplin waktu ibadah. Dari pembukuan kas multi-wadah atomik, layar TV hisab Kemenag otomatis, portal transparansi jamaah, hingga rekap kas Jumat format A4 siap cetak.
+                    Dalam salat berjamaah, saf menggambarkan <strong>keteraturan, kebersamaan, dan kesetaraan</strong>. SAF menerjemahkan filosofi ini ke dalam tata kelola masjid: <strong>Tertib</strong> dalam administrasi &amp; kegiatan, <strong>Amanah</strong> dalam tata kelola dana &amp; aset, <strong>Bersama</strong> menghubungkan pengurus dan jamaah, serta <strong>Berkelanjutan</strong> agar riwayat pengelolaan tidak hilang antar-generasi.
                 </p>
 
                 <!-- Primary CTAs -->
@@ -548,7 +548,7 @@
                         <!-- Running Text Preview -->
                         <div class="p-2 rounded-2 bg-black bg-opacity-40 border border-secondary border-opacity-25 small text-truncate text-white-50">
                             <i class="bi bi-megaphone-fill text-warning me-1"></i>
-                            <span>SAF: Luruskan dan rapatkan shaf shalat, luruskan dan rapatkan pembukuan amanah umat.</span>
+                            <span>SAF: Tertib Administrasi &bull; Amanah Pengelolaan &bull; Bersama Jamaah &bull; Berkelanjutan Antar-Generasi.</span>
                         </div>
                     </div>
 
@@ -607,9 +607,10 @@
 <div class="principles-strip">
     <div class="container">
         <div class="principles-container">
-            <span><i class="bi bi-arrow-right-circle"></i> LURUS (TRANSPARANSI JAMAAH)</span>
-            <span><i class="bi bi-shield-check"></i> RAPAT (AKUNTABILITAS ATOMIK)</span>
-            <span><i class="bi bi-clock-history"></i> TERATUR (DISIPLIN WAKTU &amp; TV)</span>
+            <span><i class="bi bi-journal-check"></i> TERTIB (ADMINISTRASI &amp; KEGIATAN)</span>
+            <span><i class="bi bi-shield-check"></i> AMANAH (TRANSPARANSI DANA &amp; ASET)</span>
+            <span><i class="bi bi-people-fill"></i> BERSAMA (KONEKTIVITAS JAMAAH)</span>
+            <span><i class="bi bi-arrow-repeat"></i> BERKELANJUTAN (RIWAYAT TERJAGA)</span>
             <span><i class="bi bi-code-slash"></i> OPEN SOURCE &bull; LISENSI MIT</span>
         </div>
     </div>
@@ -623,12 +624,12 @@
                 Filosofi Spiritual &amp; Tata Kelola
             </span>
             <h2 class="display-6 fw-900 text-white" style="letter-spacing: -0.03em;">Mengapa Bernama SAF?</h2>
-            <p class="text-white-50 mx-auto lead" style="max-width: 680px; font-size: 1.1rem;">
-                Dari kesempurnaan barisan shalat berjamaah menuju tata kelola rumah ibadah yang amanah, bersih, dan profesional.
+            <p class="text-white-50 mx-auto lead" style="max-width: 780px; font-size: 1.15rem; line-height: 1.7;">
+                Dalam salat berjamaah, saf menggambarkan <strong>keteraturan, kebersamaan, dan kesetaraan</strong>. Setiap orang memiliki tempat dalam satu barisan, bergerak menuju tujuan yang sama.
             </p>
         </div>
 
-        <!-- Hadits Kutipan Barisan Shaf -->
+        <!-- Hadits Kutipan Barisan Shaf & Pengantar 4 Pilar -->
         <div class="hadits-quote-box">
             <div class="arabic-text">
                 سَوُّوا صُفُوفَكُمْ، فَإِنَّ تَسْوِيَةَ الصَّفِّ مِنْ تَمَامِ الصَّلَاةِ
@@ -639,72 +640,97 @@
             <div class="hadits-narrator">
                 — H.R. Bukhari No. 723 &amp; Muslim No. 433
             </div>
+            <div class="mt-3 pt-3 border-top border-success border-opacity-25 text-white-50 small" style="line-height: 1.65;">
+                Filosofi ini kami terjemahkan secara nyata ke dalam <strong class="text-white">empat pilar tata kelola masjid modern</strong>:
+            </div>
         </div>
 
-        <!-- Tiga Pilar Filosofi SAF Grid -->
+        <!-- Empat Pilar Filosofi SAF Grid (4 Kolom) -->
         <div class="row g-4">
-            <!-- Pilar 1: LURUS -->
-            <div class="col-lg-4">
+            <!-- Pilar 1: TERTIB -->
+            <div class="col-xl-3 col-md-6">
                 <div class="pillar-card">
                     <span class="pillar-num">01</span>
                     <div class="pillar-icon" style="background: rgba(16, 185, 129, 0.15); color: #34D399;">
-                        <i class="bi bi-arrow-right-circle-fill"></i>
+                        <i class="bi bi-journal-check"></i>
                     </div>
                     <span class="badge bg-success-subtle text-success small rounded-pill px-3 py-1 fw-bold text-uppercase mb-2">
-                        الإِسْتِوَاءُ &bull; Al-Istiwa'
+                        النِّظَامُ &bull; An-Nizham
                     </span>
-                    <h3 class="fw-800 text-white mb-2">1. LURUS</h3>
-                    <h6 class="text-success small fw-bold mb-3">Transparansi Mutlak &amp; Kejujuran Terbuka</h6>
+                    <h3 class="fw-800 text-white mb-2">1. TERTIB</h3>
+                    <h6 class="text-success small fw-bold mb-3">Administrasi, Keuangan, Inventaris &amp; Kegiatan</h6>
                     <p class="text-white-50 small mb-4" style="line-height: 1.7;">
-                        Shaf yang lurus melambangkan niat yang tulus dan hati yang bersih di hadapan Allah. Pengurus masjid wajib mengelola dana titipan umat secara jujur, lurus, dan transparan tanpa ada yang disembunyikan.
+                        <strong class="text-white">Administrasi, keuangan, inventaris, dan kegiatan tercatat dengan baik.</strong> Seluruh surat keluar-masuk, catatan aset fisik, mutasi kas harian, dan agenda muballigh tercatat rapi tanpa ada yang tercecer.
                     </p>
                     <div class="p-3 rounded-3 bg-black bg-opacity-30 border border-secondary border-opacity-25 small text-white-50">
                         <strong class="text-white d-block mb-1"><i class="bi bi-check2 text-success me-1"></i> Penerapan Sistem:</strong>
-                        Portal transparansi publik real-time (dapat dicek jamaah tanpa login), grafik mutasi bulanan, dan rekap cetak A4 yang ditandatangani DKM setiap Jumat.
+                        Buku kas multi-wadah atomik, modul inventaris barang wakaf, buku agenda persuratan, dan penjadwalan kajian terintegrasi.
                     </div>
                 </div>
             </div>
 
-            <!-- Pilar 2: RAPAT -->
-            <div class="col-lg-4">
+            <!-- Pilar 2: AMANAH -->
+            <div class="col-xl-3 col-md-6">
                 <div class="pillar-card">
                     <span class="pillar-num">02</span>
                     <div class="pillar-icon" style="background: rgba(59, 130, 246, 0.15); color: #60A5FA;">
-                        <i class="bi bi-shield-lock-fill"></i>
+                        <i class="bi bi-shield-check"></i>
                     </div>
                     <span class="badge bg-primary-subtle text-primary small rounded-pill px-3 py-1 fw-bold text-uppercase mb-2">
-                        التَّرَاصُّ &bull; At-Taraash
+                        الأَمَانَةُ &bull; Al-Amanah
                     </span>
-                    <h3 class="fw-800 text-white mb-2">2. RAPAT</h3>
-                    <h6 class="text-primary small fw-bold mb-3">Akuntabilitas Atomik &amp; Tanpa Celah Kebocoran</h6>
+                    <h3 class="fw-800 text-white mb-2">2. AMANAH</h3>
+                    <h6 class="text-primary small fw-bold mb-3">Transparansi Dana &amp; Pertanggungjawaban Aset</h6>
                     <p class="text-white-50 small mb-4" style="line-height: 1.7;">
-                        Shaf yang rapat menutup celah agar setan tidak dapat masuk mengganggu. Dalam pembukuan masjid, tidak boleh ada celah kebocoran dana atau selisih satu rupiah pun antara fisik kas dan catatan buku.
+                        <strong class="text-white">Pengelolaan dana dan aset dilakukan secara transparan dan bertanggung jawab.</strong> Dana titipan umat dibuka secara akuntabel, bebas celah kebocoran, serta membangun kepercayaan jamaah kepada pengurus.
                     </p>
                     <div class="p-3 rounded-3 bg-black bg-opacity-30 border border-secondary border-opacity-25 small text-white-50">
                         <strong class="text-white d-block mb-1"><i class="bi bi-check2 text-primary me-1"></i> Penerapan Sistem:</strong>
-                        Mutasi kas dibungkus transaksi database atomik (DB Mutex). Dilengkapi pemisahan buku kas multi-wadah (Operasional, Pembangunan, Yatim, ZISWAF) agar dana tidak bercampur.
+                        Portal transparansi kas real-time tanpa login, transaksi database mutex anti-selisih, dan rekap kas Jumat format A4 bertanda tangan DKM.
                     </div>
                 </div>
             </div>
 
-            <!-- Pilar 3: TERATUR -->
-            <div class="col-lg-4">
+            <!-- Pilar 3: BERSAMA -->
+            <div class="col-xl-3 col-md-6">
                 <div class="pillar-card">
                     <span class="pillar-num">03</span>
                     <div class="pillar-icon" style="background: rgba(245, 158, 11, 0.15); color: #FBBF24;">
-                        <i class="bi bi-clock-history"></i>
+                        <i class="bi bi-people-fill"></i>
                     </div>
                     <span class="badge bg-warning-subtle text-warning small rounded-pill px-3 py-1 fw-bold text-uppercase mb-2">
-                        النِّظَامُ &bull; An-Nizham
+                        الجَمَاعَةُ &bull; Al-Jama'ah
                     </span>
-                    <h3 class="fw-800 text-white mb-2">3. TERATUR</h3>
-                    <h6 class="text-warning small fw-bold mb-3">Disiplin Waktu Ibadah &amp; Keselarasan Operasional</h6>
+                    <h3 class="fw-800 text-white mb-2">3. BERSAMA</h3>
+                    <h6 class="text-warning small fw-bold mb-3">Pengurus, Relawan &amp; Jamaah Saling Terhubung</h6>
                     <p class="text-white-50 small mb-4" style="line-height: 1.7;">
-                        Shaf yang teratur mencerminkan keserempakan makmum mengikuti imam secara disiplin. Operasional masjid harus memiliki ritme yang terjadwal rapi dan tertata waktu demi kenyamanan jamaah.
+                        <strong class="text-white">Pengurus, relawan, dan jamaah saling terhubung.</strong> Sebagaimana saf merapatkan bahu jamaah tanpa membedakan status sosial, sistem SAF menghubungkan takmir, marbot, dan warga sekitar dalam ekosistem masjid.
                     </p>
                     <div class="p-3 rounded-3 bg-black bg-opacity-30 border border-secondary border-opacity-25 small text-white-50">
                         <strong class="text-white d-block mb-1"><i class="bi bi-check2 text-warning me-1"></i> Penerapan Sistem:</strong>
-                        Display TV dinding otomatis dengan hisab astronomis resmi Kemenag RI, timer hitung mundur iqamah, serta pengingat WhatsApp H-2 otomatis bagi muballigh &amp; khatib Jumat.
+                        Layar TV masjid dengan hisab Kemenag &amp; hitung mundur iqamah, portal publik info pengumuman, dan pengingat WhatsApp H-2 muballigh.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pilar 4: BERKELANJUTAN -->
+            <div class="col-xl-3 col-md-6">
+                <div class="pillar-card">
+                    <span class="pillar-num">04</span>
+                    <div class="pillar-icon" style="background: rgba(139, 92, 246, 0.15); color: #A78BFA;">
+                        <i class="bi bi-arrow-repeat"></i>
+                    </div>
+                    <span class="badge bg-info-subtle text-info small rounded-pill px-3 py-1 fw-bold text-uppercase mb-2">
+                        الإِسْتِمْرَارُ &bull; Al-Istimrar
+                    </span>
+                    <h3 class="fw-800 text-white mb-2">4. BERKELANJUTAN</h3>
+                    <h6 class="text-info small fw-bold mb-3">Riwayat Pengelolaan Aman Antar-Generasi</h6>
+                    <p class="text-white-50 small mb-4" style="line-height: 1.7;">
+                        <strong class="text-white">Pergantian kepengurusan tidak membuat data dan riwayat pengelolaan hilang.</strong> Solusi tuntas atas masalah klasik masjid di mana data kas dan inventaris raib saat regenerasi DKM; seluruh arsip digital tersimpan abadi.
+                    </p>
+                    <div class="p-3 rounded-3 bg-black bg-opacity-30 border border-secondary border-opacity-25 small text-white-50">
+                        <strong class="text-white d-block mb-1"><i class="bi bi-check2 text-info me-1"></i> Penerapan Sistem:</strong>
+                        Database digital mandiri (SQLite / MySQL), ekspor arsip berkala (Excel/PDF), log audit histori aktivitas, dan transfer hak akses kepengurusan yang mulus.
                     </div>
                 </div>
             </div>
@@ -1008,7 +1034,7 @@
 <section class="py-5 position-relative overflow-hidden" style="background: radial-gradient(circle at 50% 50%, #064E3B 0%, #022C22 100%); color: white;">
     <div class="container text-center position-relative py-3">
         <span class="badge rounded-pill bg-success-subtle text-success border border-success-subtle px-3 py-1 mb-3 fw-bold text-uppercase" style="letter-spacing: 0.05em;">
-            Lurus &bull; Rapat &bull; Teratur
+            Tertib &bull; Amanah &bull; Bersama &bull; Berkelanjutan
         </span>
         <h2 class="display-6 fw-900 mb-3" style="letter-spacing: -0.03em;">Mulai Modernisasi Tata Kelola Masjid Bersama SAF</h2>
         <p class="lead opacity-90 mx-auto mb-4" style="max-width: 650px; font-size: 1.15rem;">

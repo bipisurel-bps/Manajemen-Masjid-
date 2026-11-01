@@ -80,38 +80,49 @@
             </div>
         </div>
 
-        <!-- Section: Tiga Pilar Filosofi SAF -->
+        <!-- Section: Empat Pilar Filosofi SAF -->
         <div class="row g-4 mt-4">
-            <div class="col-md-4">
+            <div class="col-lg-3 col-md-6">
                 <div class="p-4 rounded-4 bg-white border h-100 shadow-sm">
                     <div class="d-flex align-items-center gap-2 mb-2 text-success fw-bold">
-                        <i class="bi bi-arrow-right-circle-fill"></i>
-                        <span>1. LURUS (Transparansi)</span>
+                        <i class="bi bi-journal-check"></i>
+                        <span>1. TERTIB</span>
                     </div>
                     <p class="text-muted small mb-0" style="line-height: 1.6;">
-                        Shaf yang lurus melambangkan kejujuran mutlak. Laporan keuangan terbuka secara real-time untuk jamaah melalui portal publik dan rekap kas siap cetak A4.
+                        <strong>Administrasi &amp; Kegiatan</strong>: Administrasi, keuangan, inventaris, dan kegiatan tercatat dengan baik, rapi, dan teratur.
                     </p>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-lg-3 col-md-6">
                 <div class="p-4 rounded-4 bg-white border h-100 shadow-sm">
                     <div class="d-flex align-items-center gap-2 mb-2 text-primary fw-bold">
                         <i class="bi bi-shield-check"></i>
-                        <span>2. RAPAT (Akuntabilitas)</span>
+                        <span>2. AMANAH</span>
                     </div>
                     <p class="text-muted small mb-0" style="line-height: 1.6;">
-                        Shaf yang rapat menutup celah kebocoran. Seluruh transaksi kas dibungkus mutasi atomik database mutex dan pemisahan buku kas multi-wadah terisolasi.
+                        <strong>Transparansi Dana &amp; Aset</strong>: Pengelolaan dana dan aset dilakukan secara transparan, bertanggung jawab, dan bebas celah kebocoran.
                     </p>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-lg-3 col-md-6">
                 <div class="p-4 rounded-4 bg-white border h-100 shadow-sm">
                     <div class="d-flex align-items-center gap-2 mb-2 text-warning text-dark fw-bold">
-                        <i class="bi bi-clock-history"></i>
-                        <span>3. TERATUR (Disiplin Waktu)</span>
+                        <i class="bi bi-people-fill"></i>
+                        <span>3. BERSAMA</span>
                     </div>
                     <p class="text-muted small mb-0" style="line-height: 1.6;">
-                        Ketertiban makmum bersama imam. Waktu shalat akurat hisab astronomis Kemenag, hitung mundur iqamah display TV, dan pengingat WhatsApp H-2 otomatis muballigh.
+                        <strong>Konektivitas Umat</strong>: Pengurus, relawan, dan jamaah saling terhubung melalui informasi real-time dan display TV ibadah.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="p-4 rounded-4 bg-white border h-100 shadow-sm">
+                    <div class="d-flex align-items-center gap-2 mb-2 text-info text-dark fw-bold">
+                        <i class="bi bi-arrow-repeat"></i>
+                        <span>4. BERKELANJUTAN</span>
+                    </div>
+                    <p class="text-muted small mb-0" style="line-height: 1.6;">
+                        <strong>Keutuhan Riwayat</strong>: Pergantian kepengurusan tidak membuat data dan riwayat pengelolaan hilang; tersimpan abadi dalam database.
                     </p>
                 </div>
             </div>
