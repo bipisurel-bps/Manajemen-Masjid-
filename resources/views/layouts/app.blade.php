@@ -347,6 +347,23 @@
         .text-gold { color: var(--gold); }
         .bg-soft-primary { background: var(--primary-50); }
 
+        .hover-shadow {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .hover-shadow:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04) !important;
+        }
+        .prayer-card {
+            transition: all 0.25s ease;
+            border: 1px solid var(--border) !important;
+        }
+        .prayer-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary) !important;
+            background: #F0FDF4 !important;
+        }
+
         .filter-bar {
             background: #fff;
             border-radius: var(--radius-md);
@@ -422,7 +439,10 @@
                 <a href="{{ route('contact') }}" class="nav-link-custom {{ request()->routeIs('contact') ? 'active' : '' }}">
                     <i class="bi bi-envelope"></i> Kontak
                 </a>
-                <a href="{{ route('login') }}" class="btn-primary-masjid btn-sm-masjid ms-2">
+                <a href="{{ route('demo.login', 'admin') }}" class="btn btn-warning btn-sm text-dark fw-bold rounded-pill px-3 ms-2 shadow-sm">
+                    <i class="bi bi-play-circle-fill me-1"></i> Coba Demo
+                </a>
+                <a href="{{ route('login') }}" class="btn-primary-masjid btn-sm-masjid ms-1">
                     <i class="bi bi-box-arrow-in-right"></i> Login
                 </a>
             </div>
@@ -495,12 +515,21 @@
                 <a href="{{ route('home') }}" class="footer-link"><i class="bi bi-chevron-right"></i> Beranda</a>
                 <a href="{{ route('reports.public') }}" class="footer-link"><i class="bi bi-chevron-right"></i> Laporan Keuangan</a>
                 <a href="{{ route('schedules.khatib') }}" class="footer-link"><i class="bi bi-chevron-right"></i> Jadwal Kegiatan</a>
+                <a href="{{ route('display.index') }}" target="_blank" class="footer-link"><i class="bi bi-chevron-right"></i> Mode Layar TV Masjid</a>
+                <a href="{{ route('demo.login', 'admin') }}" class="footer-link"><i class="bi bi-chevron-right"></i> Coba Akun Demo</a>
                 <a href="{{ route('contact') }}" class="footer-link"><i class="bi bi-chevron-right"></i> Hubungi Kami</a>
             </div>
         </div>
         <hr class="my-4" style="border-color: var(--border);">
-        <div class="text-center text-muted small">
-            &copy; {{ date('Y') }} {{ \App\Models\Setting::get('masjid_name', 'Masjid Al-Ikhlas') }}. Hak Cipta Dilindungi.
+        <div class="row align-items-center">
+            <div class="col-md-6 text-center text-md-start text-muted small mb-2 mb-md-0">
+                &copy; {{ date('Y') }} {{ \App\Models\Setting::get('masjid_name', 'Masjid Al-Ikhlas') }}. Hak Cipta Dilindungi.
+            </div>
+            <div class="col-md-6 text-center text-md-end small">
+                <span class="text-muted">Aplikasi ini di-develop oleh</span>
+                <a href="mailto:jaddadeveloper@gmail.com" class="fw-bold text-decoration-none" style="color: var(--primary);">jaddadeveloper</a>
+                <span class="text-muted">(<a href="mailto:jaddadeveloper@gmail.com" class="text-muted text-decoration-none">jaddadeveloper@gmail.com</a>)</span>
+            </div>
         </div>
     </div>
 </footer>

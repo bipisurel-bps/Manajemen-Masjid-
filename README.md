@@ -1,12 +1,17 @@
-# 🕌 Manajemen Masjid
+# 🕌 Manajemen Masjid — Al-Masjid
 
-Sistem informasi manajemen masjid berbasis web — solusi _all-in-one_ untuk pengelolaan keuangan, jadwal kegiatan, dan data pengurus masjid yang dirancang handal, aman, dan dapat berfungsi offline secara penuh (PWA).
+Sistem informasi manajemen masjid berbasis web — solusi _all-in-one_ untuk pengelolaan keuangan, jadwal ibadah & dakwah, mode display monitor TV, dan portal transparansi jamaah yang dirancang handal, aman, dan 100% siap offline (PWA).
+
+🌐 **Live Website / Demo**: [https://almasjid.web.id](https://almasjid.web.id)  
+👨‍💻 **Developer**: **jaddadeveloper**  
+📧 **Email**: [jaddadeveloper@gmail.com](mailto:jaddadeveloper@gmail.com)
 
 ![Laravel](https://img.shields.io/badge/Laravel-13.x-FF2D20?logo=laravel&logoColor=white)
 ![PHP](https://img.shields.io/badge/PHP-8.3+-777BB4?logo=php&logoColor=white)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-7952B3?logo=bootstrap&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-8.x-646CFF?logo=vite&logoColor=white)
 ![Chart.js](https://img.shields.io/badge/Chart.js-4.x-FF6384?logo=chartdotjs&logoColor=white)
+![Developer](https://img.shields.io/badge/Developer-jaddadeveloper-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
 ---
@@ -186,8 +191,12 @@ Proyek ini dilisensikan di bawah [MIT License](https://opensource.org/licenses/M
 
 ---
 
-## 📧 Kontak
+## 📧 Kontak & Pengembang
 
-Dibuat dengan ❤️ untuk kemajuan manajemen masjid Indonesia.
+Aplikasi ini dikembangkan dan dikelola oleh:
+- **Pengembang**: **Jadda Developer**
+- **Email**: [jaddadeveloper@gmail.com](mailto:jaddadeveloper@gmail.com)
+- **Domain Resmi**: [https://almasjid.web.id](https://almasjid.web.id)
+- **Repository**: [https://github.com/bipisurel-bps/Manajemen-Masjid-](https://github.com/bipisurel-bps/Manajemen-Masjid-)
 
-**Bipi Surel** — [GitHub](https://github.com/bipisurel-bps)
+Dibuat dengan ❤️ untuk kemajuan tata kelola dan transparansi masjid di seluruh Indonesia.

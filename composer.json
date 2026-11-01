@@ -1,10 +1,17 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/laravel",
+    "name": "jaddadeveloper/manajemen-masjid",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "description": "Sistem Informasi Manajemen Masjid — Al-Masjid (almasjid.web.id)",
+    "keywords": ["laravel", "masjid", "manajemen-masjid", "pwa", "offline-first"],
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Jadda Developer",
+            "email": "jaddadeveloper@gmail.com",
+            "homepage": "https://almasjid.web.id"
+        }
+    ],
     "require": {
         "php": "^8.3",
         "laravel/framework": "^13.8",

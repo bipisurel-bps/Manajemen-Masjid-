@@ -61,6 +61,20 @@ class AuthController extends Controller
         return redirect('/admin')->with('success', 'Registrasi berhasil! Selamat datang, ' . $user->name . '!');
     }
 
+    public function demoLogin(Request $request, ?string $role = 'admin')
+    {
+        $roleName = ($role === 'superadmin') ? 'superadmin' : 'admin';
+        $user = User::where('role', $roleName)->first() ?? User::first();
+
+        if ($user) {
+            Auth::login($user);
+            $request->session()->regenerate();
+            return redirect('/admin')->with('success', 'Mode Demo Aktif: Masuk sebagai ' . $user->name . ' (' . ucfirst($user->role) . '). Silakan jelajahi fitur!');
+        }
+
+        return redirect()->route('login')->with('error', 'Akun demo tidak ditemukan.');
+    }
+
     public function logout(Request $request)
     {
         Auth::logout();
@@ -70,3 +84,4 @@ class AuthController extends Controller
         return redirect('/')->with('success', 'Anda telah logout.');
     }
 }
+

@@ -55,6 +55,21 @@
                         <small class="text-muted">Belum punya akun?</small>
                         <a href="{{ route('register') }}" class="btn-masjid-outline btn-sm ms-2">Daftar</a>
                     </div>
+
+                    <!-- Mode Demo Akses Cepat -->
+                    <div class="mt-4 pt-3 border-top text-center">
+                        <div class="d-flex align-items-center justify-content-center gap-1 text-muted small mb-2 fw-600">
+                            <i class="bi bi-stars text-warning"></i> Coba Akun Demo Langsung (1-Klik):
+                        </div>
+                        <div class="d-flex flex-column gap-2">
+                            <a href="{{ route('demo.login', 'admin') }}" class="btn btn-outline-success btn-sm rounded-pill py-2">
+                                <i class="bi bi-wallet2 me-1"></i> Masuk Sebagai <strong>Bendahara / Takmir</strong>
+                            </a>
+                            <a href="{{ route('demo.login', 'superadmin') }}" class="btn btn-outline-primary btn-sm rounded-pill py-2">
+                                <i class="bi bi-shield-lock me-1"></i> Masuk Sebagai <strong>Super Admin</strong>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
 

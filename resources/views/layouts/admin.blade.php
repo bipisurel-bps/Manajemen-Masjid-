@@ -521,6 +521,11 @@
                 <i class="bi bi-box-arrow-left"></i> Logout
             </button>
         </form>
+        <div class="p-2 mt-2 rounded bg-light border text-center" style="font-size: 0.72rem; line-height: 1.3;">
+            <span class="text-muted">Developed by</span><br>
+            <a href="mailto:jaddadeveloper@gmail.com" class="fw-bold text-decoration-none" style="color: var(--primary);">jaddadeveloper</a><br>
+            <span class="text-muted">jaddadeveloper@gmail.com</span>
+        </div>
     </div>
 </aside>
 

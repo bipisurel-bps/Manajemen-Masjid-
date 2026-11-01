@@ -124,5 +124,22 @@
         <p class="text-muted mb-1">Setiap Hari: 04:00 - 22:00 WIB</p>
         <p class="text-muted mb-0">Kantor: Senin - Jumat, 08:00 - 16:00 WIB</p>
     </div>
+
+    <!-- Developer & Technical Support Card -->
+    <div class="mt-4 p-4 rounded-4 bg-white border shadow-sm text-center">
+        <h6 class="fw-bold mb-1" style="color: var(--primary);"><i class="bi bi-code-slash me-1"></i> Pengembang & Layanan Teknis Aplikasi</h6>
+        <p class="text-muted small mb-3">Aplikasi Sistem Informasi Manajemen Masjid ini di-develop oleh <strong>Jadda Developer</strong> untuk transparansi dan kemudahan tata kelola operasional masjid.</p>
+        <div class="d-flex flex-wrap justify-content-center gap-2">
+            <a href="mailto:jaddadeveloper@gmail.com" class="btn btn-outline-primary btn-sm rounded-pill px-3">
+                <i class="bi bi-envelope-at me-1"></i> jaddadeveloper@gmail.com
+            </a>
+            <a href="https://almasjid.web.id" class="btn btn-outline-success btn-sm rounded-pill px-3">
+                <i class="bi bi-globe me-1"></i> almasjid.web.id
+            </a>
+            <a href="https://github.com/bipisurel-bps/Manajemen-Masjid-" target="_blank" class="btn btn-outline-secondary btn-sm rounded-pill px-3">
+                <i class="bi bi-github me-1"></i> GitHub Repository
+            </a>
+        </div>
+    </div>
 </div>
 @endsection
