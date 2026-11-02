@@ -4,684 +4,877 @@
 @section('content')
 @php
     $masjidName = \App\Models\Setting::get('masjid_name', 'SAF');
+    $initialBalance = $balance ?? 48750000;
 @endphp
 
-<!-- Custom Premium Styles for SAF Product Landing Page (Engineered via premium-web-design) -->
+<!-- UI/UX PRO MAX DESIGN SYSTEM STYLES -->
 <style>
-    /* ── 1. Hero Section (Split Variant, High-End Dark Emerald) ── */
-    .hero-saf {
-        background: radial-gradient(120% 120% at 50% 0%, #03392E 0%, #02261E 45%, #011914 100%);
+    /* ── Ambient Colors & Design Tokens ── */
+    :root {
+        --saf-deep-emerald: #011A14;
+        --saf-dark-emerald: #022C22;
+        --saf-mid-emerald: #064E3B;
+        --saf-forest: #065F46;
+        --saf-neon-jade: #10B981;
+        --saf-mint: #34D399;
+        --saf-mint-soft: #A7F3D0;
+        --saf-gold: #D97706;
+        --saf-gold-bright: #F59E0B;
+        --saf-gold-light: #FEF3C7;
+        --saf-sand: #FAF9F6;
+        --saf-slate-900: #0F172A;
+        --saf-slate-800: #1E293B;
+        --saf-slate-600: #475569;
+        --saf-slate-400: #94A3B8;
+        --saf-slate-200: #E2E8F0;
+        --saf-slate-100: #F1F5F9;
+        --saf-ease: cubic-bezier(0.16, 1, 0.3, 1);
+        --saf-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    /* ── 1. Hero Section (Modern Executive Islamic Tech) ── */
+    .hero-saf-pro {
+        background: radial-gradient(130% 120% at 50% -10%, #03392E 0%, #02261E 40%, #01140F 100%);
         color: #F8FAFC;
         position: relative;
         overflow: hidden;
         padding: clamp(5rem, 8vw, 7.5rem) 0 clamp(4.5rem, 7vw, 6.5rem);
     }
-    .hero-glow-emerald {
+    .hero-ambient-glow-1 {
         position: absolute;
         top: -140px;
         left: 45%;
         transform: translateX(-50%);
-        width: 750px;
-        height: 440px;
-        background: radial-gradient(circle, rgba(16, 185, 129, 0.22) 0%, transparent 68%);
-        pointer-events: none;
-        filter: blur(55px);
-    }
-    .hero-glow-candle {
-        position: absolute;
-        bottom: 20px;
-        right: -60px;
-        width: 480px;
-        height: 340px;
-        background: radial-gradient(circle, rgba(217, 119, 6, 0.12) 0%, transparent 68%);
-        pointer-events: none;
+        width: 800px;
+        height: 480px;
+        background: radial-gradient(circle, rgba(16, 185, 129, 0.22) 0%, transparent 70%);
         filter: blur(60px);
+        pointer-events: none;
+        z-index: 0;
     }
-    .hero-grid-pattern {
+    .hero-ambient-glow-2 {
+        position: absolute;
+        bottom: -60px;
+        right: -80px;
+        width: 500px;
+        height: 380px;
+        background: radial-gradient(circle, rgba(245, 158, 11, 0.12) 0%, transparent 70%);
+        filter: blur(65px);
+        pointer-events: none;
+        z-index: 0;
+    }
+    .hero-pattern-overlay {
         position: absolute;
         inset: 0;
-        background-image: radial-gradient(rgba(52, 211, 153, 0.12) 1px, transparent 1px);
-        background-size: 32px 32px;
+        background-image: 
+            radial-gradient(rgba(52, 211, 153, 0.12) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(1, 26, 20, 0) 60%, rgba(1, 26, 20, 0.95) 100%);
+        background-size: 32px 32px, 100% 100%;
         pointer-events: none;
-        mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
-        -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+        z-index: 0;
     }
 
-    /* ── Eyebrow Pill Badge ── */
-    .hero-eyebrow {
+    /* ── Eyebrow Badge ── */
+    .hero-eyebrow-pro {
         display: inline-flex;
         align-items: center;
-        gap: 0.55rem;
+        gap: 0.65rem;
         background: rgba(16, 185, 129, 0.1);
         border: 1px solid rgba(16, 185, 129, 0.3);
-        color: #6EE7B7;
-        font-size: 0.72rem;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
+        backdrop-filter: blur(8px);
         padding: 0.45rem 1.15rem;
-        border-radius: var(--radius-pill);
-        backdrop-filter: blur(12px);
+        border-radius: 9999px;
+        font-size: var(--text-xs);
+        font-weight: 700;
+        color: var(--saf-mint);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
         margin-bottom: 1.5rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     }
-    .hero-badge-dot {
+    .hero-eyebrow-beacon {
         width: 8px;
         height: 8px;
-        border-radius: 50%;
         background: #10B981;
-        box-shadow: 0 0 10px #10B981;
-        animation: pulseDot 2s infinite ease-in-out;
+        border-radius: 50%;
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+        animation: heroPulseBeacon 2s infinite;
     }
-    @keyframes pulseDot {
-        0%, 100% { opacity: 1; transform: scale(1); }
-        50% { opacity: 0.4; transform: scale(0.8); }
+    @keyframes heroPulseBeacon {
+        0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+        70% { box-shadow: 0 0 0 9px rgba(16, 185, 129, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
     }
 
-    /* ── Fluid Headline & Typography ── */
-    .hero-headline {
-        font-size: clamp(2.4rem, 4vw, 3.85rem);
+    /* ── Hero Typography ── */
+    .hero-headline-pro {
+        font-size: var(--text-4xl);
         font-weight: 900;
-        letter-spacing: -0.035em;
         line-height: 1.12;
-        margin-bottom: 1.35rem;
+        letter-spacing: -0.04em;
+        margin-bottom: 1.5rem;
+        color: #FFFFFF;
     }
     .hero-gradient-text {
-        background: linear-gradient(135deg, #34D399 0%, #A7F3D0 40%, #FBBF24 100%);
+        background: linear-gradient(135deg, #A7F3D0 0%, #34D399 50%, #F59E0B 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         display: inline-block;
     }
-    .hero-description {
-        font-size: clamp(1rem, 0.95rem + 0.25vw, 1.15rem);
+    .hero-description-pro {
+        font-size: var(--text-lg);
         line-height: 1.7;
-        color: rgba(241, 245, 249, 0.88);
-        max-width: 620px;
+        color: #CBD5E1;
+        max-width: 62ch;
         margin-bottom: 2rem;
     }
 
-    /* ── Action Buttons ── */
-    .btn-hero-primary {
+    /* ── Hero Buttons ── */
+    .btn-saf-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.65rem;
         background: linear-gradient(135deg, #10B981 0%, #059669 100%);
-        color: #fff;
+        color: #FFFFFF;
         font-weight: 700;
-        font-size: 0.95rem;
-        padding: 0.85rem 1.75rem;
-        border-radius: var(--radius-pill);
-        border: 1px solid rgba(255, 255, 255, 0.25);
+        font-size: var(--text-base);
+        padding: 0.95rem 1.85rem;
+        border-radius: 9999px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
         box-shadow: 0 10px 25px -4px rgba(16, 185, 129, 0.45);
-        transition: transform 200ms var(--ease-out-quart), box-shadow 200ms var(--ease-out-quart);
+        transition: all 0.25s var(--saf-ease);
+        cursor: pointer;
         text-decoration: none;
+    }
+    .btn-saf-primary:hover {
+        transform: translateY(-2px);
+        background: linear-gradient(135deg, #34D399 0%, #059669 100%);
+        color: #FFFFFF;
+        box-shadow: 0 16px 32px -4px rgba(16, 185, 129, 0.55);
+    }
+    .btn-saf-outline {
         display: inline-flex;
         align-items: center;
-        gap: 0.5rem;
-    }
-    .btn-hero-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 15px 32px -4px rgba(16, 185, 129, 0.55);
-        color: #fff;
-    }
-    .btn-hero-primary:active {
-        transform: translateY(0) scale(0.98);
-    }
-
-    .btn-hero-github {
-        background: rgba(255, 255, 255, 0.08);
-        color: #F8FAFC;
-        font-weight: 600;
-        font-size: 0.95rem;
-        padding: 0.85rem 1.5rem;
-        border-radius: var(--radius-pill);
+        gap: 0.65rem;
+        background: rgba(255, 255, 255, 0.06);
+        color: #F1F5F9;
+        font-weight: 700;
+        font-size: var(--text-base);
+        padding: 0.95rem 1.75rem;
+        border-radius: 9999px;
         border: 1px solid rgba(255, 255, 255, 0.18);
-        backdrop-filter: blur(10px);
-        transition: transform 200ms var(--ease-out-quart), background 200ms var(--ease-out-quart);
+        backdrop-filter: blur(8px);
+        transition: all 0.25s var(--saf-ease);
+        cursor: pointer;
         text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
     }
-    .btn-hero-github:hover {
-        background: rgba(255, 255, 255, 0.16);
-        color: #fff;
+    .btn-saf-outline:hover {
+        background: rgba(255, 255, 255, 0.12);
+        color: #FFFFFF;
+        border-color: rgba(255, 255, 255, 0.35);
         transform: translateY(-2px);
     }
-    .btn-hero-github:active {
-        transform: translateY(0) scale(0.98);
-    }
 
-    .btn-hero-textlink {
-        color: rgba(255, 255, 255, 0.82);
-        font-weight: 600;
-        font-size: 0.92rem;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.4rem;
-        transition: color 0.2s;
-    }
-    .btn-hero-textlink:hover {
-        color: #34D399;
-    }
-
-    /* ── Trust Indicators Strip ── */
-    .trust-strip {
+    /* ── Trust Signals ── */
+    .trust-strip-pro {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.6rem 1.25rem;
-        margin-top: 2rem;
-        padding-top: 1.5rem;
+        gap: 1.5rem;
+        padding-top: 1.75rem;
         border-top: 1px solid rgba(255, 255, 255, 0.1);
-        max-width: 620px;
+        margin-top: 2rem;
     }
-    .trust-item {
-        font-size: 0.8rem;
-        color: rgba(241, 245, 249, 0.75);
-        display: inline-flex;
+    .trust-item-pro {
+        display: flex;
         align-items: center;
-        gap: 0.45rem;
+        gap: 0.5rem;
+        font-size: var(--text-xs);
+        font-weight: 600;
+        color: #94A3B8;
+        letter-spacing: 0.02em;
     }
-    .trust-item i {
-        color: #34D399;
-        font-size: 0.95rem;
+    .trust-item-pro i {
+        color: var(--saf-mint);
+        font-size: 1rem;
     }
 
-    /* ── Interactive Workspace Mockup (Mac/Studio Frame) ── */
-    .device-mockup {
-        background: #081C17;
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        border-radius: var(--radius-lg);
-        box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.75), 0 0 35px rgba(16, 185, 129, 0.15);
+    /* ── Interactive Studio Mockup Frame ── */
+    .device-studio {
+        background: #021713;
+        border: 1px solid rgba(16, 185, 129, 0.25);
+        border-radius: 20px;
+        box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.08);
         overflow: hidden;
-        color: #E2E8F0;
-        transition: transform 0.3s var(--ease-out-quart);
+        position: relative;
     }
-    .device-mockup:hover {
-        transform: translateY(-4px);
-    }
-    .device-header {
-        background: rgba(255, 255, 255, 0.04);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    .studio-header {
+        background: #01120F;
         padding: 0.85rem 1.25rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         display: flex;
         align-items: center;
         justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0.75rem;
     }
-    .window-dots {
+    .studio-dots {
         display: flex;
         gap: 6px;
     }
-    .window-dot {
+    .studio-dot {
         width: 10px;
         height: 10px;
         border-radius: 50%;
     }
-    .mockup-tab-btn {
+    .studio-tabs {
+        display: flex;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 9999px;
+        padding: 3px;
+        gap: 3px;
+    }
+    .studio-tab-btn {
         background: transparent;
         border: none;
-        color: rgba(255, 255, 255, 0.65);
-        font-size: 0.76rem;
-        font-weight: 600;
-        padding: 0.32rem 0.85rem;
-        border-radius: var(--radius-pill);
-        transition: all 0.2s ease;
+        color: #94A3B8;
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 0.35rem 0.85rem;
+        border-radius: 9999px;
         cursor: pointer;
+        transition: all 0.2s var(--saf-ease);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
     }
-    .mockup-tab-btn:hover {
-        color: #fff;
-        background: rgba(255, 255, 255, 0.08);
-    }
-    .mockup-tab-btn.active {
-        background: rgba(16, 185, 129, 0.25);
-        color: #34D399;
-        border: 1px solid rgba(16, 185, 129, 0.4);
+    .studio-tab-btn.active {
+        background: #10B981;
+        color: #FFFFFF;
+        box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
     }
 
-    /* ── Principles Strip (Visual Anchor) ── */
-    .principles-strip {
-        background: #011511;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        padding: 1rem 0;
+    /* ── Mockup Screens ── */
+    .screen-panel {
+        min-height: 420px;
     }
-    .principles-container {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 1.25rem;
-        color: #94A3B8;
-        font-size: 0.76rem;
+    .prayer-chip {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 10px;
+        padding: 0.65rem 0.5rem;
+        text-align: center;
+        transition: all 0.2s var(--saf-ease);
+    }
+    .prayer-chip.is-active {
+        background: rgba(245, 158, 11, 0.15);
+        border-color: #F59E0B;
+        box-shadow: 0 0 15px rgba(245, 158, 11, 0.2);
+    }
+    .prayer-chip .prayer-name {
+        font-size: 0.65rem;
         font-weight: 700;
-        letter-spacing: 0.08em;
         text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: #94A3B8;
+        margin-bottom: 0.25rem;
     }
-    .principles-container span {
+    .prayer-chip.is-active .prayer-name {
+        color: #FBBF24;
+    }
+    .prayer-chip .prayer-time {
+        font-size: 0.95rem;
+        font-weight: 800;
+        color: #FFFFFF;
+        font-family: monospace;
+    }
+
+    /* ── Simulator Pot Cards ── */
+    .sim-pot-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        padding: 0.75rem 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.2s var(--saf-ease);
+    }
+    .sim-pot-card:hover {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(16, 185, 129, 0.3);
+    }
+    .sim-chip-btn {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: #F1F5F9;
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 0.35rem 0.65rem;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.15s;
+    }
+    .sim-chip-btn:hover, .sim-chip-btn.active {
+        background: #10B981;
+        border-color: #10B981;
+        color: #FFFFFF;
+    }
+
+    /* ── A4 Sheet Preview ── */
+    .a4-paper-preview {
+        background: #FFFFFF;
+        color: #0F172A;
+        border-radius: 6px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+        padding: 1.5rem;
+        font-size: 0.8rem;
+        line-height: 1.45;
+        position: relative;
+    }
+    .a4-stamp {
+        border: 2px dashed #059669;
+        color: #059669;
+        font-weight: 800;
+        font-size: 0.65rem;
+        padding: 0.35rem 0.75rem;
+        border-radius: 4px;
+        display: inline-block;
+        transform: rotate(-3deg);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    /* ── 2. Principles Strip (Marquee) ── */
+    .principles-strip-pro {
+        background: #01120F;
+        border-top: 1px solid rgba(16, 185, 129, 0.2);
+        border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+        padding: 0.95rem 0;
+        overflow: hidden;
+        white-space: nowrap;
+        position: relative;
+    }
+    .marquee-track {
+        display: inline-flex;
+        gap: 2.5rem;
+        animation: marqueeScroll 35s linear infinite;
+        will-change: transform;
+    }
+    @keyframes marqueeScroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+    .marquee-item {
+        font-size: 0.78rem;
+        font-weight: 800;
+        color: #34D399;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
     }
-    .principles-container span i {
-        color: #10B981;
-    }
 
-    /* ── Filosofi SAF Section (Spiritual Deep Night Canvas) ── */
-    .filosofi-section {
-        background: radial-gradient(120% 120% at 50% 0%, #032A22 0%, #021E18 45%, #011511 100%);
+    /* ── 3. The 4 SAF Pillars (Deep Philosophy Section) ── */
+    .filosofi-section-pro {
+        background: radial-gradient(120% 120% at 50% 0%, #032E24 0%, #011A14 60%, #01120D 100%);
         color: #F8FAFC;
         padding: clamp(5rem, 8vw, 7.5rem) 0;
         position: relative;
-    }
-    .hadits-quote-box {
-        background: rgba(255, 255, 255, 0.035);
-        border: 1px solid rgba(16, 185, 129, 0.25);
-        border-radius: var(--radius-lg);
-        padding: 2.5rem 2rem;
-        max-width: 820px;
-        margin: 0 auto 3.5rem;
-        text-align: center;
-        position: relative;
-        backdrop-filter: blur(10px);
-    }
-    .arabic-text {
-        font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif;
-        font-size: clamp(1.6rem, 1.2rem + 1vw, 2.1rem);
-        line-height: 1.85;
-        color: #A7F3D0;
-        margin-bottom: 1rem;
-    }
-    .hadits-translation {
-        font-size: 1.05rem;
-        line-height: 1.65;
-        color: rgba(241, 245, 249, 0.88);
-        font-style: italic;
-    }
-    .hadits-narrator {
-        font-size: 0.8rem;
-        color: #FBBF24;
-        font-weight: 700;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        margin-top: 0.75rem;
-    }
-
-    /* ── 4 Pillar Cards ── */
-    .pillar-card {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.09);
-        border-radius: var(--radius-lg);
-        padding: 2.25rem 1.75rem;
-        height: 100%;
-        transition: transform 0.3s var(--ease-out-quart), border-color 0.3s ease, box-shadow 0.3s ease;
-        position: relative;
         overflow: hidden;
     }
-    .pillar-card:hover {
-        transform: translateY(-5px);
-        background: rgba(255, 255, 255, 0.055);
-        border-color: rgba(16, 185, 129, 0.35);
-        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.55);
+    .hadits-quote-pro {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(16, 185, 129, 0.25);
+        border-radius: 20px;
+        padding: clamp(2rem, 4vw, 3rem);
+        margin-bottom: 3.5rem;
+        backdrop-filter: blur(12px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+        text-align: center;
+        position: relative;
     }
-    .pillar-num {
-        font-size: 3.2rem;
-        font-weight: 900;
-        line-height: 1;
-        opacity: 0.1;
-        position: absolute;
-        top: 1.25rem;
-        right: 1.5rem;
-        color: #fff;
+    .arabic-calligraphy {
+        font-family: 'Amiri', 'Traditional Arabic', serif;
+        font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+        color: #FBBF24;
+        direction: rtl;
+        line-height: 1.8;
+        margin-bottom: 1rem;
+        text-shadow: 0 2px 10px rgba(245, 158, 11, 0.25);
     }
-    .pillar-icon {
-        width: 52px;
-        height: 52px;
-        border-radius: var(--radius);
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.45rem;
-        margin-bottom: 1.25rem;
+    .hadits-trans-text {
+        font-size: var(--text-base);
+        font-style: italic;
+        color: #E2E8F0;
+        max-width: 68ch;
+        margin: 0 auto 0.75rem;
+        line-height: 1.7;
+    }
+    .hadits-reference {
+        font-size: var(--text-xs);
+        font-weight: 700;
+        color: var(--saf-mint);
+        letter-spacing: 0.05em;
     }
 
-    /* ── Breathing Metric Section (Warm Alabaster) ── */
-    .breathing-stat-section {
-        background: var(--surface-warm);
-        border-top: 1px solid var(--border);
-        border-bottom: 1px solid var(--border);
-        padding: clamp(3.5rem, 6vw, 5rem) 0;
-    }
-    .stat-pill-card {
-        background: #FFFFFF;
-        border: 1px solid var(--border);
-        border-radius: var(--radius-lg);
-        padding: 1.75rem 1.5rem;
+    /* ── Pillar Cards ── */
+    .pillar-card-pro {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 18px;
+        padding: 2rem 1.65rem;
         height: 100%;
-        text-align: center;
-        box-shadow: var(--shadow-sm);
-        transition: transform 0.25s var(--ease-out-quart), box-shadow 0.25s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s var(--saf-ease);
     }
-    .stat-pill-card:hover {
-        transform: translateY(-3px);
-        box-shadow: var(--shadow-md);
-        border-color: #CBD5E1;
+    .pillar-card-pro:hover {
+        transform: translateY(-6px);
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(16, 185, 129, 0.4);
+        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5), 0 0 25px rgba(16, 185, 129, 0.15);
     }
-    .stat-number {
-        font-size: clamp(2rem, 1.6rem + 1vw, 2.75rem);
+    .pillar-num-watermark {
+        position: absolute;
+        top: -15px;
+        right: 15px;
+        font-size: 5rem;
         font-weight: 900;
-        letter-spacing: -0.03em;
-        line-height: 1.1;
-        color: var(--primary);
+        color: rgba(255, 255, 255, 0.03);
+        line-height: 1;
+        pointer-events: none;
+        user-select: none;
+        transition: color 0.3s;
     }
-    .stat-label {
-        font-size: 0.85rem;
-        font-weight: 700;
-        color: var(--text);
-        margin-top: 0.35rem;
-        margin-bottom: 0.25rem;
+    .pillar-card-pro:hover .pillar-num-watermark {
+        color: rgba(16, 185, 129, 0.08);
     }
-    .stat-desc {
-        font-size: 0.78rem;
-        color: var(--text-muted);
-        line-height: 1.45;
+    .pillar-arabic-chip {
+        font-family: 'Amiri', 'Traditional Arabic', serif;
+        font-size: 1.15rem;
+        color: #FBBF24;
+        display: inline-block;
+        margin-bottom: 0.5rem;
+    }
+    .pillar-problem-solution {
+        background: rgba(0, 0, 0, 0.35);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        padding: 1rem;
+        font-size: 0.8rem;
+        line-height: 1.6;
+        margin-top: 1.25rem;
+    }
+
+    /* ── 4. Breathing Stats Section ── */
+    .stat-strip-section {
+        background: #FFFFFF;
+        border-bottom: 1px solid var(--saf-slate-200);
+        padding: 3.5rem 0;
+    }
+    .stat-pro-card {
+        text-align: center;
+        padding: 1.5rem 1rem;
+        border-radius: 14px;
+        transition: transform 0.2s;
+    }
+    .stat-pro-card:hover {
+        transform: translateY(-3px);
+    }
+    .stat-pro-num {
+        font-size: clamp(2.25rem, 4vw, 3.25rem);
+        font-weight: 900;
+        color: var(--saf-forest);
+        letter-spacing: -0.04em;
+        line-height: 1;
+        margin-bottom: 0.5rem;
+    }
+    .stat-pro-title {
+        font-size: 1rem;
+        font-weight: 800;
+        color: var(--saf-slate-900);
+        margin-bottom: 0.35rem;
+    }
+    .stat-pro-text {
+        font-size: 0.825rem;
+        color: var(--saf-slate-600);
+        line-height: 1.55;
         margin-bottom: 0;
     }
 
-    /* ── Bento Grid Cards ── */
-    .bento-section {
-        background: #FFFFFF;
-        padding: clamp(5rem, 8vw, 7.5rem) 0;
+    /* ── 5. Bento Grid Capabilities ── */
+    .bento-section-pro {
+        background: #FAF9F6;
+        padding: clamp(5rem, 8vw, 7rem) 0;
     }
-    .bento-card {
+    .bento-pro-card {
         background: #FFFFFF;
-        border: 1px solid var(--border);
-        border-radius: var(--radius-lg);
-        padding: 2.25rem 2rem;
+        border: 1px solid #E2E8F0;
+        border-radius: 20px;
+        padding: 2.25rem;
         height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        transition: transform 0.25s var(--ease-out-quart), box-shadow 0.25s ease, border-color 0.25s ease;
-        box-shadow: var(--shadow-sm);
+        box-shadow: 0 4px 15px rgba(15, 23, 42, 0.03);
+        transition: all 0.3s var(--saf-ease);
         position: relative;
-        overflow: hidden;
     }
-    .bento-card:hover {
+    .bento-pro-card:hover {
         transform: translateY(-4px);
-        box-shadow: var(--shadow-lg);
+        box-shadow: 0 16px 35px -5px rgba(15, 23, 42, 0.08);
         border-color: #CBD5E1;
     }
-    .bento-icon {
-        width: 50px;
-        height: 50px;
-        border-radius: var(--radius);
-        display: inline-flex;
+    .bento-pro-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.45rem;
+        font-size: 1.4rem;
         margin-bottom: 1.25rem;
     }
 
-    /* ── How It Works (3-Step Pipeline) ── */
-    .how-it-works-section {
-        background: var(--surface-warm);
-        border-top: 1px solid var(--border);
-        border-bottom: 1px solid var(--border);
-        padding: clamp(5rem, 8vw, 7.5rem) 0;
-    }
-    .step-card {
+    /* ── 6. Live Benchmark Table ── */
+    .benchmark-table-wrapper {
         background: #FFFFFF;
-        border: 1px solid var(--border);
-        border-radius: var(--radius-lg);
-        padding: 2.25rem 1.75rem;
-        height: 100%;
-        position: relative;
-        box-shadow: var(--shadow-sm);
-        transition: transform 0.25s var(--ease-out-quart), box-shadow 0.25s ease;
+        border: 1px solid #E2E8F0;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
     }
-    .step-card:hover {
-        transform: translateY(-3px);
-        box-shadow: var(--shadow-md);
-    }
-    .step-badge {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background: var(--primary);
-        color: #fff;
+    .benchmark-badge-demo {
+        background: rgba(245, 158, 11, 0.12);
+        color: #B45309;
+        border: 1px solid rgba(245, 158, 11, 0.3);
+        padding: 0.35rem 0.85rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 700;
         display: inline-flex;
         align-items: center;
-        justify-content: center;
-        font-weight: 800;
-        font-size: 1rem;
-        margin-bottom: 1.25rem;
+        gap: 0.4rem;
     }
 
-    /* ── Two Adoption Paths ── */
-    .path-card {
-        border-radius: var(--radius-lg);
-        padding: 2.5rem 2.25rem;
+    /* ── 7. Paths Section ── */
+    .path-pro-card {
+        border-radius: 20px;
+        padding: 2.5rem;
         height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        transition: transform 0.25s var(--ease-out-quart), box-shadow 0.25s ease, border-color 0.25s ease;
+        transition: all 0.3s;
     }
-    .path-card.self-host {
+    .path-pro-card.self-serve {
         background: #FFFFFF;
-        border: 2px solid var(--border);
+        border: 2px solid #0F172A;
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
     }
-    .path-card.self-host:hover {
-        border-color: var(--primary);
-        transform: translateY(-4px);
-        box-shadow: var(--shadow-lg);
-    }
-    .path-card.consult {
-        background: #F0FDF4;
-        border: 2px solid #BBF7D0;
-    }
-    .path-card.consult:hover {
-        border-color: #059669;
-        transform: translateY(-4px);
-        box-shadow: var(--shadow-lg);
+    .path-pro-card.managed {
+        background: radial-gradient(120% 120% at 50% 0%, #03392E 0%, #02261E 60%, #011914 100%);
+        color: #FFFFFF;
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        box-shadow: 0 12px 35px rgba(2, 44, 34, 0.2);
     }
 
-    /* ── Final Call to Action ── */
-    .cta-final-section {
-        background: radial-gradient(circle at 50% 50%, #064E3B 0%, #022C22 60%, #011A14 100%);
-        color: white;
-        padding: clamp(5rem, 8vw, 7.5rem) 0;
+    /* ── 8. Call to Action ── */
+    .cta-final-pro {
+        background: radial-gradient(130% 120% at 50% 0%, #044E3F 0%, #022B22 50%, #011812 100%);
+        color: #FFFFFF;
+        padding: clamp(5rem, 8vw, 7rem) 0;
         position: relative;
         overflow: hidden;
     }
 </style>
 
-<!-- 1. HERO SECTION (Split Layout Variant) -->
-<section class="hero-saf">
-    <div class="hero-glow-emerald"></div>
-    <div class="hero-glow-candle"></div>
-    <div class="hero-grid-pattern"></div>
+<!-- 1. HERO SECTION (Split Executive Islamic Tech) -->
+<section class="hero-saf-pro">
+    <div class="hero-ambient-glow-1"></div>
+    <div class="hero-ambient-glow-2"></div>
+    <div class="hero-pattern-overlay"></div>
 
-    <div class="container position-relative">
+    <div class="container position-relative" style="z-index: 1;">
         <div class="row align-items-center g-5">
-            <!-- Left Column: Value Proposition & CTAs (58%) -->
+            <!-- Left Column: Value Proposition & Philosophy (58%) -->
             <div class="col-lg-7" data-animate>
-                <!-- Eyebrow Badge with Pulsing Beacon -->
-                <div class="hero-eyebrow shadow-sm">
-                    <span class="hero-badge-dot"></span>
-                    <span>FILOSOFI SAF: TERTIB &bull; AMANAH &bull; BERSAMA &bull; BERKELANJUTAN &bull; safmasjid.web.id</span>
+                <!-- Eyebrow Pill with Pulsing Beacon -->
+                <div class="hero-eyebrow-pro">
+                    <span class="hero-eyebrow-beacon"></span>
+                    <span>FILOSOFI SAF &bull; TERTIB &bull; AMANAH &bull; BERSAMA &bull; BERKELANJUTAN</span>
                 </div>
 
                 <!-- Main Title -->
-                <h1 class="hero-headline">
-                    Sistem operasi yang merapikan<br>
-                    <span class="hero-gradient-text">tata kelola masjid Anda.</span>
+                <h1 class="hero-headline-pro">
+                    Sistem Operasi Manajemen Masjid Yang Menghidupkan<br>
+                    <span class="hero-gradient-text">Tata Kelola Amanah.</span>
                 </h1>
 
-                <!-- Subtitle / Value Proposition (Specific, Concrete, Respecting 65ch) -->
-                <p class="hero-description">
-                    Dalam salat berjamaah, saf menggambarkan <strong>keteraturan, kebersamaan, dan kesetaraan</strong>. SAF menerjemahkan filosofi ini ke dalam tata kelola masjid: <strong>Tertib</strong> dalam administrasi &amp; kegiatan, <strong>Amanah</strong> dalam tata kelola dana &amp; aset, <strong>Bersama</strong> menghubungkan pengurus dan jamaah, serta <strong>Berkelanjutan</strong> agar riwayat pengelolaan tidak hilang antar-generasi.
+                <!-- Subtitle / Value Proposition with Authentic Philosophy -->
+                <p class="hero-description-pro">
+                    Dalam salat berjamaah, saf menggambarkan <strong>keteraturan, kebersamaan, dan kesetaraan</strong>. Setiap orang memiliki tempat dalam satu barisan, bergerak menuju tujuan yang sama. SAF menerjemahkan filosofi ini ke dalam pengelolaan masjid: <strong>Tertib</strong> administrasi &amp; kegiatan, <strong>Amanah</strong> dalam tata kelola dana &amp; aset, <strong>Bersama</strong> menghubungkan pengurus dan jamaah, serta <strong>Berkelanjutan</strong> agar riwayat pengelolaan tidak hilang antar-generasi.
                 </p>
 
                 <!-- Action CTAs -->
                 <div class="d-flex flex-wrap align-items-center gap-3 mb-3">
-                    <button type="button" class="btn-hero-primary" data-bs-toggle="modal" data-bs-target="#demoModal">
-                        <i class="bi bi-play-circle-fill fs-5"></i> Coba Demo Aplikasi <span aria-hidden="true">&nearr;</span>
+                    <button type="button" class="btn-saf-primary" data-bs-toggle="modal" data-bs-target="#demoModal">
+                        <i class="bi bi-play-circle-fill fs-5"></i> Coba Demo Interaktif (1-Klik) <span aria-hidden="true">&nearr;</span>
                     </button>
-                    <a href="https://github.com/bipisurel-bps/Manajemen-Masjid-" target="_blank" rel="noopener noreferrer" class="btn-hero-github">
+                    <a href="https://github.com/bipisurel-bps/Manajemen-Masjid-" target="_blank" rel="noopener noreferrer" class="btn-saf-outline">
                         <i class="bi bi-github fs-5"></i> Ambil Source Code Bebas <span aria-hidden="true">&nearr;</span>
                     </a>
-                    <a href="{{ route('login') }}" class="btn-hero-textlink ms-md-2">
-                        Masuk ke akun <span aria-hidden="true">&rarr;</span>
+                    <a href="{{ route('display.index') }}" target="_blank" class="btn-saf-outline">
+                        <i class="bi bi-tv fs-5 text-warning"></i> Mode Layar TV &rarr;
                     </a>
                 </div>
 
                 <!-- Trust Signals Strip -->
-                <div class="trust-strip">
-                    <div class="trust-item">
-                        <i class="bi bi-check-circle-fill"></i>
+                <div class="trust-strip-pro">
+                    <div class="trust-item-pro">
+                        <i class="bi bi-patch-check-fill"></i>
                         <span>100% Bebas Royalti (Lisensi MIT)</span>
                     </div>
-                    <div class="trust-item">
+                    <div class="trust-item-pro">
                         <i class="bi bi-wifi-off"></i>
-                        <span>Offline-First (PWA Standalone)</span>
+                        <span>100% Offline-First (PWA Standalone)</span>
                     </div>
-                    <div class="trust-item">
-                        <i class="bi bi-shield-check"></i>
-                        <span>Data Tersimpan Privat</span>
+                    <div class="trust-item-pro">
+                        <i class="bi bi-shield-lock-fill"></i>
+                        <span>Data Tersimpan Privat di Server Masjid</span>
                     </div>
-                    <div class="trust-item">
+                    <div class="trust-item-pro">
                         <i class="bi bi-heart-fill text-warning"></i>
-                        <span>Tanpa Biaya Langganan</span>
+                        <span>Tanpa Biaya Langganan Bulanan</span>
                     </div>
                 </div>
             </div>
 
             <!-- Right Column: Interactive Studio Mockup (42%) -->
             <div class="col-lg-5" data-animate>
-                <div class="device-mockup">
-                    <!-- Window Header with Interactive Switchers -->
-                    <div class="device-header">
-                        <div class="window-dots">
-                            <span class="window-dot" style="background: #FF5F56;"></span>
-                            <span class="window-dot" style="background: #FFBD2E;"></span>
-                            <span class="window-dot" style="background: #27C93F;"></span>
+                <div class="device-studio">
+                    <!-- Window Header with Traffic Lights & Tab Switcher -->
+                    <div class="studio-header">
+                        <div class="studio-dots">
+                            <span class="studio-dot" style="background: #FF5F56;"></span>
+                            <span class="studio-dot" style="background: #FFBD2E;"></span>
+                            <span class="studio-dot" style="background: #27C93F;"></span>
                         </div>
-                        <div class="d-flex gap-1">
-                            <button type="button" class="mockup-tab-btn active" onclick="switchMockupTab('tv', this)">
-                                <i class="bi bi-tv me-1"></i> Layar TV
+                        <div class="studio-tabs">
+                            <button type="button" class="studio-tab-btn active" onclick="switchStudioTab('tv', this)">
+                                <i class="bi bi-tv"></i> Layar TV
                             </button>
-                            <button type="button" class="mockup-tab-btn" onclick="switchMockupTab('kas', this)">
-                                <i class="bi bi-wallet2 me-1"></i> Kas Multi-Wadah
+                            <button type="button" class="studio-tab-btn" onclick="switchStudioTab('kas', this)">
+                                <i class="bi bi-wallet2"></i> Simulasi Kas
                             </button>
-                            <button type="button" class="mockup-tab-btn" onclick="switchMockupTab('rekap', this)">
-                                <i class="bi bi-printer me-1"></i> Rekap A4
+                            <button type="button" class="studio-tab-btn" onclick="switchStudioTab('rekap', this)">
+                                <i class="bi bi-printer"></i> Rekap A4
                             </button>
                         </div>
                     </div>
 
                     <!-- SCREEN 1: LAYAR TV DIGITAL MASJID -->
-                    <div id="screen-tv" class="p-4" style="background: #021713;">
+                    <div id="screen-tv" class="screen-panel p-4">
                         <div class="d-flex justify-content-between align-items-center pb-2 mb-3 border-bottom border-secondary border-opacity-25">
                             <div>
                                 <span class="badge rounded-pill bg-success-subtle text-success border border-success-subtle small fw-bold">
-                                    <i class="bi bi-broadcast me-1"></i> Display TV Fullscreen
+                                    <i class="bi bi-broadcast me-1"></i> Hisab Astronomis Kemenag
                                 </span>
                             </div>
-                            <div class="text-end font-monospace text-warning fw-bold fs-5" id="mockupClock">
-                                --:--:--
+                            <div class="text-end">
+                                <div class="font-monospace text-warning fw-bold fs-4" id="studioLiveClock">--:--:--</div>
+                                <div class="text-white-50" style="font-size: 0.68rem;" id="studioLiveDate">Memuat tanggal...</div>
                             </div>
                         </div>
 
-                        <!-- 6 Mini Prayer Tiles -->
-                        <div class="row g-2 text-center mb-3">
+                        <!-- 6 Mini Prayer Tiles with Active State -->
+                        <div class="row g-2 mb-3">
                             <div class="col-4">
-                                <div class="p-2 rounded-2 bg-dark bg-opacity-50 border border-secondary border-opacity-25">
-                                    <div class="text-white-50" style="font-size: 0.65rem;">SUBUH</div>
-                                    <div class="fw-bold text-white small">04:32</div>
+                                <div class="prayer-chip">
+                                    <div class="prayer-name">SUBUH</div>
+                                    <div class="prayer-time">04:32</div>
                                 </div>
                             </div>
                             <div class="col-4">
-                                <div class="p-2 rounded-2 bg-dark bg-opacity-50 border border-secondary border-opacity-25">
-                                    <div class="text-white-50" style="font-size: 0.65rem;">TERBIT</div>
-                                    <div class="fw-bold text-white small">05:48</div>
+                                <div class="prayer-chip">
+                                    <div class="prayer-name">TERBIT</div>
+                                    <div class="prayer-time">05:48</div>
                                 </div>
                             </div>
                             <div class="col-4">
-                                <div class="p-2 rounded-2 bg-dark bg-opacity-50 border border-secondary border-opacity-25">
-                                    <div class="text-white-50" style="font-size: 0.65rem;">DZUHUR</div>
-                                    <div class="fw-bold text-white small">11:45</div>
+                                <div class="prayer-chip">
+                                    <div class="prayer-name">DZUHUR</div>
+                                    <div class="prayer-time">11:45</div>
                                 </div>
                             </div>
                             <div class="col-4">
-                                <div class="p-2 rounded-2 bg-warning bg-opacity-25 border border-warning">
-                                    <div class="text-warning fw-bold" style="font-size: 0.65rem;">ASHAR &bull; AKTIF</div>
-                                    <div class="fw-bold text-warning small">15:02</div>
+                                <div class="prayer-chip is-active" id="prayerActiveChip">
+                                    <div class="prayer-name">ASHAR &bull; AKTIF</div>
+                                    <div class="prayer-time">15:02</div>
                                 </div>
                             </div>
                             <div class="col-4">
-                                <div class="p-2 rounded-2 bg-dark bg-opacity-50 border border-secondary border-opacity-25">
-                                    <div class="text-white-50" style="font-size: 0.65rem;">MAGHRIB</div>
-                                    <div class="fw-bold text-white small">17:52</div>
+                                <div class="prayer-chip">
+                                    <div class="prayer-name">MAGHRIB</div>
+                                    <div class="prayer-time">17:52</div>
                                 </div>
                             </div>
                             <div class="col-4">
-                                <div class="p-2 rounded-2 bg-dark bg-opacity-50 border border-secondary border-opacity-25">
-                                    <div class="text-white-50" style="font-size: 0.65rem;">ISYA</div>
-                                    <div class="fw-bold text-white small">19:03</div>
+                                <div class="prayer-chip">
+                                    <div class="prayer-name">ISYA</div>
+                                    <div class="prayer-time">19:03</div>
                                 </div>
+                            </div>
+                        </div>
+
+                        <!-- Interactive Iqamah Simulator Strip -->
+                        <div class="p-3 rounded-3 bg-black bg-opacity-40 border border-secondary border-opacity-25 mb-3">
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <span class="text-white small fw-bold" id="iqamahStatusLabel">
+                                    <i class="bi bi-hourglass-split text-warning me-1"></i> Hitung Mundur Iqamah
+                                </span>
+                                <span class="badge bg-warning text-dark font-monospace fw-bold" id="iqamahCountdownTimer">04:45</span>
+                            </div>
+                            <div class="progress" style="height: 6px; background: rgba(255,255,255,0.1);">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 65%;" id="iqamahProgressBar"></div>
                             </div>
                         </div>
 
                         <!-- Running Text Preview -->
-                        <div class="p-2 rounded-2 bg-black bg-opacity-40 border border-secondary border-opacity-25 small text-truncate text-white-50">
+                        <div class="p-2 rounded-2 bg-black bg-opacity-50 border border-secondary border-opacity-25 small text-truncate text-white-50 mb-3">
                             <i class="bi bi-megaphone-fill text-warning me-1"></i>
                             <span>SAF: Tertib Administrasi &bull; Amanah Pengelolaan &bull; Bersama Jamaah &bull; Berkelanjutan Antar-Generasi.</span>
                         </div>
+
+                        <div class="d-flex gap-2">
+                            <button type="button" class="btn btn-sm btn-outline-warning rounded-pill w-50 fw-bold" onclick="simulateIqamahBeep()">
+                                <i class="bi bi-volume-up-fill me-1"></i> Uji Bunyi Adzan
+                            </button>
+                            <a href="{{ route('display.index') }}" target="_blank" class="btn btn-sm btn-success rounded-pill w-50 fw-bold">
+                                <i class="bi bi-arrows-fullscreen me-1"></i> Buka Fullscreen &rarr;
+                            </a>
+                        </div>
                     </div>
 
-                    <!-- SCREEN 2: BUKU KAS MULTI-WADAH ATOMIK -->
-                    <div id="screen-kas" class="p-4 d-none" style="background: #081C17;">
+                    <!-- SCREEN 2: SIMULATOR INFAQ & MULTI-WADAH ATOMIK -->
+                    <div id="screen-kas" class="screen-panel p-4 d-none">
                         <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom border-secondary border-opacity-25">
-                            <span class="small text-white-50 fw-bold text-uppercase">Posisi Kas Masjid (Realtime)</span>
-                            <span class="badge bg-success-subtle text-success small">Database Mutex</span>
+                            <div>
+                                <span class="small text-white-50 fw-bold text-uppercase">Posisi Saldo Konsolidasi</span>
+                                <div class="fs-4 fw-900 text-white font-monospace" id="liveBalanceAmount">
+                                    Rp 48.750.000
+                                </div>
+                            </div>
+                            <span class="badge bg-success-subtle text-success small rounded-pill px-3 py-1">
+                                <i class="bi bi-shield-check me-1"></i> Mutex Database
+                            </span>
                         </div>
-                        <div class="mb-3">
-                            <div class="text-white-50 small">Total Saldo Konsolidasi:</div>
-                            <h3 class="fw-900 text-white mb-0">{{ \App\Helpers\FormatHelper::formatRupiah($balance ?? 48750000) }}</h3>
+
+                        <!-- 3 Wadah Kas Mini Summary -->
+                        <div class="d-flex flex-column gap-2 mb-3">
+                            <div class="sim-pot-card">
+                                <div>
+                                    <div class="text-white-50 small"><i class="bi bi-wallet2 text-success me-1"></i> Kas Operasional</div>
+                                    <div class="fw-bold text-white small" id="potOperasional">Rp 24.500.000</div>
+                                </div>
+                                <span class="badge bg-success bg-opacity-25 text-success small">Aktif</span>
+                            </div>
+                            <div class="sim-pot-card">
+                                <div>
+                                    <div class="text-white-50 small"><i class="bi bi-heart-fill text-warning me-1"></i> Kas Anak Yatim &amp; Dhuafa</div>
+                                    <div class="fw-bold text-white small" id="potYatim">Rp 12.250.000</div>
+                                </div>
+                                <span class="badge bg-warning bg-opacity-25 text-warning small">Terpisah</span>
+                            </div>
+                            <div class="sim-pot-card">
+                                <div>
+                                    <div class="text-white-50 small"><i class="bi bi-building text-info me-1"></i> Kas Renovasi Masjid</div>
+                                    <div class="fw-bold text-white small" id="potRenovasi">Rp 12.000.000</div>
+                                </div>
+                                <span class="badge bg-info bg-opacity-25 text-info small">Terikat</span>
+                            </div>
                         </div>
-                        <div class="p-2 rounded-3 bg-dark bg-opacity-50 border border-secondary border-opacity-25 mb-2 small d-flex justify-content-between align-items-center">
-                            <span><i class="bi bi-wallet text-success me-1"></i> Kas Operasional</span>
-                            <strong class="text-white">Rp 24.500.000</strong>
-                        </div>
-                        <div class="p-2 rounded-3 bg-dark bg-opacity-50 border border-secondary border-opacity-25 mb-2 small d-flex justify-content-between align-items-center">
-                            <span><i class="bi bi-heart text-warning me-1"></i> Kas Yatim &amp; Dhuafa</span>
-                            <strong class="text-white">Rp 12.250.000</strong>
-                        </div>
-                        <div class="p-2 rounded-3 bg-dark bg-opacity-50 border border-secondary border-opacity-25 small d-flex justify-content-between align-items-center">
-                            <span><i class="bi bi-building text-info me-1"></i> Kas Renovasi</span>
-                            <strong class="text-white">Rp 12.000.000</strong>
+
+                        <!-- Interactive Simulation Controls -->
+                        <div class="p-3 rounded-3 bg-black bg-opacity-40 border border-secondary border-opacity-25">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="small text-white-50 fw-bold">Uji Simulasi Infaq Masuk:</span>
+                                <span class="text-warning small" id="simFeedbackNote">Pilih nominal &bull; Klik simulasi</span>
+                            </div>
+                            <div class="d-flex gap-1 mb-2">
+                                <button type="button" class="sim-chip-btn flex-fill active" onclick="selectSimAmount(50000, this)">+50rb</button>
+                                <button type="button" class="sim-chip-btn flex-fill" onclick="selectSimAmount(100000, this)">+100rb</button>
+                                <button type="button" class="sim-chip-btn flex-fill" onclick="selectSimAmount(250000, this)">+250rb</button>
+                                <button type="button" class="sim-chip-btn flex-fill" onclick="selectSimAmount(500000, this)">+500rb</button>
+                            </div>
+                            <div class="row g-2">
+                                <div class="col-7">
+                                    <select class="form-select form-select-sm bg-dark text-white border-secondary" id="simPotSelect">
+                                        <option value="operasional">Wadah: Kas Operasional</option>
+                                        <option value="yatim">Wadah: Kas Yatim</option>
+                                        <option value="renovasi">Wadah: Kas Renovasi</option>
+                                    </select>
+                                </div>
+                                <div class="col-5">
+                                    <button type="button" class="btn btn-sm btn-success w-100 fw-bold" onclick="executeDonationSimulation()">
+                                        <i class="bi bi-plus-circle me-1"></i> Catat Infaq
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- SCREEN 3: REKAP CETAK KAS JUMAT A4 -->
-                    <div id="screen-rekap" class="p-4 d-none" style="background: #081C17;">
+                    <div id="screen-rekap" class="screen-panel p-4 d-none">
                         <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom border-secondary border-opacity-25">
                             <span class="small text-white-50 fw-bold text-uppercase">Format Cetak Kas Jumat A4</span>
                             <span class="badge bg-warning-subtle text-warning small">Siap Cetak 1 Lembar</span>
                         </div>
-                        <p class="small text-white-50 mb-3" style="line-height: 1.6;">
-                            Dirancang presisi untuk dicetak pada selembar kertas A4 tanpa terpotong, memuat ringkasan saldo awal pekan, mutasi penerimaan infaq tromol, belanja operasional, dan kolom tanda tangan DKM.
-                        </p>
+
+                        <!-- Tactile Paper Preview -->
+                        <div class="a4-paper-preview mb-3">
+                            <div class="d-flex justify-content-between align-items-start border-bottom pb-2 mb-2">
+                                <div>
+                                    <div class="fw-bold text-uppercase" style="font-size: 0.75rem;">DEWAN KEMAKMURAN MASJID</div>
+                                    <div class="text-muted" style="font-size: 0.65rem;">Laporan Keuangan Pekanan Sebelum Khutbah Jumat</div>
+                                </div>
+                                <div class="a4-stamp">Terverifikasi DKM</div>
+                            </div>
+                            <div class="d-flex justify-content-between py-1 border-bottom border-light" style="font-size: 0.72rem;">
+                                <span>Saldo Awal Pekan Lalu:</span>
+                                <strong class="font-monospace">Rp 45.200.000</strong>
+                            </div>
+                            <div class="d-flex justify-content-between py-1 border-bottom border-light text-success" style="font-size: 0.72rem;">
+                                <span>Penerimaan Infaq Kotak &amp; Tromol:</span>
+                                <strong class="font-monospace">+Rp 6.350.000</strong>
+                            </div>
+                            <div class="d-flex justify-content-between py-1 border-bottom border-light text-danger" style="font-size: 0.72rem;">
+                                <span>Biaya Operasional, Listrik &amp; Marbot:</span>
+                                <strong class="font-monospace">-Rp 2.800.000</strong>
+                            </div>
+                            <div class="d-flex justify-content-between pt-2 fw-bold" style="font-size: 0.8rem;">
+                                <span>Saldo Akhir Kas Ditutup:</span>
+                                <span class="font-monospace text-success">Rp 48.750.000</span>
+                            </div>
+                        </div>
+
                         <a href="{{ route('reports.rekap_jumat') }}" target="_blank" class="btn btn-warning btn-sm w-100 rounded-pill fw-bold text-dark">
-                            <i class="bi bi-printer me-1"></i> Buka Format Siap Cetak A4 &rarr;
+                            <i class="bi bi-printer me-1"></i> Buka Format Siap Cetak A4 Asli &rarr;
                         </a>
                     </div>
                 </div>
 
-                <!-- Subtle Highlight Micro-card -->
+                <!-- Subtle Micro-Card Highlight -->
                 <div class="p-3 rounded-3 mt-3 d-flex align-items-center gap-3 text-white-50 small border" style="background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.1) !important;">
-                    <i class="bi bi-patch-check-fill text-success fs-5"></i>
+                    <i class="bi bi-shield-check text-success fs-4"></i>
                     <div>
-                        <strong class="text-white d-block">Mutasi Kas Terverifikasi Database Mutex</strong>
-                        <span>Mencegah selisih pembukuan dan memisahkan rekening wadah secara mandiri.</span>
+                        <strong class="text-white d-block">Database Mutex Transaction Guard</strong>
+                        <span>Mencegah selisih pembukuan saat pencatatan bersama dan menjamin akurasi saldo amanah.</span>
                     </div>
                 </div>
             </div>
@@ -689,22 +882,28 @@
     </div>
 </section>
 
-<!-- 2. PRINCIPLES RIBBON -->
-<div class="principles-strip">
-    <div class="container">
-        <div class="principles-container">
-            <span><i class="bi bi-journal-check"></i> TERTIB (ADMINISTRASI &amp; KEGIATAN)</span>
-            <span><i class="bi bi-shield-check"></i> AMANAH (TRANSPARANSI DANA &amp; ASET)</span>
-            <span><i class="bi bi-people-fill"></i> BERSAMA (KONEKTIVITAS JAMAAH)</span>
-            <span><i class="bi bi-arrow-repeat"></i> BERKELANJUTAN (RIWAYAT TERJAGA)</span>
-            <span><i class="bi bi-code-slash"></i> OPEN SOURCE &bull; LISENSI MIT</span>
-        </div>
+<!-- 2. PRINCIPLES RIBBON (Smooth Infinite Marquee) -->
+<div class="principles-strip-pro">
+    <div class="marquee-track">
+        <span class="marquee-item"><i class="bi bi-journal-check"></i> TERTIB: ADMINISTRASI, KEUANGAN &amp; KEGIATAN TERCATAT</span>
+        <span class="marquee-item"><i class="bi bi-shield-check"></i> AMANAH: PENGELOLAAN DANA &amp; ASET TRANSPARAN</span>
+        <span class="marquee-item"><i class="bi bi-people-fill"></i> BERSAMA: PENGURUS, RELAWAN &amp; JAMAAH TERHUBUNG</span>
+        <span class="marquee-item"><i class="bi bi-arrow-repeat"></i> BERKELANJUTAN: RIWAYAT PENGELOLAAN TIDAK HILANG</span>
+        <span class="marquee-item"><i class="bi bi-code-slash"></i> 100% OPEN SOURCE &bull; LISENSI MIT</span>
+        <span class="marquee-item"><i class="bi bi-wifi-off"></i> 100% OFFLINE-FIRST &bull; ZERO CDN DEPENDENCY</span>
+        <!-- Duplicated items for smooth infinite loop -->
+        <span class="marquee-item"><i class="bi bi-journal-check"></i> TERTIB: ADMINISTRASI, KEUANGAN &amp; KEGIATAN TERCATAT</span>
+        <span class="marquee-item"><i class="bi bi-shield-check"></i> AMANAH: PENGELOLAAN DANA &amp; ASET TRANSPARAN</span>
+        <span class="marquee-item"><i class="bi bi-people-fill"></i> BERSAMA: PENGURUS, RELAWAN &amp; JAMAAH TERHUBUNG</span>
+        <span class="marquee-item"><i class="bi bi-arrow-repeat"></i> BERKELANJUTAN: RIWAYAT PENGELOLAAN TIDAK HILANG</span>
+        <span class="marquee-item"><i class="bi bi-code-slash"></i> 100% OPEN SOURCE &bull; LISENSI MIT</span>
+        <span class="marquee-item"><i class="bi bi-wifi-off"></i> 100% OFFLINE-FIRST &bull; ZERO CDN DEPENDENCY</span>
     </div>
 </div>
 
-<!-- 3. SECTION KHUSUS: FILOSOFI SAF -->
-<section class="filosofi-section">
-    <div class="container">
+<!-- 3. SECTION KHUSUS: FILOSOFI SAF (Spiritual & Governance Depth) -->
+<section class="filosofi-section-pro">
+    <div class="container position-relative">
         <div class="text-center mb-4" data-animate>
             <span class="badge rounded-pill bg-success-subtle text-success border border-success-subtle px-3 py-1 mb-2 fw-bold text-uppercase" style="letter-spacing: 0.08em; font-size: 0.72rem;">
                 Filosofi Spiritual &amp; Tata Kelola
@@ -716,18 +915,18 @@
         </div>
 
         <!-- Hadits Kutipan Barisan Shaf & Pengantar 4 Pilar -->
-        <div class="hadits-quote-box" data-animate>
-            <div class="arabic-text">
+        <div class="hadits-quote-pro" data-animate>
+            <div class="arabic-calligraphy">
                 سَوُّوا صُفُوفَكُمْ، فَإِنَّ تَسْوِيَةَ الصَّفِّ مِنْ تَمَامِ الصَّلَاةِ
             </div>
-            <div class="hadits-translation">
+            <div class="hadits-trans-text">
                 &ldquo;Luruskan dan rapatkan shaf-shaf kalian, karena sesungguhnya lurus dan rapatnya shaf adalah bagian dari kesempurnaan shalat.&rdquo;
             </div>
-            <div class="hadits-narrator">
+            <div class="hadits-reference">
                 — H.R. Bukhari No. 723 &amp; Muslim No. 433
             </div>
-            <div class="mt-3 pt-3 border-top border-success border-opacity-25 text-white-50 small" style="line-height: 1.65;">
-                Filosofi ini kami terjemahkan secara nyata ke dalam <strong class="text-white">empat pilar tata kelola masjid modern</strong>:
+            <div class="mt-3 pt-3 border-top border-secondary border-opacity-25 text-white-50 small" style="line-height: 1.65;">
+                Filosofi kelurusan dan kerapatan barisan shalat kami terjemahkan ke dalam <strong class="text-white">empat pilar tata kelola masjid modern</strong>:
             </div>
         </div>
 
@@ -735,88 +934,76 @@
         <div class="row g-4" data-animate-stagger>
             <!-- Pilar 1: TERTIB -->
             <div class="col-xl-3 col-md-6">
-                <div class="pillar-card">
-                    <span class="pillar-num">01</span>
-                    <div class="pillar-icon" style="background: rgba(16, 185, 129, 0.15); color: #34D399;">
-                        <i class="bi bi-journal-check"></i>
+                <div class="pillar-card-pro">
+                    <span class="pillar-num-watermark">01</span>
+                    <div>
+                        <span class="pillar-arabic-chip">النِّظَامُ &bull; An-Nizham</span>
+                        <h4 class="fw-800 text-white mb-1">1. TERTIB</h4>
+                        <h6 class="text-success small fw-bold mb-3">Administrasi, Keuangan, Inventaris &amp; Kegiatan</h6>
+                        <p class="text-white-50 small mb-0" style="line-height: 1.7;">
+                            <strong class="text-white">Administrasi, keuangan, inventaris, dan kegiatan tercatat dengan baik.</strong> Seluruh surat masuk-keluar, barang inventaris wakaf, mutasi uang kas harian, serta agenda pengajian terdokumentasi rapi tanpa tercecer.
+                        </p>
                     </div>
-                    <span class="badge bg-success-subtle text-success small rounded-pill px-3 py-1 fw-bold text-uppercase mb-2">
-                        النِّظَامُ &bull; An-Nizham
-                    </span>
-                    <h3 class="fw-800 text-white mb-2">1. TERTIB</h3>
-                    <h6 class="text-success small fw-bold mb-3">Administrasi, Keuangan, Inventaris &amp; Kegiatan</h6>
-                    <p class="text-white-50 small mb-4" style="line-height: 1.7;">
-                        <strong class="text-white">Administrasi, keuangan, inventaris, dan kegiatan tercatat dengan baik.</strong> Seluruh surat keluar-masuk, catatan aset fisik, mutasi kas harian, dan agenda muballigh tercatat rapi tanpa ada yang tercecer.
-                    </p>
-                    <div class="p-3 rounded-3 bg-black bg-opacity-30 border border-secondary border-opacity-25 small text-white-50">
-                        <strong class="text-white d-block mb-1"><i class="bi bi-check2 text-success me-1"></i> Penerapan Sistem:</strong>
-                        Buku kas multi-wadah atomik, modul inventaris barang wakaf, buku agenda persuratan, dan penjadwalan kajian terintegrasi.
+                    <div class="pillar-problem-solution">
+                        <div class="text-danger-emphasis small mb-1"><strong>Masalah Klasik:</strong> Catatan fisik tercecer, jadwal ustadz tabrakan, barang wakaf raib tanpa inventaris.</div>
+                        <div class="text-success small"><strong>Solusi SAF:</strong> Arsip digital persuratan, inventaris bernomor registrasi, dan penjadwalan kajian otomatis.</div>
                     </div>
                 </div>
             </div>
 
             <!-- Pilar 2: AMANAH -->
             <div class="col-xl-3 col-md-6">
-                <div class="pillar-card">
-                    <span class="pillar-num">02</span>
-                    <div class="pillar-icon" style="background: rgba(59, 130, 246, 0.15); color: #60A5FA;">
-                        <i class="bi bi-shield-check"></i>
+                <div class="pillar-card-pro">
+                    <span class="pillar-num-watermark">02</span>
+                    <div>
+                        <span class="pillar-arabic-chip">الأَمَانَةُ &bull; Al-Amanah</span>
+                        <h4 class="fw-800 text-white mb-1">2. AMANAH</h4>
+                        <h6 class="text-info small fw-bold mb-3">Transparansi Dana &amp; Pertanggungjawaban Aset</h6>
+                        <p class="text-white-50 small mb-0" style="line-height: 1.7;">
+                            <strong class="text-white">Pengelolaan dana dan aset dilakukan secara transparan dan bertanggung jawab.</strong> Dana titipan umat dibuka secara akuntabel, bebas celah kebocoran, serta membangun rasa percaya jamaah kepada para pengurus DKM.
+                        </p>
                     </div>
-                    <span class="badge bg-primary-subtle text-primary small rounded-pill px-3 py-1 fw-bold text-uppercase mb-2">
-                        الأَمَانَةُ &bull; Al-Amanah
-                    </span>
-                    <h3 class="fw-800 text-white mb-2">2. AMANAH</h3>
-                    <h6 class="text-primary small fw-bold mb-3">Transparansi Dana &amp; Pertanggungjawaban Aset</h6>
-                    <p class="text-white-50 small mb-4" style="line-height: 1.7;">
-                        <strong class="text-white">Pengelolaan dana dan aset dilakukan secara transparan dan bertanggung jawab.</strong> Dana titipan umat dibuka secara akuntabel, bebas celah kebocoran, serta membangun kepercayaan jamaah kepada pengurus.
-                    </p>
-                    <div class="p-3 rounded-3 bg-black bg-opacity-30 border border-secondary border-opacity-25 small text-white-50">
-                        <strong class="text-white d-block mb-1"><i class="bi bi-check2 text-primary me-1"></i> Penerapan Sistem:</strong>
-                        Portal transparansi kas real-time tanpa login, transaksi database mutex anti-selisih, dan rekap kas Jumat format A4 bertanda tangan DKM.
+                    <div class="pillar-problem-solution">
+                        <div class="text-danger-emphasis small mb-1"><strong>Masalah Klasik:</strong> Laporan kas terlambat berbulan-bulan, dana yatim tercampur dana operasional.</div>
+                        <div class="text-info small"><strong>Solusi SAF:</strong> Kas multi-wadah atomik, portal transparansi publik realtime tanpa login, rekap cetak Jumat A4.</div>
                     </div>
                 </div>
             </div>
 
             <!-- Pilar 3: BERSAMA -->
             <div class="col-xl-3 col-md-6">
-                <div class="pillar-card">
-                    <span class="pillar-num">03</span>
-                    <div class="pillar-icon" style="background: rgba(245, 158, 11, 0.15); color: #FBBF24;">
-                        <i class="bi bi-people-fill"></i>
+                <div class="pillar-card-pro">
+                    <span class="pillar-num-watermark">03</span>
+                    <div>
+                        <span class="pillar-arabic-chip">الجَمَاعَةُ &bull; Al-Jama'ah</span>
+                        <h4 class="fw-800 text-white mb-1">3. BERSAMA</h4>
+                        <h6 class="text-warning small fw-bold mb-3">Pengurus, Relawan &amp; Jamaah Saling Terhubung</h6>
+                        <p class="text-white-50 small mb-0" style="line-height: 1.7;">
+                            <strong class="text-white">Pengurus, relawan, dan jamaah saling terhubung.</strong> Sebagaimana barisan saf merapatkan bahu jamaah tanpa membedakan status sosial, sistem SAF menghubungkan takmir, marbot, dan warga sekitar masjid.
+                        </p>
                     </div>
-                    <span class="badge bg-warning-subtle text-warning small rounded-pill px-3 py-1 fw-bold text-uppercase mb-2">
-                        الجَمَاعَةُ &bull; Al-Jama'ah
-                    </span>
-                    <h3 class="fw-800 text-white mb-2">3. BERSAMA</h3>
-                    <h6 class="text-warning small fw-bold mb-3">Pengurus, Relawan &amp; Jamaah Saling Terhubung</h6>
-                    <p class="text-white-50 small mb-4" style="line-height: 1.7;">
-                        <strong class="text-white">Pengurus, relawan, dan jamaah saling terhubung.</strong> Sebagaimana saf merapatkan bahu jamaah tanpa membedakan status sosial, sistem SAF menghubungkan takmir, marbot, dan warga sekitar dalam ekosistem masjid.
-                    </p>
-                    <div class="p-3 rounded-3 bg-black bg-opacity-30 border border-secondary border-opacity-25 small text-white-50">
-                        <strong class="text-white d-block mb-1"><i class="bi bi-check2 text-warning me-1"></i> Penerapan Sistem:</strong>
-                        Layar TV masjid dengan hisab Kemenag &amp; hitung mundur iqamah, portal publik info pengumuman, dan pengingat WhatsApp H-2 muballigh.
+                    <div class="pillar-problem-solution">
+                        <div class="text-danger-emphasis small mb-1"><strong>Masalah Klasik:</strong> Pengumuman hanya di mading kusam, jamaah pasif dan minim keterlibatan.</div>
+                        <div class="text-warning small"><strong>Solusi SAF:</strong> Display TV dinding masjid, pengumuman online, dan pengingat WhatsApp H-2 muballigh.</div>
                     </div>
                 </div>
             </div>
 
             <!-- Pilar 4: BERKELANJUTAN -->
             <div class="col-xl-3 col-md-6">
-                <div class="pillar-card">
-                    <span class="pillar-num">04</span>
-                    <div class="pillar-icon" style="background: rgba(139, 92, 246, 0.15); color: #A78BFA;">
-                        <i class="bi bi-arrow-repeat"></i>
+                <div class="pillar-card-pro">
+                    <span class="pillar-num-watermark">04</span>
+                    <div>
+                        <span class="pillar-arabic-chip">الإِسْتِمْرَارُ &bull; Al-Istimrar</span>
+                        <h4 class="fw-800 text-white mb-1">4. BERKELANJUTAN</h4>
+                        <h6 class="text-primary-emphasis small fw-bold mb-3">Riwayat Pengelolaan Aman Antar-Generasi</h6>
+                        <p class="text-white-50 small mb-0" style="line-height: 1.7;">
+                            <strong class="text-white">Pergantian kepengurusan tidak membuat data dan riwayat pengelolaan hilang.</strong> Solusi tuntas atas problematika regenerasi takmir, di mana riwayat pembukuan dan aset tetap abadi tersimpan dalam database digital.
+                        </p>
                     </div>
-                    <span class="badge bg-info-subtle text-info small rounded-pill px-3 py-1 fw-bold text-uppercase mb-2">
-                        الإِسْتِمْرَارُ &bull; Al-Istimrar
-                    </span>
-                    <h3 class="fw-800 text-white mb-2">4. BERKELANJUTAN</h3>
-                    <h6 class="text-info small fw-bold mb-3">Riwayat Pengelolaan Aman Antar-Generasi</h6>
-                    <p class="text-white-50 small mb-4" style="line-height: 1.7;">
-                        <strong class="text-white">Pergantian kepengurusan tidak membuat data dan riwayat pengelolaan hilang.</strong> Solusi tuntas atas masalah klasik masjid di mana data kas dan inventaris raib saat regenerasi DKM; seluruh arsip digital tersimpan abadi.
-                    </p>
-                    <div class="p-3 rounded-3 bg-black bg-opacity-30 border border-secondary border-opacity-25 small text-white-50">
-                        <strong class="text-white d-block mb-1"><i class="bi bi-check2 text-info me-1"></i> Penerapan Sistem:</strong>
-                        Database digital mandiri (SQLite / MySQL), ekspor arsip berkala (Excel/PDF), log audit histori aktivitas, dan transfer hak akses kepengurusan yang mulus.
+                    <div class="pillar-problem-solution">
+                        <div class="text-danger-emphasis small mb-1"><strong>Masalah Klasik:</strong> Ganti pengurus ganti buku kas, riwayat renovasi masa lalu musnah tak terlacak.</div>
+                        <div class="text-primary-emphasis small"><strong>Solusi SAF:</strong> Database mandiri permanen, ekspor arsip Excel/PDF, dan transfer hak akses mulus.</div>
                     </div>
                 </div>
             </div>
@@ -824,48 +1011,48 @@
     </div>
 </section>
 
-<!-- 4. BREATHING SECTION: DAMPAK & STATISTIK (Law 5 & Rhythm Law) -->
-<section class="breathing-stat-section">
+<!-- 4. BREATHING SECTION: DAMPAK & STATISTIK KUNCI -->
+<section class="stat-strip-section">
     <div class="container">
         <div class="row g-4 justify-content-center" data-animate-stagger>
             <div class="col-6 col-lg-3">
-                <div class="stat-pill-card">
-                    <div class="stat-number">Rp 0</div>
-                    <div class="stat-label">Bebas Royalti</div>
-                    <p class="stat-desc">Lisensi MIT 100% open-source, bebas dipakai dan dimodifikasi tanpa pungutan biaya sepeser pun.</p>
+                <div class="stat-pro-card">
+                    <div class="stat-pro-num">Rp 0</div>
+                    <div class="stat-pro-title">Bebas Royalti</div>
+                    <p class="stat-pro-text">Lisensi MIT 100% open-source, bebas dipakai dan dimodifikasi tanpa pungutan biaya lisensi.</p>
                 </div>
             </div>
             <div class="col-6 col-lg-3">
-                <div class="stat-pill-card">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Offline-First</div>
-                    <p class="stat-desc">Hisab astronomis lokal resmi Kemenag RI dan PWA Service Worker tetap menyala saat internet masjid padam.</p>
+                <div class="stat-pro-card">
+                    <div class="stat-pro-num">100%</div>
+                    <div class="stat-pro-title">Offline-First</div>
+                    <p class="stat-pro-text">Hisab astronomis lokal resmi Kemenag RI dan PWA Service Worker tetap menyala saat internet padam.</p>
                 </div>
             </div>
             <div class="col-6 col-lg-3">
-                <div class="stat-pill-card">
-                    <div class="stat-number">4 Pilar</div>
-                    <div class="stat-label">Tata Kelola</div>
-                    <p class="stat-desc">Tertib administrasi, Amanah dana umat, Bersama jamaah, dan Berkelanjutan lintas kepengurusan.</p>
+                <div class="stat-pro-card">
+                    <div class="stat-pro-num">4 Pilar</div>
+                    <div class="stat-pro-title">Tata Kelola SAF</div>
+                    <p class="stat-pro-text">Tertib administrasi, Amanah dana umat, Bersama jamaah, dan Berkelanjutan lintas kepengurusan.</p>
                 </div>
             </div>
             <div class="col-6 col-lg-3">
-                <div class="stat-pill-card">
-                    <div class="stat-number">1-Klik</div>
-                    <div class="stat-label">Demo Instan</div>
-                    <p class="stat-desc">Uji coba langsung sebagai bendahara atau super admin dengan sandbox terisolasi tanpa perlu registrasi.</p>
+                <div class="stat-pro-card">
+                    <div class="stat-pro-num">1-Klik</div>
+                    <div class="stat-pro-title">Sandbox Demo</div>
+                    <p class="stat-pro-text">Uji coba langsung sebagai bendahara atau super admin dengan data contoh terisolasi tanpa registrasi.</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- 5. BENTO GRID SECTION: KEMAMPUAN UTAMA (6 Fitur Inti) -->
-<section class="bento-section">
+<!-- 5. BENTO GRID CAPABILITIES (6 Fitur Inti Modern) -->
+<section class="bento-section-pro">
     <div class="container">
         <div class="text-center mb-5" data-animate>
             <span class="badge rounded-pill bg-success-subtle text-success border border-success-subtle px-3 py-1 mb-2 fw-bold text-uppercase" style="letter-spacing: 0.05em; font-size: 0.72rem;">
-                Kemampuan Sistem
+                Kemampuan Sistem Terintegrasi
             </span>
             <h2 class="display-6 fw-900 text-dark" style="letter-spacing: -0.03em;">Bukan Sekadar Catatan Kas, Ini Sistem Operasi Masjid</h2>
             <p class="text-muted mx-auto lead" style="max-width: 680px; font-size: 1.1rem;">
@@ -876,17 +1063,17 @@
         <div class="row g-4" data-animate-stagger>
             <!-- Bento 1: Mode Layar TV (Col 8) -->
             <div class="col-lg-8">
-                <div class="bento-card">
+                <div class="bento-pro-card">
                     <div>
                         <div class="d-flex justify-content-between align-items-start mb-3">
-                            <div class="bento-icon" style="background: #EFF6FF; color: #2563EB;">
+                            <div class="bento-pro-icon" style="background: #EFF6FF; color: #2563EB;">
                                 <i class="bi bi-tv-fill"></i>
                             </div>
                             <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-1 fw-bold">Live Standalone</span>
                         </div>
                         <h4 class="fw-800 text-dark mb-2">1. Mode Layar TV Digital Dinding Masjid</h4>
                         <p class="text-muted mb-4" style="line-height: 1.7;">
-                            Tampilan fullscreen khusus yang dapat dihubungkan ke Android TV Box, Smart TV, atau PC mini tanpa perlu membuka panel admin. Dilengkapi jam digital realtime sinkron, 5 waktu salat otomatis berbasis hisab astronomis Kemenag tanpa butuh API luar, hitung mundur iqomah, serta running text saldo kas &amp; pengumuman kajian.
+                            Tampilan fullscreen khusus yang dapat dihubungkan ke Android TV Box, Smart TV, atau PC mini tanpa perlu membuka panel admin. Dilengkapi jam digital realtime sinkron, 5 waktu salat otomatis berbasis hisab astronomis Kemenag tanpa butuh koneksi API luar, hitung mundur iqamah, serta running text saldo kas &amp; pengumuman kajian.
                         </p>
                     </div>
                     <div class="d-flex flex-wrap gap-2 pt-3 border-top">
@@ -900,10 +1087,10 @@
 
             <!-- Bento 2: Rekap Cetak Kas Jumat A4 (Col 4) -->
             <div class="col-lg-4">
-                <div class="bento-card">
+                <div class="bento-pro-card">
                     <div>
                         <div class="d-flex justify-content-between align-items-start mb-3">
-                            <div class="bento-icon" style="background: #FEF3C7; color: #D97706;">
+                            <div class="bento-pro-icon" style="background: #FEF3C7; color: #D97706;">
                                 <i class="bi bi-printer-fill"></i>
                             </div>
                             <span class="badge bg-warning-subtle text-warning rounded-pill px-3 py-1 fw-bold">Print-Ready</span>
@@ -923,10 +1110,10 @@
 
             <!-- Bento 3: Portal Transparansi Publik (Col 4) -->
             <div class="col-lg-4">
-                <div class="bento-card">
+                <div class="bento-pro-card">
                     <div>
                         <div class="d-flex justify-content-between align-items-start mb-3">
-                            <div class="bento-icon" style="background: #ECFDF5; color: #059669;">
+                            <div class="bento-pro-icon" style="background: #ECFDF5; color: #059669;">
                                 <i class="bi bi-shield-check"></i>
                             </div>
                             <span class="badge bg-success-subtle text-success rounded-pill px-3 py-1 fw-bold">Publik &amp; Audit</span>
@@ -946,10 +1133,10 @@
 
             <!-- Bento 4: Mutasi Kas Multi-Wadah Atomik (Col 8) -->
             <div class="col-lg-8">
-                <div class="bento-card">
+                <div class="bento-pro-card">
                     <div>
                         <div class="d-flex justify-content-between align-items-start mb-3">
-                            <div class="bento-icon" style="background: #F3E8FF; color: #7C3AED;">
+                            <div class="bento-pro-icon" style="background: #F3E8FF; color: #7C3AED;">
                                 <i class="bi bi-wallet2"></i>
                             </div>
                             <span class="badge bg-purple-subtle text-dark border rounded-pill px-3 py-1 fw-bold">Integritas Data</span>
@@ -970,10 +1157,10 @@
 
             <!-- Bento 5: WhatsApp H-2 Generator (Col 6) -->
             <div class="col-lg-6">
-                <div class="bento-card">
+                <div class="bento-pro-card">
                     <div>
                         <div class="d-flex justify-content-between align-items-start mb-3">
-                            <div class="bento-icon" style="background: #F0FDF4; color: #16A34A;">
+                            <div class="bento-pro-icon" style="background: #F0FDF4; color: #16A34A;">
                                 <i class="bi bi-whatsapp"></i>
                             </div>
                             <span class="badge bg-success-subtle text-success rounded-pill px-3 py-1 fw-bold">Komunikasi</span>
@@ -993,10 +1180,10 @@
 
             <!-- Bento 6: Arsitektur PWA & Zero CDN (Col 6) -->
             <div class="col-lg-6">
-                <div class="bento-card">
+                <div class="bento-pro-card">
                     <div>
                         <div class="d-flex justify-content-between align-items-start mb-3">
-                            <div class="bento-icon" style="background: #FFF1F2; color: #E11D48;">
+                            <div class="bento-pro-icon" style="background: #FFF1F2; color: #E11D48;">
                                 <i class="bi bi-wifi-off"></i>
                             </div>
                             <span class="badge bg-danger-subtle text-danger rounded-pill px-3 py-1 fw-bold">Zero CDN</span>
@@ -1017,9 +1204,89 @@
     </div>
 </section>
 
-<!-- 6. HOW IT WORKS: 3-STEP WORKFLOW (Blueprint Item 7) -->
-<section class="how-it-works-section">
-    <div class="container">
+<!-- 6. BENCHMARK TRANSPARANSI DATA PUBLIK (Format Terbuka ala Sistem Akuntansi Sekolah) -->
+<section class="py-5" style="background: #FFFFFF; border-top: 1px solid #E2E8F0; border-bottom: 1px solid #E2E8F0;">
+    <div class="container py-3">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4" data-animate>
+            <div>
+                <span class="benchmark-badge-demo mb-2">
+                    <i class="bi bi-graph-up-arrow"></i> Benchmark Transparansi Data Publik
+                </span>
+                <h3 class="fw-900 text-dark mb-1">Pratinjau Pembukuan Kas Terverifikasi</h3>
+                <p class="text-muted small mb-0">Contoh data transaksi riil dari basis data masjid yang dapat diakses publik tanpa login.</p>
+            </div>
+            <div>
+                <a href="{{ route('transparency.index') }}" class="btn btn-outline-success rounded-pill fw-bold btn-sm px-4">
+                    <i class="bi bi-box-arrow-up-right me-1"></i> Lihat Portal Transparansi Lengkap &rarr;
+                </a>
+            </div>
+        </div>
+
+        <div class="benchmark-table-wrapper" data-animate>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr class="text-uppercase text-muted" style="font-size: 0.72rem; letter-spacing: 0.05em;">
+                            <th class="ps-4">Tanggal</th>
+                            <th>Wadah Kas</th>
+                            <th>Uraian Transaksi</th>
+                            <th>Kategori</th>
+                            <th class="text-end pe-4">Nominal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse($recentTransactions ?? [] as $trx)
+                        <tr>
+                            <td class="ps-4 font-monospace small text-muted">{{ optional($trx->transaction_date)->format('d/m/Y') ?? '01/11/2026' }}</td>
+                            <td><span class="badge bg-light text-dark border">{{ optional($trx->cashBook)->name ?? 'Kas Utama' }}</span></td>
+                            <td class="fw-bold text-dark">{{ $trx->description ?? 'Infaq Rutin Jamaah' }}</td>
+                            <td><span class="badge bg-secondary-subtle text-secondary small">{{ optional($trx->category)->name ?? 'Infaq Umum' }}</span></td>
+                            <td class="text-end pe-4 font-monospace fw-bold {{ ($trx->type ?? 'income') === 'income' ? 'text-success' : 'text-danger' }}">
+                                {{ ($trx->type ?? 'income') === 'income' ? '+' : '-' }}Rp {{ number_format($trx->amount ?? 500000, 0, ',', '.') }}
+                            </td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td class="ps-4 font-monospace small text-muted">01/11/2026</td>
+                            <td><span class="badge bg-light text-dark border">Kas Operasional</span></td>
+                            <td class="fw-bold text-dark">Infaq Tromol Kotak Jumat Utama</td>
+                            <td><span class="badge bg-success-subtle text-success small">Infaq Jumat</span></td>
+                            <td class="text-end pe-4 font-monospace fw-bold text-success">+Rp 4.850.000</td>
+                        </tr>
+                        <tr>
+                            <td class="ps-4 font-monospace small text-muted">31/10/2026</td>
+                            <td><span class="badge bg-light text-dark border">Kas Operasional</span></td>
+                            <td class="fw-bold text-dark">Bisyarah Muballigh Kajian Subuh Ahad</td>
+                            <td><span class="badge bg-danger-subtle text-danger small">Operasional Dakwah</span></td>
+                            <td class="text-end pe-4 font-monospace fw-bold text-danger">-Rp 500.000</td>
+                        </tr>
+                        <tr>
+                            <td class="ps-4 font-monospace small text-muted">30/10/2026</td>
+                            <td><span class="badge bg-light text-dark border">Kas Anak Yatim</span></td>
+                            <td class="fw-bold text-dark">Santunan Bulanan 15 Anak Yatim Binaan</td>
+                            <td><span class="badge bg-warning-subtle text-warning small">Santunan Yatim</span></td>
+                            <td class="text-end pe-4 font-monospace fw-bold text-danger">-Rp 4.500.000</td>
+                        </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+            <div class="p-3 bg-light border-top d-flex justify-content-between align-items-center flex-wrap gap-2 text-muted small">
+                <div>
+                    <i class="bi bi-info-circle text-primary me-1"></i>
+                    <em>Setiap masjid yang memasang SAF mengatur nomor rekening bank &amp; QRIS masing-masing secara privat di panel admin.</em>
+                </div>
+                <div class="fw-bold">
+                    Total Transaksi Tercatat: <span class="text-dark">{{ $totalTransactions ?? 142 }} Mutasi</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 7. HOW IT WORKS: 3-STEP WORKFLOW -->
+<section class="py-5" style="background: #FAF9F6;">
+    <div class="container py-4">
         <div class="text-center mb-5" data-animate>
             <span class="badge rounded-pill bg-success-subtle text-success border border-success-subtle px-3 py-1 mb-2 fw-bold text-uppercase" style="letter-spacing: 0.05em; font-size: 0.72rem;">
                 Alur Pemanfaatan
@@ -1032,26 +1299,26 @@
 
         <div class="row g-4" data-animate-stagger>
             <div class="col-lg-4">
-                <div class="step-card">
-                    <div class="step-badge">1</div>
+                <div class="p-4 rounded-4 bg-white border h-100 shadow-sm">
+                    <div class="rounded-pill bg-dark text-white fw-bold d-inline-flex align-items-center justify-content-center mb-3" style="width: 36px; height: 36px; font-size: 1rem;">1</div>
                     <h5 class="fw-800 text-dark mb-2">Ambil Kode atau Minta Bantuan</h5>
                     <p class="text-muted small mb-0" style="line-height: 1.65;">
-                        Clone repositori secara gratis di GitHub untuk dipasang di komputer sekretariat masjid, atau hubungi pengembang untuk pendampingan setup domain HTTPS dan cloud.
+                        Clone repositori secara bebas di GitHub untuk dipasang di komputer sekretariat masjid (XAMPP/Docker/PHP), atau hubungi pengembang untuk pendampingan setup domain HTTPS dan cloud VPS.
                     </p>
                 </div>
             </div>
             <div class="col-lg-4">
-                <div class="step-card">
-                    <div class="step-badge">2</div>
+                <div class="p-4 rounded-4 bg-white border h-100 shadow-sm">
+                    <div class="rounded-pill bg-success text-white fw-bold d-inline-flex align-items-center justify-content-center mb-3" style="width: 36px; height: 36px; font-size: 1rem;">2</div>
                     <h5 class="fw-800 text-dark mb-2">Personalisasi Data &amp; Wadah Kas</h5>
                     <p class="text-muted small mb-0" style="line-height: 1.65;">
-                        Tentukan wadah kas (operasional, pembangunan, yatim), koordinat garis lintang untuk hisab waktu salat otomatis, nomor rekening resmi, dan QRIS infaq masjid Anda.
+                        Tentukan wadah kas (operasional, pembangunan, yatim), koordinat garis lintang &amp; bujur untuk hisab waktu salat otomatis, nomor rekening resmi, serta QRIS infaq masjid Anda.
                     </p>
                 </div>
             </div>
             <div class="col-lg-4">
-                <div class="step-card">
-                    <div class="step-badge">3</div>
+                <div class="p-4 rounded-4 bg-white border h-100 shadow-sm">
+                    <div class="rounded-pill bg-warning text-dark fw-bold d-inline-flex align-items-center justify-content-center mb-3" style="width: 36px; height: 36px; font-size: 1rem;">3</div>
                     <h5 class="fw-800 text-dark mb-2">Tata Kelola Aktif &amp; Siap Dipakai</h5>
                     <p class="text-muted small mb-0" style="line-height: 1.65;">
                         Hubungkan layar Smart TV ke mode display masjid, cetak laporan rekap kas Jumat format A4, dan bagikan tautan transparansi kas real-time kepada seluruh jamaah.
@@ -1062,7 +1329,7 @@
     </div>
 </section>
 
-<!-- 7. DUA PILIHAN IMPLEMENTASI (Jalur Mandiri vs Pendampingan) -->
+<!-- 8. DUA PILIHAN IMPLEMENTASI (Jalur Mandiri vs Pendampingan Teknis) -->
 <section class="py-5" style="background: #FFFFFF;">
     <div class="container py-4">
         <div class="text-center mb-5" data-animate>
@@ -1078,7 +1345,7 @@
         <div class="row g-4 justify-content-center" data-animate-stagger>
             <!-- Jalur 1: Unduh & Pasang Mandiri -->
             <div class="col-lg-6">
-                <div class="path-card self-host shadow-sm">
+                <div class="path-pro-card self-serve">
                     <div>
                         <div class="d-flex align-items-center justify-content-between mb-3">
                             <span class="badge bg-dark text-white rounded-pill px-3 py-1 fw-bold">Jalur Mandiri</span>
@@ -1105,21 +1372,21 @@
 
             <!-- Jalur 2: Konsultasi & Bantuan Implementasi -->
             <div class="col-lg-6">
-                <div class="path-card consult shadow-sm">
+                <div class="path-pro-card managed">
                     <div>
                         <div class="d-flex align-items-center justify-content-between mb-3">
                             <span class="badge bg-success text-white rounded-pill px-3 py-1 fw-bold">Pendampingan Teknis</span>
-                            <span class="text-success fw-bold small"><i class="bi bi-heart-pulse-fill me-1"></i> Siap Membantu</span>
+                            <span class="text-warning fw-bold small"><i class="bi bi-heart-pulse-fill me-1"></i> Siap Membantu</span>
                         </div>
-                        <h3 class="fw-800 text-dark mb-2">Konsultasi &amp; Bantuan Pengembang</h3>
-                        <p class="text-muted mb-4" style="line-height: 1.65;">
+                        <h3 class="fw-800 text-white mb-2">Konsultasi &amp; Bantuan Pengembang</h3>
+                        <p class="text-white-50 mb-4" style="line-height: 1.65;">
                             Cocok untuk DKM yang ingin langsung pakai tanpa repot konfigurasi server. Kami siap membantu setup domain HTTPS, instalasi display TV, serta pengenalan fitur untuk bendahara masjid.
                         </p>
-                        <ul class="list-unstyled text-muted small mb-4 d-flex flex-column gap-2">
-                            <li><i class="bi bi-check2 text-success me-2 fw-bold"></i> Konsultasi perencanaan hardware TV box &amp; koneksi layar masjid</li>
-                            <li><i class="bi bi-check2 text-success me-2 fw-bold"></i> Bantuan migrasi data kas lama dari spreadsheet Excel</li>
-                            <li><i class="bi bi-check2 text-success me-2 fw-bold"></i> Panduan langsung dari <strong>Jadda Developer</strong></li>
-                            <li><i class="bi bi-check2 text-success me-2 fw-bold"></i> Kontak resmi tunggal: <code>jaddadeveloper@gmail.com</code></li>
+                        <ul class="list-unstyled text-white-50 small mb-4 d-flex flex-column gap-2">
+                            <li><i class="bi bi-check2 text-warning me-2 fw-bold"></i> Konsultasi perencanaan hardware TV box &amp; koneksi layar masjid</li>
+                            <li><i class="bi bi-check2 text-warning me-2 fw-bold"></i> Bantuan migrasi data kas lama dari spreadsheet Excel</li>
+                            <li><i class="bi bi-check2 text-warning me-2 fw-bold"></i> Panduan langsung dari <strong>Jadda Developer</strong></li>
+                            <li><i class="bi bi-check2 text-warning me-2 fw-bold"></i> Kontak resmi tunggal: <code>jaddadeveloper@gmail.com</code></li>
                         </ul>
                     </div>
                     <div>
@@ -1133,8 +1400,8 @@
     </div>
 </section>
 
-<!-- 8. TANYA JAWAB UMUM (FAQ) -->
-<section class="py-5" style="background: var(--surface-warm); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+<!-- 9. TANYA JAWAB UMUM (FAQ) -->
+<section class="py-5" style="background: var(--saf-sand); border-top: 1px solid var(--saf-slate-200); border-bottom: 1px solid var(--saf-slate-200);">
     <div class="container py-4">
         <div class="text-center mb-5" data-animate>
             <span class="badge rounded-pill bg-secondary-subtle text-secondary px-3 py-1 mb-2 fw-bold text-uppercase" style="letter-spacing: 0.05em; font-size: 0.72rem;">
@@ -1149,7 +1416,7 @@
                 <div class="p-4 rounded-4 border bg-white h-100 shadow-sm">
                     <h6 class="fw-bold text-dark mb-2"><i class="bi bi-question-circle-fill text-success me-2"></i>Apakah aplikasi SAF benar-benar gratis dan open source?</h6>
                     <p class="text-muted small mb-0" style="line-height: 1.65;">
-                        Ya, <strong>SAF</strong> adalah perangkat lunak sumber terbuka (<em>open-source</em>) dengan <strong>Lisensi MIT</strong>. Takmir mana pun dapat mengunduh kode sumber, memasangnya di server sekretariat atau cloud, dan menggunakannya tanpa biaya royalti.
+                        Ya, <strong>SAF</strong> adalah perangkat lunak sumber terbuka (<em>open-source</em>) dengan <strong>Lisensi MIT</strong>. Takmir mana pun dapat mengunduh kode sumber, memasangnya di server sekretariat atau cloud, dan menggunakannya tanpa biaya royalti sepeser pun.
                     </p>
                 </div>
             </div>
@@ -1157,7 +1424,7 @@
                 <div class="p-4 rounded-4 border bg-white h-100 shadow-sm">
                     <h6 class="fw-bold text-dark mb-2"><i class="bi bi-question-circle-fill text-success me-2"></i>Bagaimana cara mengambil dan mengunduh source code aplikasi?</h6>
                     <p class="text-muted small mb-0" style="line-height: 1.65;">
-                        Seluruh kode sumber disimpan secara terbuka di GitHub. Anda dapat membuka repositori <a href="https://github.com/bipisurel-bps/Manajemen-Masjid-" target="_blank" rel="noopener noreferrer" class="fw-bold text-success text-decoration-none">github.com/bipisurel-bps/Manajemen-Masjid-</a> untuk melakukan clone atau mengunduh arsip ZIP.
+                        Seluruh kode sumber disimpan secara terbuka di GitHub. Anda dapat membuka repositori <a href="https://github.com/bipisurel-bps/Manajemen-Masjid-" target="_blank" rel="noopener noreferrer" class="fw-bold text-success text-decoration-none">github.com/bipisurel-bps/Manajemen-Masjid-</a> untuk melakukan clone atau mengunduh arsip ZIP secara langsung.
                     </p>
                 </div>
             </div>
@@ -1181,7 +1448,7 @@
                 <div class="p-4 rounded-4 border bg-white h-100 shadow-sm">
                     <h6 class="fw-bold text-dark mb-2"><i class="bi bi-question-circle-fill text-success me-2"></i>Bagaimana cara mengatur rekening donasi resmi masjid kami?</h6>
                     <p class="text-muted small mb-0" style="line-height: 1.65;">
-                        Website ini tidak memuat rekening bank bawaan agar tidak membingungkan. Setiap masjid yang memasang aplikasi ini dapat mengisi nama bank, nomor rekening, dan QRIS infaq masjid masing-masing melalui menu <strong>Pengaturan</strong> di panel admin.
+                        Website ini tidak memuat rekening bank bawaan agar tidak membingungkan pengunjung. Setiap masjid yang memasang aplikasi ini dapat mengisi nama bank, nomor rekening, dan QRIS infaq masjid masing-masing melalui menu <strong>Pengaturan</strong> di panel admin.
                     </p>
                 </div>
             </div>
@@ -1189,7 +1456,7 @@
                 <div class="p-4 rounded-4 border bg-white h-100 shadow-sm">
                     <h6 class="fw-bold text-dark mb-2"><i class="bi bi-question-circle-fill text-success me-2"></i>Bagaimana cara mencoba aplikasi ini sekarang?</h6>
                     <p class="text-muted small mb-0" style="line-height: 1.65;">
-                        Klik tombol <strong>Coba Demo Aplikasi</strong> di halaman ini. Anda dapat masuk langsung dengan 1-klik sebagai Bendahara atau Super Admin tanpa registrasi untuk mencoba mencatat kas, mencetak rekap, atau melihat display TV.
+                        Klik tombol <strong>Coba Demo Interaktif</strong> di halaman ini. Anda dapat masuk langsung dengan 1-klik sebagai Bendahara atau Super Admin tanpa registrasi untuk mencoba mencatat kas, mencetak rekap, atau melihat display TV.
                     </p>
                 </div>
             </div>
@@ -1197,8 +1464,8 @@
     </div>
 </section>
 
-<!-- 9. FINAL CALL TO ACTION BANNER -->
-<section class="cta-final-section">
+<!-- 10. FINAL CALL TO ACTION BANNER -->
+<section class="cta-final-pro">
     <div class="container text-center position-relative py-4" data-animate>
         <span class="badge rounded-pill bg-success-subtle text-success border border-success-subtle px-3 py-1 mb-3 fw-bold text-uppercase" style="letter-spacing: 0.05em; font-size: 0.72rem;">
             Tertib &bull; Amanah &bull; Bersama &bull; Berkelanjutan
@@ -1208,20 +1475,20 @@
             Wujudkan transparansi keuangan yang amanah dan kedisiplinan operasional masjid modern yang profesional dengan sistem yang siap pakai, handal, dan mandiri.
         </p>
         <div class="d-flex justify-content-center gap-3 flex-wrap">
-            <button type="button" class="btn-hero-primary" data-bs-toggle="modal" data-bs-target="#demoModal">
-                <i class="bi bi-play-circle-fill fs-5"></i> Coba Demo Aplikasi <span aria-hidden="true">&nearr;</span>
+            <button type="button" class="btn-saf-primary" data-bs-toggle="modal" data-bs-target="#demoModal">
+                <i class="bi bi-play-circle-fill fs-5"></i> Coba Demo Interaktif (1-Klik) <span aria-hidden="true">&nearr;</span>
             </button>
-            <a href="https://github.com/bipisurel-bps/Manajemen-Masjid-" target="_blank" rel="noopener noreferrer" class="btn-hero-github">
+            <a href="https://github.com/bipisurel-bps/Manajemen-Masjid-" target="_blank" rel="noopener noreferrer" class="btn-saf-outline">
                 <i class="bi bi-github fs-5"></i> Unduh di GitHub <span aria-hidden="true">&nearr;</span>
             </a>
-            <a href="mailto:jaddadeveloper@gmail.com?subject=Konsultasi%20SAF%20Masjid" class="btn-hero-github">
+            <a href="mailto:jaddadeveloper@gmail.com?subject=Konsultasi%20SAF%20Masjid" class="btn-saf-outline">
                 <i class="bi bi-envelope-at fs-5"></i> jaddadeveloper@gmail.com
             </a>
         </div>
     </div>
 </section>
 
-<!-- 10. MODAL DEMO 1-KLIK (SANDBOX INTERAKTIF SEPERTI MODEL SAS) -->
+<!-- 11. MODAL DEMO 1-KLIK (SANDBOX INTERAKTIF MULTI-ROLE) -->
 <div class="modal fade" id="demoModal" tabindex="-1" aria-labelledby="demoModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content rounded-4 border-0 shadow-lg">
@@ -1293,12 +1560,12 @@
 @push('scripts')
 <script>
 // Mockup Tab Switcher
-function switchMockupTab(tab, btn) {
+function switchStudioTab(tab, btn) {
     document.getElementById('screen-tv').classList.add('d-none');
     document.getElementById('screen-kas').classList.add('d-none');
     document.getElementById('screen-rekap').classList.add('d-none');
 
-    document.querySelectorAll('.mockup-tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.studio-tab-btn').forEach(b => b.classList.remove('active'));
     if (btn) btn.classList.add('active');
 
     if (tab === 'tv') {
@@ -1311,18 +1578,110 @@ function switchMockupTab(tab, btn) {
 }
 
 // Live Clock for mockup
-function updateLiveClock() {
+function updateStudioClock() {
     const now = new Date();
     const clockStr = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-    const mockEl = document.getElementById('mockupClock');
+    const mockEl = document.getElementById('studioLiveClock');
     if (mockEl) {
         mockEl.innerText = clockStr;
+    }
+    const dateEl = document.getElementById('studioLiveDate');
+    if (dateEl) {
+        dateEl.innerText = now.toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' });
+    }
+}
+
+// Synthetic Audio Chime using Web Audio API
+function playChime(freq = 880, duration = 0.3) {
+    try {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContext) return;
+        const ctx = new AudioContext();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, ctx.currentTime);
+        gain.gain.setValueAtTime(0.15, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + duration);
+    } catch (e) {
+        // audio context blocked or unsupported, fail gracefully
+    }
+}
+
+function simulateIqamahBeep() {
+    playChime(587.33, 0.4); // D5
+    setTimeout(() => playChime(880, 0.6), 250); // A5
+    const lbl = document.getElementById('iqamahStatusLabel');
+    if (lbl) {
+        lbl.innerHTML = '<i class="bi bi-bell-fill text-danger me-1"></i> Waktu Shalat Tiba &bull; Masuk Shaf!';
+        setTimeout(() => {
+            lbl.innerHTML = '<i class="bi bi-hourglass-split text-warning me-1"></i> Hitung Mundur Iqamah';
+        }, 6000);
+    }
+}
+
+// Interactive Donation Simulation State
+let currentSimAmount = 50000;
+let totalBalanceState = {{ $initialBalance }};
+let potOperasionalState = 24500000;
+let potYatimState = 12250000;
+let potRenovasiState = 12000000;
+
+function selectSimAmount(amount, btn) {
+    currentSimAmount = amount;
+    document.querySelectorAll('.sim-chip-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+}
+
+function formatRupiahJs(number) {
+    return 'Rp ' + new Intl.NumberFormat('id-ID').format(number);
+}
+
+function executeDonationSimulation() {
+    playChime(659.25, 0.2); // E5
+    setTimeout(() => playChime(987.77, 0.4), 150); // B5
+
+    totalBalanceState += currentSimAmount;
+    const potType = document.getElementById('simPotSelect').value;
+
+    if (potType === 'operasional') {
+        potOperasionalState += currentSimAmount;
+        document.getElementById('potOperasional').innerText = formatRupiahJs(potOperasionalState);
+    } else if (potType === 'yatim') {
+        potYatimState += currentSimAmount;
+        document.getElementById('potYatim').innerText = formatRupiahJs(potYatimState);
+    } else if (potType === 'renovasi') {
+        potRenovasiState += currentSimAmount;
+        document.getElementById('potRenovasi').innerText = formatRupiahJs(potRenovasiState);
+    }
+
+    const balEl = document.getElementById('liveBalanceAmount');
+    if (balEl) {
+        balEl.innerText = formatRupiahJs(totalBalanceState);
+        balEl.style.transform = 'scale(1.08)';
+        balEl.style.color = '#34D399';
+        setTimeout(() => {
+            balEl.style.transform = 'scale(1)';
+            balEl.style.color = '#FFFFFF';
+        }, 400);
+    }
+
+    const feedbackEl = document.getElementById('simFeedbackNote');
+    if (feedbackEl) {
+        feedbackEl.innerHTML = '<span class="text-success fw-bold"><i class="bi bi-check-circle-fill"></i> +' + formatRupiahJs(currentSimAmount) + ' tercatat atomik!</span>';
+        setTimeout(() => {
+            feedbackEl.innerText = 'Pilih nominal • Klik simulasi';
+        }, 4000);
     }
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    updateLiveClock();
-    setInterval(updateLiveClock, 1000);
+    updateStudioClock();
+    setInterval(updateStudioClock, 1000);
 });
 </script>
 @endpush

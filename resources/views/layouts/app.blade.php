@@ -15,6 +15,12 @@
     <link rel="apple-touch-icon" sizes="512x512" href="/icon-512.png">
     <meta name="mobile-web-app-capable" content="yes">
     <title>@yield('title', 'SAF — Sistem Operasi Manajemen Masjid')</title>
+
+    <!-- Typography: Plus Jakarta Sans, Inter, Amiri for Islamic Calligraphy -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
         :root {
