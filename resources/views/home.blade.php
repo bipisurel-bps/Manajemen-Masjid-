@@ -6,61 +6,62 @@
     $masjidName = \App\Models\Setting::get('masjid_name', 'SAF');
 @endphp
 
-<!-- Custom Premium Styles for SAF Product Landing Page -->
+<!-- Custom Premium Styles for SAF Product Landing Page (Engineered via premium-web-design) -->
 <style>
-    /* ── Luxury Deep-Emerald & Gold Palette ── */
+    /* ── 1. Hero Section (Split Variant, High-End Dark Emerald) ── */
     .hero-saf {
-        background: radial-gradient(circle at 50% -10%, #064E3B 0%, #022C22 50%, #011C16 100%);
+        background: radial-gradient(120% 120% at 50% 0%, #03392E 0%, #02261E 45%, #011914 100%);
         color: #F8FAFC;
         position: relative;
         overflow: hidden;
-        padding: 5rem 0 4.5rem;
+        padding: clamp(5rem, 8vw, 7.5rem) 0 clamp(4.5rem, 7vw, 6.5rem);
     }
-    .hero-glow-1 {
+    .hero-glow-emerald {
         position: absolute;
-        top: -160px;
-        left: 50%;
+        top: -140px;
+        left: 45%;
         transform: translateX(-50%);
-        width: 850px;
-        height: 480px;
-        background: radial-gradient(circle, rgba(16, 185, 129, 0.28) 0%, transparent 70%);
+        width: 750px;
+        height: 440px;
+        background: radial-gradient(circle, rgba(16, 185, 129, 0.22) 0%, transparent 68%);
         pointer-events: none;
-        filter: blur(50px);
+        filter: blur(55px);
     }
-    .hero-glow-2 {
+    .hero-glow-candle {
         position: absolute;
-        bottom: 40px;
-        right: -80px;
-        width: 520px;
-        height: 380px;
-        background: radial-gradient(circle, rgba(217, 119, 6, 0.15) 0%, transparent 70%);
+        bottom: 20px;
+        right: -60px;
+        width: 480px;
+        height: 340px;
+        background: radial-gradient(circle, rgba(217, 119, 6, 0.12) 0%, transparent 68%);
         pointer-events: none;
         filter: blur(60px);
     }
     .hero-grid-pattern {
         position: absolute;
         inset: 0;
-        background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-        background-size: 30px 30px;
+        background-image: radial-gradient(rgba(52, 211, 153, 0.12) 1px, transparent 1px);
+        background-size: 32px 32px;
         pointer-events: none;
-        mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 100%);
-        -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 100%);
+        mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+        -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
     }
 
+    /* ── Eyebrow Pill Badge ── */
     .hero-eyebrow {
         display: inline-flex;
         align-items: center;
-        gap: 0.5rem;
-        background: rgba(16, 185, 129, 0.12);
-        border: 1px solid rgba(16, 185, 129, 0.35);
+        gap: 0.55rem;
+        background: rgba(16, 185, 129, 0.1);
+        border: 1px solid rgba(16, 185, 129, 0.3);
         color: #6EE7B7;
-        font-size: 0.75rem;
+        font-size: 0.72rem;
         font-weight: 700;
         letter-spacing: 0.08em;
         text-transform: uppercase;
-        padding: 0.45rem 1.1rem;
-        border-radius: 999px;
-        backdrop-filter: blur(8px);
+        padding: 0.45rem 1.15rem;
+        border-radius: var(--radius-pill);
+        backdrop-filter: blur(12px);
         margin-bottom: 1.5rem;
     }
     .hero-badge-dot {
@@ -69,31 +70,29 @@
         border-radius: 50%;
         background: #10B981;
         box-shadow: 0 0 10px #10B981;
-        animation: pulseDot 2s infinite;
+        animation: pulseDot 2s infinite ease-in-out;
     }
     @keyframes pulseDot {
         0%, 100% { opacity: 1; transform: scale(1); }
-        50% { opacity: 0.4; transform: scale(0.85); }
+        50% { opacity: 0.4; transform: scale(0.8); }
     }
 
+    /* ── Fluid Headline & Typography ── */
     .hero-headline {
-        font-size: 3.5rem;
+        font-size: clamp(2.4rem, 4vw, 3.85rem);
         font-weight: 900;
-        letter-spacing: -0.04em;
-        line-height: 1.1;
+        letter-spacing: -0.035em;
+        line-height: 1.12;
         margin-bottom: 1.35rem;
     }
-    @media (max-width: 991.98px) {
-        .hero-headline { font-size: 2.5rem; }
-    }
     .hero-gradient-text {
-        background: linear-gradient(135deg, #34D399 0%, #A7F3D0 45%, #FBBF24 100%);
+        background: linear-gradient(135deg, #34D399 0%, #A7F3D0 40%, #FBBF24 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         display: inline-block;
     }
     .hero-description {
-        font-size: 1.15rem;
+        font-size: clamp(1rem, 0.95rem + 0.25vw, 1.15rem);
         line-height: 1.7;
         color: rgba(241, 245, 249, 0.88);
         max-width: 620px;
@@ -105,12 +104,12 @@
         background: linear-gradient(135deg, #10B981 0%, #059669 100%);
         color: #fff;
         font-weight: 700;
-        font-size: 1rem;
-        padding: 0.875rem 1.75rem;
-        border-radius: 999px;
+        font-size: 0.95rem;
+        padding: 0.85rem 1.75rem;
+        border-radius: var(--radius-pill);
         border: 1px solid rgba(255, 255, 255, 0.25);
-        box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.45);
-        transition: all 0.25s ease;
+        box-shadow: 0 10px 25px -4px rgba(16, 185, 129, 0.45);
+        transition: transform 200ms var(--ease-out-quart), box-shadow 200ms var(--ease-out-quart);
         text-decoration: none;
         display: inline-flex;
         align-items: center;
@@ -118,33 +117,41 @@
     }
     .btn-hero-primary:hover {
         transform: translateY(-2px);
-        box-shadow: 0 15px 30px -5px rgba(16, 185, 129, 0.55);
+        box-shadow: 0 15px 32px -4px rgba(16, 185, 129, 0.55);
         color: #fff;
     }
+    .btn-hero-primary:active {
+        transform: translateY(0) scale(0.98);
+    }
+
     .btn-hero-github {
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.08);
         color: #F8FAFC;
         font-weight: 600;
-        font-size: 1rem;
-        padding: 0.875rem 1.5rem;
-        border-radius: 999px;
-        border: 1px solid rgba(255, 255, 255, 0.22);
-        backdrop-filter: blur(8px);
-        transition: all 0.25s ease;
+        font-size: 0.95rem;
+        padding: 0.85rem 1.5rem;
+        border-radius: var(--radius-pill);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        backdrop-filter: blur(10px);
+        transition: transform 200ms var(--ease-out-quart), background 200ms var(--ease-out-quart);
         text-decoration: none;
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
     }
     .btn-hero-github:hover {
-        background: rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.16);
         color: #fff;
         transform: translateY(-2px);
     }
+    .btn-hero-github:active {
+        transform: translateY(0) scale(0.98);
+    }
+
     .btn-hero-textlink {
-        color: rgba(255, 255, 255, 0.8);
+        color: rgba(255, 255, 255, 0.82);
         font-weight: 600;
-        font-size: 0.95rem;
+        font-size: 0.92rem;
         text-decoration: none;
         display: inline-flex;
         align-items: center;
@@ -155,72 +162,45 @@
         color: #34D399;
     }
 
-    /* ── Audience Ribbon ── */
-    .audience-ribbon {
+    /* ── Trust Indicators Strip ── */
+    .trust-strip {
         display: flex;
-        align-items: flex-start;
-        gap: 0.75rem;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 12px;
-        padding: 0.85rem 1.25rem;
-        margin-top: 1.5rem;
+        flex-wrap: wrap;
+        gap: 0.6rem 1.25rem;
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
         max-width: 620px;
     }
-    .audience-ribbon .star {
-        color: #FBBF24;
-        font-size: 1.1rem;
-        line-height: 1;
-    }
-    .audience-ribbon p {
-        font-size: 0.85rem;
-        line-height: 1.45;
-        margin: 0;
-        color: rgba(255, 255, 255, 0.85);
-    }
-
-    /* ── Principles Strip ── */
-    .principles-strip {
-        background: #021C16;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        padding: 1rem 0;
-    }
-    .principles-container {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 1.25rem;
-        color: #94A3B8;
-        font-size: 0.78rem;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-    }
-    .principles-container span {
+    .trust-item {
+        font-size: 0.8rem;
+        color: rgba(241, 245, 249, 0.75);
         display: inline-flex;
         align-items: center;
-        gap: 0.5rem;
+        gap: 0.45rem;
     }
-    .principles-container span i {
-        color: #10B981;
+    .trust-item i {
+        color: #34D399;
+        font-size: 0.95rem;
     }
 
-    /* ── Interactive Workspace Mockup ── */
+    /* ── Interactive Workspace Mockup (Mac/Studio Frame) ── */
     .device-mockup {
-        background: #0B1916;
+        background: #081C17;
         border: 1px solid rgba(255, 255, 255, 0.14);
-        border-radius: 20px;
-        box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7), 0 0 40px rgba(16, 185, 129, 0.12);
+        border-radius: var(--radius-lg);
+        box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.75), 0 0 35px rgba(16, 185, 129, 0.15);
         overflow: hidden;
         color: #E2E8F0;
-        transition: all 0.3s ease;
+        transition: transform 0.3s var(--ease-out-quart);
+    }
+    .device-mockup:hover {
+        transform: translateY(-4px);
     }
     .device-header {
         background: rgba(255, 255, 255, 0.04);
         border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        padding: 0.875rem 1.25rem;
+        padding: 0.85rem 1.25rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -237,11 +217,11 @@
     .mockup-tab-btn {
         background: transparent;
         border: none;
-        color: rgba(255, 255, 255, 0.6);
-        font-size: 0.78rem;
+        color: rgba(255, 255, 255, 0.65);
+        font-size: 0.76rem;
         font-weight: 600;
-        padding: 0.35rem 0.85rem;
-        border-radius: 999px;
+        padding: 0.32rem 0.85rem;
+        border-radius: var(--radius-pill);
         transition: all 0.2s ease;
         cursor: pointer;
     }
@@ -255,130 +235,243 @@
         border: 1px solid rgba(16, 185, 129, 0.4);
     }
 
-    /* ── Filosofi SAF Section Cards ── */
+    /* ── Principles Strip (Visual Anchor) ── */
+    .principles-strip {
+        background: #011511;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 1rem 0;
+    }
+    .principles-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1.25rem;
+        color: #94A3B8;
+        font-size: 0.76rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+    .principles-container span {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .principles-container span i {
+        color: #10B981;
+    }
+
+    /* ── Filosofi SAF Section (Spiritual Deep Night Canvas) ── */
     .filosofi-section {
-        background: radial-gradient(circle at 50% 0%, #03251E 0%, #011712 100%);
+        background: radial-gradient(120% 120% at 50% 0%, #032A22 0%, #021E18 45%, #011511 100%);
         color: #F8FAFC;
-        padding: 6rem 0 5.5rem;
+        padding: clamp(5rem, 8vw, 7.5rem) 0;
         position: relative;
     }
     .hadits-quote-box {
-        background: rgba(255, 255, 255, 0.04);
+        background: rgba(255, 255, 255, 0.035);
         border: 1px solid rgba(16, 185, 129, 0.25);
-        border-radius: 20px;
+        border-radius: var(--radius-lg);
         padding: 2.5rem 2rem;
         max-width: 820px;
-        margin: 0 auto 4rem;
+        margin: 0 auto 3.5rem;
         text-align: center;
         position: relative;
+        backdrop-filter: blur(10px);
     }
     .arabic-text {
-        font-family: 'Amiri', 'Traditional Arabic', serif;
-        font-size: 1.85rem;
-        line-height: 1.8;
+        font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif;
+        font-size: clamp(1.6rem, 1.2rem + 1vw, 2.1rem);
+        line-height: 1.85;
         color: #A7F3D0;
         margin-bottom: 1rem;
     }
     .hadits-translation {
         font-size: 1.05rem;
         line-height: 1.65;
-        color: rgba(241, 245, 249, 0.85);
+        color: rgba(241, 245, 249, 0.88);
         font-style: italic;
     }
     .hadits-narrator {
-        font-size: 0.82rem;
+        font-size: 0.8rem;
         color: #FBBF24;
         font-weight: 700;
-        letter-spacing: 0.05em;
+        letter-spacing: 0.06em;
         text-transform: uppercase;
         margin-top: 0.75rem;
     }
 
+    /* ── 4 Pillar Cards ── */
     .pillar-card {
         background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 20px;
-        padding: 2.25rem 2rem;
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-radius: var(--radius-lg);
+        padding: 2.25rem 1.75rem;
         height: 100%;
-        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        transition: transform 0.3s var(--ease-out-quart), border-color 0.3s ease, box-shadow 0.3s ease;
         position: relative;
         overflow: hidden;
     }
     .pillar-card:hover {
-        transform: translateY(-6px);
-        background: rgba(255, 255, 255, 0.06);
-        border-color: rgba(16, 185, 129, 0.4);
-        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6);
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.055);
+        border-color: rgba(16, 185, 129, 0.35);
+        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.55);
     }
     .pillar-num {
-        font-size: 3rem;
+        font-size: 3.2rem;
         font-weight: 900;
         line-height: 1;
-        opacity: 0.12;
+        opacity: 0.1;
         position: absolute;
-        top: 1.5rem;
-        right: 1.75rem;
+        top: 1.25rem;
+        right: 1.5rem;
         color: #fff;
     }
     .pillar-icon {
-        width: 54px;
-        height: 54px;
-        border-radius: 14px;
+        width: 52px;
+        height: 52px;
+        border-radius: var(--radius);
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.5rem;
-        margin-bottom: 1.5rem;
+        font-size: 1.45rem;
+        margin-bottom: 1.25rem;
     }
 
-    /* ── Bento Grid ── */
+    /* ── Breathing Metric Section (Warm Alabaster) ── */
+    .breathing-stat-section {
+        background: var(--surface-warm);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        padding: clamp(3.5rem, 6vw, 5rem) 0;
+    }
+    .stat-pill-card {
+        background: #FFFFFF;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 1.75rem 1.5rem;
+        height: 100%;
+        text-align: center;
+        box-shadow: var(--shadow-sm);
+        transition: transform 0.25s var(--ease-out-quart), box-shadow 0.25s ease;
+    }
+    .stat-pill-card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-md);
+        border-color: #CBD5E1;
+    }
+    .stat-number {
+        font-size: clamp(2rem, 1.6rem + 1vw, 2.75rem);
+        font-weight: 900;
+        letter-spacing: -0.03em;
+        line-height: 1.1;
+        color: var(--primary);
+    }
+    .stat-label {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--text);
+        margin-top: 0.35rem;
+        margin-bottom: 0.25rem;
+    }
+    .stat-desc {
+        font-size: 0.78rem;
+        color: var(--text-muted);
+        line-height: 1.45;
+        margin-bottom: 0;
+    }
+
+    /* ── Bento Grid Cards ── */
+    .bento-section {
+        background: #FFFFFF;
+        padding: clamp(5rem, 8vw, 7.5rem) 0;
+    }
     .bento-card {
         background: #FFFFFF;
-        border: 1px solid #E2E8F0;
-        border-radius: 20px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
         padding: 2.25rem 2rem;
         height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        transition: transform 0.25s var(--ease-out-quart), box-shadow 0.25s ease, border-color 0.25s ease;
+        box-shadow: var(--shadow-sm);
         position: relative;
         overflow: hidden;
     }
     .bento-card:hover {
         transform: translateY(-4px);
-        box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.08);
+        box-shadow: var(--shadow-lg);
         border-color: #CBD5E1;
     }
     .bento-icon {
-        width: 52px;
-        height: 52px;
-        border-radius: 14px;
+        width: 50px;
+        height: 50px;
+        border-radius: var(--radius);
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.5rem;
+        font-size: 1.45rem;
+        margin-bottom: 1.25rem;
+    }
+
+    /* ── How It Works (3-Step Pipeline) ── */
+    .how-it-works-section {
+        background: var(--surface-warm);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        padding: clamp(5rem, 8vw, 7.5rem) 0;
+    }
+    .step-card {
+        background: #FFFFFF;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 2.25rem 1.75rem;
+        height: 100%;
+        position: relative;
+        box-shadow: var(--shadow-sm);
+        transition: transform 0.25s var(--ease-out-quart), box-shadow 0.25s ease;
+    }
+    .step-card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-md);
+    }
+    .step-badge {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--primary);
+        color: #fff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 1rem;
         margin-bottom: 1.25rem;
     }
 
     /* ── Two Adoption Paths ── */
     .path-card {
-        border-radius: 20px;
-        padding: 2.5rem 2rem;
+        border-radius: var(--radius-lg);
+        padding: 2.5rem 2.25rem;
         height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        transition: all 0.25s ease;
+        transition: transform 0.25s var(--ease-out-quart), box-shadow 0.25s ease, border-color 0.25s ease;
     }
     .path-card.self-host {
         background: #FFFFFF;
-        border: 2px solid #E2E8F0;
+        border: 2px solid var(--border);
     }
     .path-card.self-host:hover {
-        border-color: #10B981;
-        box-shadow: 0 15px 35px -5px rgba(16, 185, 129, 0.15);
+        border-color: var(--primary);
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
     }
     .path-card.consult {
         background: #F0FDF4;
@@ -386,46 +479,31 @@
     }
     .path-card.consult:hover {
         border-color: #059669;
-        box-shadow: 0 15px 35px -5px rgba(5, 150, 105, 0.15);
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
     }
 
-    /* ── Floating Highlight Badge ── */
-    .floating-note {
-        background: rgba(255, 255, 255, 0.07);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        border-radius: 14px;
-        padding: 0.85rem 1.25rem;
-        backdrop-filter: blur(10px);
-        display: flex;
-        align-items: center;
-        gap: 0.85rem;
-        margin-top: 1rem;
-    }
-    .floating-note i {
-        color: #34D399;
-        font-size: 1.25rem;
-    }
-    .floating-note b {
-        color: #F8FAFC;
-        font-size: 0.88rem;
-        display: block;
-    }
-    .floating-note small {
-        color: rgba(255, 255, 255, 0.7);
-        font-size: 0.75rem;
+    /* ── Final Call to Action ── */
+    .cta-final-section {
+        background: radial-gradient(circle at 50% 50%, #064E3B 0%, #022C22 60%, #011A14 100%);
+        color: white;
+        padding: clamp(5rem, 8vw, 7.5rem) 0;
+        position: relative;
+        overflow: hidden;
     }
 </style>
 
-<!-- 1. HERO SECTION -->
+<!-- 1. HERO SECTION (Split Layout Variant) -->
 <section class="hero-saf">
-    <div class="hero-glow-1"></div>
-    <div class="hero-glow-2"></div>
+    <div class="hero-glow-emerald"></div>
+    <div class="hero-glow-candle"></div>
     <div class="hero-grid-pattern"></div>
 
     <div class="container position-relative">
         <div class="row align-items-center g-5">
-            <div class="col-lg-7">
-                <!-- Eyebrow Badge -->
+            <!-- Left Column: Value Proposition & CTAs (58%) -->
+            <div class="col-lg-7" data-animate>
+                <!-- Eyebrow Badge with Pulsing Beacon -->
                 <div class="hero-eyebrow shadow-sm">
                     <span class="hero-badge-dot"></span>
                     <span>FILOSOFI SAF: TERTIB &bull; AMANAH &bull; BERSAMA &bull; BERKELANJUTAN &bull; safmasjid.web.id</span>
@@ -437,42 +515,49 @@
                     <span class="hero-gradient-text">tata kelola masjid Anda.</span>
                 </h1>
 
-                <!-- Subtitle / Value Proposition -->
+                <!-- Subtitle / Value Proposition (Specific, Concrete, Respecting 65ch) -->
                 <p class="hero-description">
                     Dalam salat berjamaah, saf menggambarkan <strong>keteraturan, kebersamaan, dan kesetaraan</strong>. SAF menerjemahkan filosofi ini ke dalam tata kelola masjid: <strong>Tertib</strong> dalam administrasi &amp; kegiatan, <strong>Amanah</strong> dalam tata kelola dana &amp; aset, <strong>Bersama</strong> menghubungkan pengurus dan jamaah, serta <strong>Berkelanjutan</strong> agar riwayat pengelolaan tidak hilang antar-generasi.
                 </p>
 
-                <!-- Primary CTAs -->
+                <!-- Action CTAs -->
                 <div class="d-flex flex-wrap align-items-center gap-3 mb-3">
                     <button type="button" class="btn-hero-primary" data-bs-toggle="modal" data-bs-target="#demoModal">
                         <i class="bi bi-play-circle-fill fs-5"></i> Coba Demo Aplikasi <span aria-hidden="true">&nearr;</span>
                     </button>
                     <a href="https://github.com/bipisurel-bps/Manajemen-Masjid-" target="_blank" rel="noopener noreferrer" class="btn-hero-github">
-                        <i class="bi bi-github fs-5"></i> Ambil Source Code di GitHub <span aria-hidden="true">&nearr;</span>
+                        <i class="bi bi-github fs-5"></i> Ambil Source Code Bebas <span aria-hidden="true">&nearr;</span>
                     </a>
                     <a href="{{ route('login') }}" class="btn-hero-textlink ms-md-2">
                         Masuk ke akun <span aria-hidden="true">&rarr;</span>
                     </a>
                 </div>
 
-                <!-- Microcopy -->
-                <p class="text-white-50 small mb-0">
-                    <i class="bi bi-check2-circle text-success me-1"></i> Demo hanya-baca &bull; Data ilustrasi di database terpisah &bull; 100% Bebas Royalti &bull; Lisensi MIT
-                </p>
-
-                <!-- Audience Callout -->
-                <div class="audience-ribbon">
-                    <span class="star" aria-hidden="true">&#10035;</span>
-                    <p>
-                        <strong>Dirancang untuk:</strong> Dewan Kemakmuran Masjid (DKM), Takmir, Bendahara Masjid Jami', Masjid Raya, Musholla Perumahan, dan Yayasan Islam di seluruh Indonesia.
-                    </p>
+                <!-- Trust Signals Strip -->
+                <div class="trust-strip">
+                    <div class="trust-item">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>100% Bebas Royalti (Lisensi MIT)</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="bi bi-wifi-off"></i>
+                        <span>Offline-First (PWA Standalone)</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="bi bi-shield-check"></i>
+                        <span>Data Tersimpan Privat</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="bi bi-heart-fill text-warning"></i>
+                        <span>Tanpa Biaya Langganan</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- INTERACTIVE OPERATING SYSTEM MOCKUP -->
-            <div class="col-lg-5">
+            <!-- Right Column: Interactive Studio Mockup (42%) -->
+            <div class="col-lg-5" data-animate>
                 <div class="device-mockup">
-                    <!-- Window Bar & Interactive Switchers -->
+                    <!-- Window Header with Interactive Switchers -->
                     <div class="device-header">
                         <div class="window-dots">
                             <span class="window-dot" style="background: #FF5F56;"></span>
@@ -484,7 +569,7 @@
                                 <i class="bi bi-tv me-1"></i> Layar TV
                             </button>
                             <button type="button" class="mockup-tab-btn" onclick="switchMockupTab('kas', this)">
-                                <i class="bi bi-wallet2 me-1"></i> Transparansi
+                                <i class="bi bi-wallet2 me-1"></i> Kas Multi-Wadah
                             </button>
                             <button type="button" class="mockup-tab-btn" onclick="switchMockupTab('rekap', this)">
                                 <i class="bi bi-printer me-1"></i> Rekap A4
@@ -492,12 +577,12 @@
                         </div>
                     </div>
 
-                    <!-- SCREEN 1: LAYAR TV DIGITAL -->
+                    <!-- SCREEN 1: LAYAR TV DIGITAL MASJID -->
                     <div id="screen-tv" class="p-4" style="background: #021713;">
                         <div class="d-flex justify-content-between align-items-center pb-2 mb-3 border-bottom border-secondary border-opacity-25">
                             <div>
-                                <span class="badge rounded-pill bg-success-subtle text-success border border-success-subtle small">
-                                    <i class="bi bi-broadcast me-1"></i> Mode Display TV Fullscreen
+                                <span class="badge rounded-pill bg-success-subtle text-success border border-success-subtle small fw-bold">
+                                    <i class="bi bi-broadcast me-1"></i> Display TV Fullscreen
                                 </span>
                             </div>
                             <div class="text-end font-monospace text-warning fw-bold fs-5" id="mockupClock">
@@ -509,38 +594,38 @@
                         <div class="row g-2 text-center mb-3">
                             <div class="col-4">
                                 <div class="p-2 rounded-2 bg-dark bg-opacity-50 border border-secondary border-opacity-25">
-                                    <div class="text-muted" style="font-size: 0.65rem;">SUBUH</div>
-                                    <div class="fw-bold text-white small" id="mock-subuh">04:32</div>
+                                    <div class="text-white-50" style="font-size: 0.65rem;">SUBUH</div>
+                                    <div class="fw-bold text-white small">04:32</div>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="p-2 rounded-2 bg-dark bg-opacity-50 border border-secondary border-opacity-25">
-                                    <div class="text-muted" style="font-size: 0.65rem;">TERBIT</div>
-                                    <div class="fw-bold text-white small" id="mock-terbit">05:48</div>
+                                    <div class="text-white-50" style="font-size: 0.65rem;">TERBIT</div>
+                                    <div class="fw-bold text-white small">05:48</div>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="p-2 rounded-2 bg-dark bg-opacity-50 border border-secondary border-opacity-25">
-                                    <div class="text-muted" style="font-size: 0.65rem;">DZUHUR</div>
-                                    <div class="fw-bold text-white small" id="mock-dzuhur">11:45</div>
+                                    <div class="text-white-50" style="font-size: 0.65rem;">DZUHUR</div>
+                                    <div class="fw-bold text-white small">11:45</div>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="p-2 rounded-2 bg-warning bg-opacity-25 border border-warning">
                                     <div class="text-warning fw-bold" style="font-size: 0.65rem;">ASHAR &bull; AKTIF</div>
-                                    <div class="fw-bold text-warning small" id="mock-ashar">15:02</div>
+                                    <div class="fw-bold text-warning small">15:02</div>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="p-2 rounded-2 bg-dark bg-opacity-50 border border-secondary border-opacity-25">
-                                    <div class="text-muted" style="font-size: 0.65rem;">MAGHRIB</div>
-                                    <div class="fw-bold text-white small" id="mock-maghrib">17:52</div>
+                                    <div class="text-white-50" style="font-size: 0.65rem;">MAGHRIB</div>
+                                    <div class="fw-bold text-white small">17:52</div>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="p-2 rounded-2 bg-dark bg-opacity-50 border border-secondary border-opacity-25">
-                                    <div class="text-muted" style="font-size: 0.65rem;">ISYA</div>
-                                    <div class="fw-bold text-white small" id="mock-isya">19:03</div>
+                                    <div class="text-white-50" style="font-size: 0.65rem;">ISYA</div>
+                                    <div class="fw-bold text-white small">19:03</div>
                                 </div>
                             </div>
                         </div>
@@ -552,38 +637,38 @@
                         </div>
                     </div>
 
-                    <!-- SCREEN 2: KAS & TRANSPARANSI -->
-                    <div id="screen-kas" class="p-4 d-none" style="background: #0B1916;">
+                    <!-- SCREEN 2: BUKU KAS MULTI-WADAH ATOMIK -->
+                    <div id="screen-kas" class="p-4 d-none" style="background: #081C17;">
                         <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom border-secondary border-opacity-25">
-                            <span class="small text-muted fw-bold text-uppercase">Posisi Kas Masjid (Ilustrasi)</span>
-                            <span class="badge bg-success-subtle text-success small">Realtime Mutex</span>
+                            <span class="small text-white-50 fw-bold text-uppercase">Posisi Kas Masjid (Realtime)</span>
+                            <span class="badge bg-success-subtle text-success small">Database Mutex</span>
                         </div>
                         <div class="mb-3">
                             <div class="text-white-50 small">Total Saldo Konsolidasi:</div>
                             <h3 class="fw-900 text-white mb-0">{{ \App\Helpers\FormatHelper::formatRupiah($balance ?? 48750000) }}</h3>
                         </div>
-                        <div class="p-2 rounded-3 bg-dark bg-opacity-50 border border-secondary border-opacity-25 mb-2 small d-flex justify-content-between">
+                        <div class="p-2 rounded-3 bg-dark bg-opacity-50 border border-secondary border-opacity-25 mb-2 small d-flex justify-content-between align-items-center">
                             <span><i class="bi bi-wallet text-success me-1"></i> Kas Operasional</span>
                             <strong class="text-white">Rp 24.500.000</strong>
                         </div>
-                        <div class="p-2 rounded-3 bg-dark bg-opacity-50 border border-secondary border-opacity-25 mb-2 small d-flex justify-content-between">
+                        <div class="p-2 rounded-3 bg-dark bg-opacity-50 border border-secondary border-opacity-25 mb-2 small d-flex justify-content-between align-items-center">
                             <span><i class="bi bi-heart text-warning me-1"></i> Kas Yatim &amp; Dhuafa</span>
                             <strong class="text-white">Rp 12.250.000</strong>
                         </div>
-                        <div class="p-2 rounded-3 bg-dark bg-opacity-50 border border-secondary border-opacity-25 small d-flex justify-content-between">
+                        <div class="p-2 rounded-3 bg-dark bg-opacity-50 border border-secondary border-opacity-25 small d-flex justify-content-between align-items-center">
                             <span><i class="bi bi-building text-info me-1"></i> Kas Renovasi</span>
                             <strong class="text-white">Rp 12.000.000</strong>
                         </div>
                     </div>
 
-                    <!-- SCREEN 3: REKAP CETAK A4 -->
-                    <div id="screen-rekap" class="p-4 d-none" style="background: #0B1916;">
+                    <!-- SCREEN 3: REKAP CETAK KAS JUMAT A4 -->
+                    <div id="screen-rekap" class="p-4 d-none" style="background: #081C17;">
                         <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom border-secondary border-opacity-25">
-                            <span class="small text-muted fw-bold text-uppercase">Rekap Kas Jumat Format A4</span>
+                            <span class="small text-white-50 fw-bold text-uppercase">Format Cetak Kas Jumat A4</span>
                             <span class="badge bg-warning-subtle text-warning small">Siap Cetak 1 Lembar</span>
                         </div>
-                        <p class="small text-white-50 mb-3" style="line-height: 1.5;">
-                            Tata letak dirancang presisi untuk dicetak langsung pada selembar kertas A4 tanpa terpotong, memuat ringkasan saldo awal pekan, mutasi penerimaan infaq tromol, belanja operasional, dan kolom tanda tangan DKM.
+                        <p class="small text-white-50 mb-3" style="line-height: 1.6;">
+                            Dirancang presisi untuk dicetak pada selembar kertas A4 tanpa terpotong, memuat ringkasan saldo awal pekan, mutasi penerimaan infaq tromol, belanja operasional, dan kolom tanda tangan DKM.
                         </p>
                         <a href="{{ route('reports.rekap_jumat') }}" target="_blank" class="btn btn-warning btn-sm w-100 rounded-pill fw-bold text-dark">
                             <i class="bi bi-printer me-1"></i> Buka Format Siap Cetak A4 &rarr;
@@ -591,11 +676,12 @@
                     </div>
                 </div>
 
-                <div class="floating-note">
-                    <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                <!-- Subtle Highlight Micro-card -->
+                <div class="p-3 rounded-3 mt-3 d-flex align-items-center gap-3 text-white-50 small border" style="background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.1) !important;">
+                    <i class="bi bi-patch-check-fill text-success fs-5"></i>
                     <div>
-                        <b>Mutasi tercatat otomatis dalam transaksi basis data atomik.</b>
-                        <small>Takmir tidak perlu lagi rumus pembukuan rumit.</small>
+                        <strong class="text-white d-block">Mutasi Kas Terverifikasi Database Mutex</strong>
+                        <span>Mencegah selisih pembukuan dan memisahkan rekening wadah secara mandiri.</span>
                     </div>
                 </div>
             </div>
@@ -603,7 +689,7 @@
     </div>
 </section>
 
-<!-- 2. PRINCIPLES STRIP -->
+<!-- 2. PRINCIPLES RIBBON -->
 <div class="principles-strip">
     <div class="container">
         <div class="principles-container">
@@ -619,8 +705,8 @@
 <!-- 3. SECTION KHUSUS: FILOSOFI SAF -->
 <section class="filosofi-section">
     <div class="container">
-        <div class="text-center mb-4">
-            <span class="badge rounded-pill bg-success-subtle text-success border border-success-subtle px-3 py-1 mb-2 fw-bold text-uppercase" style="letter-spacing: 0.08em; font-size: 0.75rem;">
+        <div class="text-center mb-4" data-animate>
+            <span class="badge rounded-pill bg-success-subtle text-success border border-success-subtle px-3 py-1 mb-2 fw-bold text-uppercase" style="letter-spacing: 0.08em; font-size: 0.72rem;">
                 Filosofi Spiritual &amp; Tata Kelola
             </span>
             <h2 class="display-6 fw-900 text-white" style="letter-spacing: -0.03em;">Mengapa Bernama SAF?</h2>
@@ -630,7 +716,7 @@
         </div>
 
         <!-- Hadits Kutipan Barisan Shaf & Pengantar 4 Pilar -->
-        <div class="hadits-quote-box">
+        <div class="hadits-quote-box" data-animate>
             <div class="arabic-text">
                 سَوُّوا صُفُوفَكُمْ، فَإِنَّ تَسْوِيَةَ الصَّفِّ مِنْ تَمَامِ الصَّلَاةِ
             </div>
@@ -645,8 +731,8 @@
             </div>
         </div>
 
-        <!-- Empat Pilar Filosofi SAF Grid (4 Kolom) -->
-        <div class="row g-4">
+        <!-- Empat Pilar Filosofi SAF Grid (4 Kolom Desktop) -->
+        <div class="row g-4" data-animate-stagger>
             <!-- Pilar 1: TERTIB -->
             <div class="col-xl-3 col-md-6">
                 <div class="pillar-card">
@@ -738,20 +824,56 @@
     </div>
 </section>
 
-<!-- 4. BENTO GRID SECTION: KEMAMPUAN UTAMA -->
-<section class="py-5" style="background: #FFFFFF;">
-    <div class="container py-4">
-        <div class="text-center mb-5">
-            <span class="badge rounded-pill bg-success-subtle text-success border border-success-subtle px-3 py-1 mb-2 fw-bold text-uppercase" style="letter-spacing: 0.05em;">
+<!-- 4. BREATHING SECTION: DAMPAK & STATISTIK (Law 5 & Rhythm Law) -->
+<section class="breathing-stat-section">
+    <div class="container">
+        <div class="row g-4 justify-content-center" data-animate-stagger>
+            <div class="col-6 col-lg-3">
+                <div class="stat-pill-card">
+                    <div class="stat-number">Rp 0</div>
+                    <div class="stat-label">Bebas Royalti</div>
+                    <p class="stat-desc">Lisensi MIT 100% open-source, bebas dipakai dan dimodifikasi tanpa pungutan biaya sepeser pun.</p>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="stat-pill-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Offline-First</div>
+                    <p class="stat-desc">Hisab astronomis lokal resmi Kemenag RI dan PWA Service Worker tetap menyala saat internet masjid padam.</p>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="stat-pill-card">
+                    <div class="stat-number">4 Pilar</div>
+                    <div class="stat-label">Tata Kelola</div>
+                    <p class="stat-desc">Tertib administrasi, Amanah dana umat, Bersama jamaah, dan Berkelanjutan lintas kepengurusan.</p>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="stat-pill-card">
+                    <div class="stat-number">1-Klik</div>
+                    <div class="stat-label">Demo Instan</div>
+                    <p class="stat-desc">Uji coba langsung sebagai bendahara atau super admin dengan sandbox terisolasi tanpa perlu registrasi.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 5. BENTO GRID SECTION: KEMAMPUAN UTAMA (6 Fitur Inti) -->
+<section class="bento-section">
+    <div class="container">
+        <div class="text-center mb-5" data-animate>
+            <span class="badge rounded-pill bg-success-subtle text-success border border-success-subtle px-3 py-1 mb-2 fw-bold text-uppercase" style="letter-spacing: 0.05em; font-size: 0.72rem;">
                 Kemampuan Sistem
             </span>
             <h2 class="display-6 fw-900 text-dark" style="letter-spacing: -0.03em;">Bukan Sekadar Catatan Kas, Ini Sistem Operasi Masjid</h2>
-            <p class="text-muted mx-auto lead" style="max-width: 650px; font-size: 1.1rem;">
+            <p class="text-muted mx-auto lead" style="max-width: 680px; font-size: 1.1rem;">
                 Semua instrumen digital yang dibutuhkan pengurus masjid dirancang menyatu, ringan, mandiri, dan siap pakai tanpa memerlukan infrastruktur mahal.
             </p>
         </div>
 
-        <div class="row g-4">
+        <div class="row g-4" data-animate-stagger>
             <!-- Bento 1: Mode Layar TV (Col 8) -->
             <div class="col-lg-8">
                 <div class="bento-card">
@@ -763,7 +885,7 @@
                             <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-1 fw-bold">Live Standalone</span>
                         </div>
                         <h4 class="fw-800 text-dark mb-2">1. Mode Layar TV Digital Dinding Masjid</h4>
-                        <p class="text-muted mb-4" style="line-height: 1.65;">
+                        <p class="text-muted mb-4" style="line-height: 1.7;">
                             Tampilan fullscreen khusus yang dapat dihubungkan ke Android TV Box, Smart TV, atau PC mini tanpa perlu membuka panel admin. Dilengkapi jam digital realtime sinkron, 5 waktu salat otomatis berbasis hisab astronomis Kemenag tanpa butuh API luar, hitung mundur iqomah, serta running text saldo kas &amp; pengumuman kajian.
                         </p>
                     </div>
@@ -833,7 +955,7 @@
                             <span class="badge bg-purple-subtle text-dark border rounded-pill px-3 py-1 fw-bold">Integritas Data</span>
                         </div>
                         <h4 class="fw-800 text-dark mb-2">4. Mutasi Kas Atomik &amp; Buku Kas Multi-Wadah</h4>
-                        <p class="text-muted mb-4" style="line-height: 1.65;">
+                        <p class="text-muted mb-4" style="line-height: 1.7;">
                             Setiap mutasi kas dibungkus dalam transaksi basis data atomik dengan verifikasi runtime saldo kas. Mendukung pemisahan Buku Kas independen: Kas Umum Operasional, Kas Pembangunan/Renovasi, Kas ZISWAF, dan Kas Santunan Anak Yatim sehingga dana umat tidak bercampur.
                         </p>
                     </div>
@@ -895,20 +1017,65 @@
     </div>
 </section>
 
-<!-- 5. DUA PILIHAN PEMANFAATAN: MANDIRI ATAU PENDAMPINGAN (MODEL SAS) -->
-<section class="py-5" style="background: #F8FAFC; border-top: 1px solid #E2E8F0; border-bottom: 1px solid #E2E8F0;">
+<!-- 6. HOW IT WORKS: 3-STEP WORKFLOW (Blueprint Item 7) -->
+<section class="how-it-works-section">
+    <div class="container">
+        <div class="text-center mb-5" data-animate>
+            <span class="badge rounded-pill bg-success-subtle text-success border border-success-subtle px-3 py-1 mb-2 fw-bold text-uppercase" style="letter-spacing: 0.05em; font-size: 0.72rem;">
+                Alur Pemanfaatan
+            </span>
+            <h2 class="display-6 fw-900 text-dark" style="letter-spacing: -0.03em;">Mulai dalam 3 Langkah Sederhana</h2>
+            <p class="text-muted mx-auto lead" style="max-width: 640px; font-size: 1.1rem;">
+                Tanpa konfigurasi server yang rumit, masjid Anda dapat langsung menikmati sistem administrasi modern.
+            </p>
+        </div>
+
+        <div class="row g-4" data-animate-stagger>
+            <div class="col-lg-4">
+                <div class="step-card">
+                    <div class="step-badge">1</div>
+                    <h5 class="fw-800 text-dark mb-2">Ambil Kode atau Minta Bantuan</h5>
+                    <p class="text-muted small mb-0" style="line-height: 1.65;">
+                        Clone repositori secara gratis di GitHub untuk dipasang di komputer sekretariat masjid, atau hubungi pengembang untuk pendampingan setup domain HTTPS dan cloud.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="step-card">
+                    <div class="step-badge">2</div>
+                    <h5 class="fw-800 text-dark mb-2">Personalisasi Data &amp; Wadah Kas</h5>
+                    <p class="text-muted small mb-0" style="line-height: 1.65;">
+                        Tentukan wadah kas (operasional, pembangunan, yatim), koordinat garis lintang untuk hisab waktu salat otomatis, nomor rekening resmi, dan QRIS infaq masjid Anda.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="step-card">
+                    <div class="step-badge">3</div>
+                    <h5 class="fw-800 text-dark mb-2">Tata Kelola Aktif &amp; Siap Dipakai</h5>
+                    <p class="text-muted small mb-0" style="line-height: 1.65;">
+                        Hubungkan layar Smart TV ke mode display masjid, cetak laporan rekap kas Jumat format A4, dan bagikan tautan transparansi kas real-time kepada seluruh jamaah.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 7. DUA PILIHAN IMPLEMENTASI (Jalur Mandiri vs Pendampingan) -->
+<section class="py-5" style="background: #FFFFFF;">
     <div class="container py-4">
-        <div class="text-center mb-5">
-            <span class="badge rounded-pill bg-primary-subtle text-primary border border-primary-subtle px-3 py-1 mb-2 fw-bold text-uppercase" style="letter-spacing: 0.05em;">
+        <div class="text-center mb-5" data-animate>
+            <span class="badge rounded-pill bg-primary-subtle text-primary border border-primary-subtle px-3 py-1 mb-2 fw-bold text-uppercase" style="letter-spacing: 0.05em; font-size: 0.72rem;">
                 Pilihan Implementasi
             </span>
             <h2 class="display-6 fw-900 text-dark">Dua Jalur Pemanfaatan: Bebas Digunakan &amp; Mandiri</h2>
-            <p class="text-muted mx-auto lead" style="max-width: 620px; font-size: 1.1rem;">
+            <p class="text-muted mx-auto lead" style="max-width: 640px; font-size: 1.1rem;">
                 Pilih jalur yang paling sesuai dengan kesiapan teknis dan infrastruktur takmir di masjid Anda.
             </p>
         </div>
 
-        <div class="row g-4 justify-content-center">
+        <div class="row g-4 justify-content-center" data-animate-stagger>
             <!-- Jalur 1: Unduh & Pasang Mandiri -->
             <div class="col-lg-6">
                 <div class="path-card self-host shadow-sm">
@@ -966,18 +1133,18 @@
     </div>
 </section>
 
-<!-- 6. TANYA JAWAB UMUM (FAQ) -->
-<section class="py-5 bg-white">
+<!-- 8. TANYA JAWAB UMUM (FAQ) -->
+<section class="py-5" style="background: var(--surface-warm); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
     <div class="container py-4">
-        <div class="text-center mb-5">
-            <span class="badge rounded-pill bg-secondary-subtle text-secondary px-3 py-1 mb-2 fw-bold text-uppercase" style="letter-spacing: 0.05em;">
+        <div class="text-center mb-5" data-animate>
+            <span class="badge rounded-pill bg-secondary-subtle text-secondary px-3 py-1 mb-2 fw-bold text-uppercase" style="letter-spacing: 0.05em; font-size: 0.72rem;">
                 Tanya Jawab DKM
             </span>
             <h2 class="display-6 fw-900 text-dark">Pertanyaan yang Sering Diajukan</h2>
             <p class="text-muted mx-auto lead" style="max-width: 600px; font-size: 1.1rem;">Penjelasan praktis seputar implementasi dan operasional sistem di masjid Anda.</p>
         </div>
 
-        <div class="row g-4 justify-content-center">
+        <div class="row g-4 justify-content-center" data-animate-stagger>
             <div class="col-md-6">
                 <div class="p-4 rounded-4 border bg-white h-100 shadow-sm">
                     <h6 class="fw-bold text-dark mb-2"><i class="bi bi-question-circle-fill text-success me-2"></i>Apakah aplikasi SAF benar-benar gratis dan open source?</h6>
@@ -1030,10 +1197,10 @@
     </div>
 </section>
 
-<!-- 7. FINAL CALL TO ACTION BANNER -->
-<section class="py-5 position-relative overflow-hidden" style="background: radial-gradient(circle at 50% 50%, #064E3B 0%, #022C22 100%); color: white;">
-    <div class="container text-center position-relative py-3">
-        <span class="badge rounded-pill bg-success-subtle text-success border border-success-subtle px-3 py-1 mb-3 fw-bold text-uppercase" style="letter-spacing: 0.05em;">
+<!-- 9. FINAL CALL TO ACTION BANNER -->
+<section class="cta-final-section">
+    <div class="container text-center position-relative py-4" data-animate>
+        <span class="badge rounded-pill bg-success-subtle text-success border border-success-subtle px-3 py-1 mb-3 fw-bold text-uppercase" style="letter-spacing: 0.05em; font-size: 0.72rem;">
             Tertib &bull; Amanah &bull; Bersama &bull; Berkelanjutan
         </span>
         <h2 class="display-6 fw-900 mb-3" style="letter-spacing: -0.03em;">Mulai Modernisasi Tata Kelola Masjid Bersama SAF</h2>
@@ -1054,7 +1221,7 @@
     </div>
 </section>
 
-<!-- 8. MODAL DEMO 1-KLIK (SANDBOX INTERAKTIF SEPERTI MODEL SAS) -->
+<!-- 10. MODAL DEMO 1-KLIK (SANDBOX INTERAKTIF SEPERTI MODEL SAS) -->
 <div class="modal fade" id="demoModal" tabindex="-1" aria-labelledby="demoModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content rounded-4 border-0 shadow-lg">

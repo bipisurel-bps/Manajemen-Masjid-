@@ -18,10 +18,25 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
         :root {
-            --primary: #0D9488;
-            --primary-dark: #0F766E;
-            --primary-light: #CCFBF1;
-            --primary-50: #F0FDFA;
+            /* ===== TYPOGRAPHY & FLUID SCALING ===== */
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --text-xs: clamp(0.72rem, 0.68rem + 0.2vw, 0.8rem);
+            --text-sm: clamp(0.82rem, 0.78rem + 0.2vw, 0.9rem);
+            --text-base: clamp(0.95rem, 0.92rem + 0.2vw, 1.05rem);
+            --text-lg: clamp(1.1rem, 1.05rem + 0.3vw, 1.25rem);
+            --text-xl: clamp(1.35rem, 1.25rem + 0.5vw, 1.65rem);
+            --text-2xl: clamp(1.65rem, 1.45rem + 0.9vw, 2.1rem);
+            --text-3xl: clamp(2rem, 1.7rem + 1.4vw, 2.75rem);
+            --text-4xl: clamp(2.5rem, 2rem + 2.2vw, 3.5rem);
+
+            /* ===== ISLAMIC FOREST EMERALD & WARM LUXURY PALETTE ===== */
+            --primary: #065F46;
+            --primary-dark: #022C22;
+            --primary-light: #A7F3D0;
+            --primary-50: #ECFDF5;
+            --primary-gradient: linear-gradient(135deg, #065F46 0%, #047857 50%, #059669 100%);
+            --accent-gold: #D97706;
+            --accent-gold-light: #FEF3C7;
             --gold: #D97706;
             --gold-light: #FFFBEB;
             --gold-dark: #92400E;
@@ -29,18 +44,62 @@
             --income-bg: #ECFDF5;
             --expense: #DC2626;
             --expense-bg: #FEF2F2;
-            --bg: #F8FAFC;
+
+            /* ===== SURFACES & NEUTRALS (Warm tinted, zero-chroma avoided) ===== */
+            --bg: #F8FAF9;
+            --surface-warm: #FAF9F6;
             --card: #FFFFFF;
-            --text: #1E293B;
+            --text: #0F172A;
             --text-muted: #64748B;
             --border: #E2E8F0;
+            --border-subtle: rgba(226, 232, 240, 0.8);
+
+            /* ===== RADIUS HIERARCHY ===== */
+            --radius-xs: 4px;
+            --radius-sm: 8px;
             --radius: 14px;
-            --radius-sm: 10px;
-            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-            --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
-            --shadow-md: 0 4px 12px rgba(0,0,0,0.06), 0 2px 4px rgba(0,0,0,0.04);
-            --shadow-lg: 0 10px 25px rgba(0,0,0,0.08), 0 4px 10px rgba(0,0,0,0.04);
-            --transition: 0.2s ease;
+            --radius-lg: 20px;
+            --radius-xl: 28px;
+            --radius-pill: 9999px;
+
+            /* ===== LAYERED SHADOWS (Non-black, tinted with slate/emerald) ===== */
+            --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.04);
+            --shadow: 0 2px 4px rgba(15, 23, 42, 0.05), 0 1px 2px rgba(15, 23, 42, 0.04);
+            --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.06), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+            --shadow-lg: 0 10px 25px -3px rgba(15, 23, 42, 0.08), 0 4px 10px -4px rgba(15, 23, 42, 0.04);
+            --shadow-xl: 0 20px 35px -5px rgba(15, 23, 42, 0.1), 0 8px 16px -6px rgba(15, 23, 42, 0.05);
+            --shadow-emerald: 0 12px 30px -8px rgba(16, 185, 129, 0.35);
+
+            /* ===== EASING & TIMING ===== */
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+            --transition: 0.25s var(--ease-out-quart);
+        }
+
+        /* ── Scroll Reveals (Pure CSS + IntersectionObserver) ── */
+        [data-animate] {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s var(--ease-out-expo), transform 0.6s var(--ease-out-expo);
+            will-change: opacity, transform;
+        }
+        [data-animate].is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        [data-animate-stagger].is-visible > * {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.5s var(--ease-out-expo), transform 0.5s var(--ease-out-expo);
+            transition-delay: calc(var(--stagger-idx, 0) * 80ms);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            [data-animate],
+            [data-animate-stagger] > * {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+            }
         }
 
         * { box-sizing: border-box; }
@@ -411,22 +470,29 @@
 <body>
 
 <!-- Navbar -->
-<nav class="navbar-main">
+<nav class="navbar navbar-expand-lg navbar-main">
     <div class="container">
-        <div class="d-flex justify-content-between align-items-center">
-            <a href="{{ route('home') }}" class="navbar-brand-custom d-flex align-items-center gap-2 text-decoration-none">
-                <div class="brand-icon shadow-sm" style="background: linear-gradient(135deg, #065F46 0%, #047857 100%);">
-                    <span class="fw-900" style="font-size: 1.1rem; letter-spacing: -0.05em;">SAF</span>
+        <a href="{{ route('home') }}" class="navbar-brand-custom d-flex align-items-center gap-2 text-decoration-none">
+            <div class="brand-icon shadow-sm" style="background: linear-gradient(135deg, #065F46 0%, #047857 100%);">
+                <span class="fw-900" style="font-size: 1.1rem; letter-spacing: -0.05em;">SAF</span>
+            </div>
+            <div class="d-flex flex-column" style="line-height: 1.1;">
+                <div class="d-flex align-items-center gap-2">
+                    <span class="fw-900 text-dark" style="letter-spacing: -0.03em; font-size: 1.25rem;">SAF</span>
+                    <span class="badge rounded-pill" style="background: rgba(16, 185, 129, 0.12); color: #059669; font-size: 0.65rem; font-weight: 700; border: 1px solid rgba(16, 185, 129, 0.25);">OPEN SOURCE</span>
                 </div>
-                <div class="d-flex flex-column" style="line-height: 1.1;">
-                    <div class="d-flex align-items-center gap-2">
-                        <span class="fw-900 text-dark" style="letter-spacing: -0.03em; font-size: 1.25rem;">SAF</span>
-                        <span class="badge rounded-pill" style="background: rgba(16, 185, 129, 0.12); color: #059669; font-size: 0.65rem; font-weight: 700; border: 1px solid rgba(16, 185, 129, 0.25);">OPEN SOURCE</span>
-                    </div>
-                    <span class="text-muted" style="font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;">Sistem Operasi Manajemen Masjid</span>
-                </div>
-            </a>
-            <div class="d-flex align-items-center gap-1">
+                <span class="text-muted" style="font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;">Sistem Operasi Manajemen Masjid</span>
+            </div>
+        </a>
+
+        <!-- Mobile Toggler -->
+        <button class="navbar-toggler border-0 p-2 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMainContent" aria-controls="navbarMainContent" aria-expanded="false" aria-label="Navigasi Menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Nav Links & Actions -->
+        <div class="collapse navbar-collapse" id="navbarMainContent">
+            <div class="navbar-nav ms-auto align-items-lg-center gap-1 pt-3 pt-lg-0">
                 <a href="{{ route('home') }}" class="nav-link-custom {{ request()->routeIs('home') ? 'active' : '' }}">
                     <i class="bi bi-house-door"></i> Beranda
                 </a>
@@ -445,15 +511,17 @@
                 <a href="{{ route('contact') }}" class="nav-link-custom {{ request()->routeIs('contact') ? 'active' : '' }}">
                     <i class="bi bi-envelope"></i> Kontak
                 </a>
-                <a href="https://github.com/bipisurel-bps/Manajemen-Masjid-" target="_blank" rel="noopener noreferrer" class="nav-link-custom text-dark d-none d-md-inline-flex align-items-center" title="Unduh Source Code Bebas di GitHub">
+                <a href="https://github.com/bipisurel-bps/Manajemen-Masjid-" target="_blank" rel="noopener noreferrer" class="nav-link-custom text-dark d-none d-xl-inline-flex align-items-center" title="Unduh Source Code Bebas di GitHub">
                     <i class="bi bi-github"></i> GitHub
                 </a>
-                <a href="{{ route('demo.login', 'admin') }}" class="btn btn-warning btn-sm text-dark fw-bold rounded-pill px-3 ms-2 shadow-sm">
-                    <i class="bi bi-play-circle-fill me-1"></i> Coba Demo
-                </a>
-                <a href="{{ route('login') }}" class="btn-primary-masjid btn-sm-masjid ms-1">
-                    <i class="bi bi-box-arrow-in-right"></i> Login
-                </a>
+                <div class="d-flex align-items-center gap-2 mt-2 mt-lg-0 ms-lg-2">
+                    <a href="{{ route('demo.login', 'admin') }}" class="btn btn-warning btn-sm text-dark fw-bold rounded-pill px-3 shadow-sm">
+                        <i class="bi bi-play-circle-fill me-1"></i> Coba Demo
+                    </a>
+                    <a href="{{ route('login') }}" class="btn-primary-masjid btn-sm-masjid">
+                        <i class="bi bi-box-arrow-in-right"></i> Login
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -551,6 +619,32 @@
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js').catch(() => {});
 }
+
+// Premium Scroll Reveal Observer
+document.addEventListener('DOMContentLoaded', function() {
+    if (!('IntersectionObserver' in window)) {
+        document.querySelectorAll('[data-animate], [data-animate-stagger]').forEach(el => el.classList.add('is-visible'));
+        return;
+    }
+    
+    // Set stagger indices
+    document.querySelectorAll('[data-animate-stagger]').forEach(container => {
+        Array.from(container.children).forEach((child, i) => {
+            child.style.setProperty('--stagger-idx', i);
+        });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { rootMargin: '0px 0px -50px 0px', threshold: 0.08 });
+
+    document.querySelectorAll('[data-animate], [data-animate-stagger]').forEach(el => observer.observe(el));
+});
 </script>
 </body>
 </html>
